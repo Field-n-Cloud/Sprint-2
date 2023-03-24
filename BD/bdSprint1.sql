@@ -3,22 +3,22 @@ USE sprint2;
 CREATE TABLE cliente(
 	idCliente INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50),
-    email VARCHAR(100) CONSTRAINT chkEmail CHECK (email LIKE '%@%.com'),
-    senha VARCHAR(12)
+    email VARCHAR(60) CONSTRAINT chkEmail CHECK (email LIKE '%@%.com'),
+    senha VARCHAR(20)
 );
 
 CREATE TABLE estadio(
 	idEstadio INT PRIMARY KEY AUTO_INCREMENT,
-    estadoEstadio VARCHAR (40),
+    estadoEstadio CHAR (2),
     nomeEstadio VARCHAR (40),
-    sistemaIrrigacao VARCHAR(100),
+    sistemaIrrigacao VARCHAR (60),
     fkIdCliente INT, CONSTRAINT fkIdClient FOREIGN KEY (fkIdCliente) REFERENCES cliente (idCliente)
 );
 
 CREATE TABLE sensores (
 	idSensor INT PRIMARY KEY AUTO_INCREMENT,
     tipoSensor VARCHAR(20),
-    setorSensor VARCHAR(40),
+    setorSensor VARCHAR(10),
     estadoAtual TINYINT CONSTRAINT chkEstadoAtual CHECK ( estadoAtual IN ( 0, 1)),
     fkIdEstadio INT, CONSTRAINT fkIdStadium FOREIGN KEY (fkIdEstadio) REFERENCES estadio (idEstadio)
 );
