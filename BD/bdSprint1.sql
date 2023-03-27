@@ -3,6 +3,8 @@ USE sprint2;
 CREATE TABLE cliente(
 	idCliente INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50),
+    cnpj CHAR(14),
+    telefone VARCHAR(11)
     email VARCHAR(60) CONSTRAINT chkEmail CHECK (email LIKE '%@%.com'),
     senha VARCHAR(20)
 );
