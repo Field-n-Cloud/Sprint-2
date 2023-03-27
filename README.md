@@ -16,4 +16,4 @@ Principais regras desenvolvidas:
 
 - Ter comportamento pró-ativo, o importante para a colaboração em equipe é a comunicação sobre os commits no GitHub. Ao avisar previamente sobre o envio dos commits, outros membros da equipe podem estar cientes das mudanças e contribuir de maneira efetiva. Além disso, essa prática evita possíveis conflitos ou erros na integração das mudanças feitas. Por isso, é fundamental manter uma boa comunicação com a equipe e estar sempre atento às práticas de colaboração.
 
-- Rotatividade dos PO's será em duplas com duração de uma semana para cada dupla realizar a sprint review
+- Rotatividade dos PO's será em duplas com duração de uma semana para cada dupla realizar a sprint review com o cliente, dessa forma todos os integrantes participarã da dinâmica e realizarão no mínimo uma sprint review.
