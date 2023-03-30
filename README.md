@@ -1,3 +1,9 @@
+<div align="center">
+    <img src="./Imagens/logo_completa.png" height="100">
+</div>
+
+<br>
+
 <h1 align="center"> Regras de convivência </h1>
 
 <p align="center">
