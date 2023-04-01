@@ -3,6 +3,8 @@
     src: url('../Fontes/Lexend-VariableFont_wght.ttf');
 }
 
+
+
 body{
     margin: 0;
     padding: 0px 0px;
@@ -16,13 +18,13 @@ body{
 }
 
 .background{
-    width: 38%;
+    width: 45%;
     background-image: url('../Imagens/img_login.png');
     background-size: cover;
 }
 
 .base-formulario{
-    width: 62%;
+    width: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
