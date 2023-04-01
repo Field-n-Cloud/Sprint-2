@@ -5,38 +5,74 @@
 .calc-wrapper {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     margin:0;
+    background-image: url('./fundo.png');
+    background-size: cover;
+
+    font-family: Lexend,'Roboto Condensed', K2d;
+    color: white;
+}
+
+.calc-wrapper .container {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .calc {
     width: 100%;
-    font-family: Lexend,'Roboto Condensed', K2d;
     padding: 20px 0;
+
+    display: flex;
+    flex-direction: column;
     align-items:center;
-    justify-content: start;
+    justify-content: center;
     text-align: center;
-    background-image: url('./fundo.png');
-    background-size: cover;
-    color: white;
+    
 }
 
-.questao {  
-    width: 100%;
-    font-size: 22px;
-    margin: 10px 0;
+.calc .calc-texto {
+    font-size: 14px;
+}
+
+.logo {
+    width: 128px;
+    height: 128px;
+}
+
+.calc-header {
+    display: flex;
+}
+
+.calc-header div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.questao {
+    width: 80%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    text-align: left;
+    margin: 2px 0;
 }
 
 .questao input {
-    width: 45%;
-    padding: 8px 15px;
-    color:black;
-    background: linear-gradient(21deg, #172C20, #1ECE43,);
-    display: inline-block;
-    border-radius: 20px;
-    font-size:22px;
-    position: relative; 
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 2px;
+    border-radius: 8px;
 }
+
+
 .btn-calcular {
     font-family: Lexend,'Roboto Condensed', K2d;
     font-size: 20px;
@@ -57,8 +93,7 @@
 /* RESULTADO */
 
 .resultado {
-    width: 50%;
-    padding: 0 20px;
+    width: 30%;
     font-family: Lexend,'Roboto Condensed', K2d;
     background-color: #172C20;
     color: white;
@@ -76,13 +111,14 @@
 .mostrar.calc{
     display: flex;
     width: 100%;
-    background-color: #172C20;
+    padding: 20px 20px;
+
     flex-direction: column;
 }
 
 .mostrar.resultado{
     display: flex;
-    width: 70%;
-    background-color: #172C20;
+    width: 40%;
+    padding: 20px 10px;
     flex-direction: column;
 }
