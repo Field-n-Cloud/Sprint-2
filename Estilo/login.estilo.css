@@ -1,0 +1,118 @@
+@font-face {
+    font-family: Lexend;
+    src: url(/Fontes/Lexend-VariableFont_wght.ttf);
+}
+
+body{
+    margin: 0;
+    padding: 0px 0px;
+
+}
+
+.container{
+    width: 100%;
+    height: 650px;
+    display: flex;
+}
+
+.background{
+    width: 38%;
+    background-image: url('../Imagens/img_login.png');
+    background-size: cover;
+}
+
+.base-formulario{
+    width: 62%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Lexend;
+
+}
+
+.formulario{
+    width: 45%;
+    height: 70%;
+    background-color: lightgrey;
+    border: 3px #009A46 solid;
+    border-radius: 50px;
+}    
+
+.cabecalho-form{
+    padding: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecalho-form img{
+    width: 30%;
+}
+
+.cabecalho-form h1{
+    margin:0;
+}
+
+.form{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form input{
+    width: 95%;
+    height: 25px;
+    border: 2px #7c7b7b solid;
+    border-radius: 8px;
+    padding: 0px 10px;
+}
+
+.form input:focus{
+    outline: none;
+    border: 3px #009A46 solid;
+
+}
+
+.flex-input span{
+    font-weight: bold;
+}
+
+.frase{
+    font-size:14px;
+}
+
+.flex-input{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form a{
+    color: #009A46;
+    font-size: 13px;
+}
+
+.form a:hover{
+    color: #04d361;
+}
+
+.btn-entrar{
+    color: white;
+    font-weight: bold;
+    font-size: 11px;
+    background-color: #009A46;
+    width: 65%;
+    height: 35px;
+    border: 3px rgba(255, 255, 255, 0.753) solid;
+    border-radius: 18px;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.445); 
+} 
+
+.btn-entrar:hover{
+    cursor: pointer;
+    background-color: #04d361;
+}
