@@ -9,36 +9,47 @@ body{
 
 }
 
-.container{
+.cadastro-wrapper{
     width: 100%;
     height: 650px;
     display: flex;
 }
 
 .background{
-    width: 38%;
-    background-image: url('../Imagens/img_login.png');
+    width: 40%;
+    background-image: url('../Imagens/img_cadastro.png');
     background-size: cover;
 }
 
-.base-formulario{
-    width: 62%;
+.form-wrapper {
+    width: 60%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: Lexend;
-
 }
 
-.formulario{
-    width: 45%;
-    height: 70%;
+
+.form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 10px 0;
+    border: 4px solid #009A46;
+    border-radius: 70px;
+
     background-color: lightgrey;
-    border: 3px #009A46 solid;
-    border-radius: 50px;
-}    
+
+    font-family: Lexend;
+}
 
 .cabecalho-form{
+    height: 30%;
     padding: 20px 0 0 0;
     display: flex;
     flex-direction: column;
@@ -47,24 +58,43 @@ body{
 }
 
 .cabecalho-form img{
-    width: 30%;
+    width: 100px;
 }
 
 .cabecalho-form h1{
     margin:0;
 }
 
-.form{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.form-wrapper .container {
+    width: 550px;
+    height: 580px;
 }
 
+
+.form-group {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.row-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .row-group .flex-input {
+        width: 45%;
+        text-align: center;
+    }
+
+
 .form input{
-    width: 95%;
+    width: 100%;
     height: 25px;
     border: 2px #7c7b7b solid;
     border-radius: 8px;
@@ -86,9 +116,10 @@ body{
 }
 
 .flex-input{
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 
 .form a{
@@ -110,6 +141,7 @@ body{
     border: 3px rgba(255, 255, 255, 0.753) solid;
     border-radius: 18px;
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.445); 
+    margin: 10px 0;
 } 
 
 .btn-entrar:hover{
