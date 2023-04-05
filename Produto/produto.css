@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', Arial, Helvetica, sans-serif;
+    background-color: #172C20;
+    background-size: cover;
+}
+
+.logo{
+    height: 30px;
+    width: 100px;
+    align-items:center;
+    justify-content: flex-end;
+    margin-left: 75%;
+    margin-top: 100px;
+}
+
+.texto {
+    color: white;
+    font-size: 30PX;
+    margin: none;
+    height: 450px;
+    width: 900px;
+    align-items:center;
+    justify-content: flex-end;
+    margin-left: 10%;
+}
+
+.texto p{
+    font-size: 25PX;
+}
+
+.tela p{
+    color: white;
+}
+
+.tela{
+    width: 100%;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('fundo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin:0;
+    padding: 0px;
+}
+
+.elementos{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.fileira{
+ display: flex;
+ justify-content: space-between;
+ margin: 40px;
+}
+
+.imagem1{
+    height: 30px;
+    width: 120px;
+}
+
+.imagem2{
+    height: 90px;
+    width: 50px;
+    margin-right: 170px;
+}
+
+.textoimagem1{
+    font-size: 30px;
+    width: 450px;
+    margin-left: 200px;
+}
+
+.textoimagem2{
+    font-size: 30PX;
+    width: 400px;
+    margin-left: 60px;
+}
+
