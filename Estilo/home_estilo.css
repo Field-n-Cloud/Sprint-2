@@ -56,6 +56,55 @@
     font-size: 16px;
 }
 
+/* NOSSA EQUIPE */
+.nossa-equipe {
+    background-image: url('../Imagens/nossa_equipe_bg.png');
+    padding: 50px;
+}
+
+.equipe-titulo {
+    color: #FFFFFF;
+    font-family: 'Lexend';
+    font-size: 40px;
+    text-align: center;
+    margin: 20px;
+}
+
+.equipe-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.equipe-linha {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.equipe-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: #FFFFFF;
+    font-family: 'K2D';
+}
+
+.equipe-foto {
+    width: 125px;
+    border-radius: 100%;
+}
+
+.equipe-contato a {
+    text-decoration: none;
+    transition: 0.3s all ease-in-out;
+}
+
+.equipe-contato a:hover {
+    transform: scale(2);
+}
+
 /* FOOTER / RODAPÉ */
 .footer {
     background-color: #121705;
