@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+.conteudo {
+    margin-top: 125px;
+}
+
 /* HEADER / NAVBAR */
 .header {
     width: 100%;
@@ -14,8 +18,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 50px;
+    position: fixed;
+    top: 0;
+    z-index: 1;
     background-color: gray; /* TIRAR FUTURAMENTE */
-    
 }
 
 .header-a {
