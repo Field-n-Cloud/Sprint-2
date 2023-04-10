@@ -8,7 +8,7 @@
 }
 
 .conteudo {
-    margin-top: 125px;
+    
 }
 
 /* HEADER / NAVBAR */
@@ -21,7 +21,7 @@
     position: fixed;
     top: 0;
     z-index: 1;
-    background-color: gray; /* TIRAR FUTURAMENTE */
+
 }
 
 .header-a {
