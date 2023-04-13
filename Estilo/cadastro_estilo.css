@@ -3,15 +3,15 @@
     src: url('../Fontes/Lexend-VariableFont_wght.ttf');
 }
 
-body{
+* {
     margin: 0;
     padding: 0px 0px;
-
+    box-sizing: border-box;
 }
 
 .cadastro-wrapper{
     width: 100%;
-    height: 650px;
+    height: 100vh;
     display: flex;
 }
 
@@ -32,16 +32,16 @@ body{
 
 
 .form{
-    width: 100%;
+    width: 82%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-
     padding: 10px 0;
     border: 4px solid #009A46;
     border-radius: 70px;
+    
 
     background-color: lightgrey;
 
@@ -68,6 +68,8 @@ body{
 .form-wrapper .container {
     width: 550px;
     height: 580px;
+    display: flex;
+    justify-content: center;
 }
 
 
