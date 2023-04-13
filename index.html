@@ -19,50 +19,52 @@
 <body>
     <div class="conteudo">
         <div class="header">
-            <a class="header-a" href="#">
-                <img class="header-logo" src="./Imagens/logo_completa.png" alt="SafeLawn">
-            </a>
+            <div class="container">
+                <a class="header-a" href="#">
+                    <img class="header-logo" src="./Imagens/logo_completa.png" alt="SafeLawn">
+                </a>
 
-            <ul class="header-ul">
-                <li class="header-li">
-                    <a class="header-a" href="#">
-                        Home
-                    </a>
-                </li>
-                <li class="header-li">
-                    <a class="header-a" href="#">
-                        Produtos
-                    </a>
-                </li>
-                <li class="header-li">
-                    <a class="header-a" href="#">
-                        Sobre Nós
-                    </a>
-                </li>
-                <li class="header-li">
-                    <a class="header-a" href="#">
-                        Nossa Equipe
-                    </a>
-                </li>
-                <li class="header-li">
-                    <a class="header-a" href="#">
-                        |
-                    </a>
-                </li>
-                <li class="header-li">
-                    <a class="header-a" href="login.html">
-                        Login
-                    </a>
-                </li>
-                <li class="header-li">
-                    <a href="cadastrar.html">
-                        <button class="header-button" onclick="">Cadastro</button>
-                    </a>
-                </li>
-            </ul>
+                <ul class="header-ul">
+                    <li class="header-li">
+                        <a class="header-a" href="#home">
+                            Home
+                        </a>
+                    </li>
+                    <li class="header-li">
+                        <a class="header-a" href="#produtos">
+                            Produtos
+                        </a>
+                    </li>
+                    <li class="header-li">
+                        <a class="header-a" href="#sobre-nos">
+                            Sobre Nós
+                        </a>
+                    </li>
+                    <li class="header-li">
+                        <a class="header-a" href="#nossa-equipe">
+                            Nossa Equipe
+                        </a>
+                    </li>
+                    <li class="header-li">
+                        <a class="header-a" href="#">
+                            |
+                        </a>
+                    </li>
+                    <li class="header-li">
+                        <a class="header-a" href="Telas/login.html">
+                            Login
+                        </a>
+                    </li>
+                    <li class="header-li">
+                        <a href="Telas/cadastrar.html">
+                            <button class="header-button" onclick="">Cadastro</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="div_home">
+        <div class="div_home" id="home">
             <div class="container-home">
                 <div class="logo_e_texto">
                     <div class="imagemLogo">
@@ -85,19 +87,20 @@
             </div>
         </div>
 
-        <div class="div_produto">
-            
+        <div class="div_produto" id="produtos">
+
             <div class="texto">
                 <h3>PRODUTO</h3>
-                
+
                 <p>
-                    Nós fornecemos sensores de monitoramento de temperatura e umidade (DHT11 e LM35), 
-                    que ficarão em lugares específicos do campo, onde eles capturam os dados e encaminham para o equipamento 
+                    Nós fornecemos sensores de monitoramento de temperatura e umidade (DHT11 e LM35),
+                    que ficarão em lugares específicos do campo, onde eles capturam os dados e encaminham para o
+                    equipamento
                     de monitoramento de forma automática e em tempo real, onde terá acesso pela sua área de login.
                 </p>
             </div>
 
-                <img class="logo" src="Imagens/logo-dht11.png" alt="logo">
+            <img class="logo" src="Imagens/logo-dht11.png" alt="logo">
         </div>
 
     </div>
@@ -116,16 +119,17 @@
                 </div>
                 <div class="fileira">
                     <div class="textoimagem2">
-                        <p>Calculadora financeira para te dar certeza do seu <b style="color: #1ECE43">chute ao gol </b></p>
+                        <p>Calculadora financeira para te dar certeza do seu <b style="color: #1ECE43">chute ao gol </b>
+                        </p>
                     </div>
-                    
+
                     <img src="Imagens/icon-gastos.png" alt="Calculadora" class="imagem2">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="informacoes-conteudo-pagina">
+    <div class="informacoes-conteudo-pagina" id="sobre-nos">
         <div id="sobre-nos-texto">
             <div class="logo-topo-esquerda"><img src="Imagens/logo-SafeLawn.png" alt="logo-empresa" id="logo-empresa">
             </div>
@@ -164,7 +168,7 @@
         </div>
     </div>
 
-    <div class="nossa-equipe">
+    <div class="nossa-equipe" id="nossa-equipe">
         <h1 class="equipe-titulo">NOSSA EQUIPE</h1>
 
         <div class="equipe-container-home">
@@ -176,10 +180,12 @@
                     <p class="equipe-posicao">(Goleira)</p>
                     <div class="equipe-contato">
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Poliana" class="equipe-github">
+                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Poliana"
+                                class="equipe-github">
                         </a>
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Poliana" class="equipe-linkedin">
+                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Poliana"
+                                class="equipe-linkedin">
                         </a>
                     </div>
                 </div>
@@ -192,11 +198,12 @@
                     <p class="equipe-posicao">(Zagueiro)</p>
                     <div class="equipe-contato">
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Vitor Quintans" class="equipe-github">
+                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Vitor Quintans"
+                                class="equipe-github">
                         </a>
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Victor Quintans"
-                                class="equipe-linkedin">
+                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png"
+                                alt="LinkedIn Victor Quintans" class="equipe-linkedin">
                         </a>
                     </div>
                 </div>
@@ -207,10 +214,12 @@
                     <p class="equipe-posicao">(Zagueiro)</p>
                     <div class="equipe-contato">
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Victor Lira" class="equipe-github">
+                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Victor Lira"
+                                class="equipe-github">
                         </a>
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Victor Lira" class="equipe-linkedin">
+                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png"
+                                alt="LinkedIn Victor Lira" class="equipe-linkedin">
                         </a>
                     </div>
                 </div>
@@ -223,10 +232,12 @@
                     <p class="equipe-posicao">(Meio de campo)</p>
                     <div class="equipe-contato">
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Lucas" class="equipe-github">
+                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Lucas"
+                                class="equipe-github">
                         </a>
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Lucas" class="equipe-linkedin">
+                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Lucas"
+                                class="equipe-linkedin">
                         </a>
                     </div>
                 </div>
@@ -239,10 +250,12 @@
                     <p class="equipe-posicao">(Atacante)</p>
                     <div class="equipe-contato">
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Tiago" class="equipe-github">
+                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Tiago"
+                                class="equipe-github">
                         </a>
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Tiago" class="equipe-linkedin">
+                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Tiago"
+                                class="equipe-linkedin">
                         </a>
                     </div>
                 </div>
@@ -253,10 +266,12 @@
                     <p class="equipe-posicao">(Atacante)</p>
                     <div class="equipe-contato">
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Kevin" class="equipe-github">
+                            <img class="equipe-contato-img" src="./Imagens/github_icone.png" alt="GitHub Kevin"
+                                class="equipe-github">
                         </a>
                         <a href="#" class="equipe-contato-a">
-                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Kevin" class="equipe-linkedin">
+                            <img class="equipe-contato-img" src="./Imagens/linkedin_icone.png" alt="LinkedIn Kevin"
+                                class="equipe-linkedin">
                         </a>
                     </div>
                 </div>
@@ -284,10 +299,10 @@
                 <h3>SOBRE</h3>
                 <hr>
                 <a href="#" class="equipe-contato-a">HOME</a>
-                <a href="#" class= class="equipe-contato-img""equipe-contato-a">VISÃO GERAL</a>
-                <a href="#" class= class="equipe-contato-img""equipe-contato-a">DETALHES</a>
-                <a href="#" class= class="equipe-contato-img""equipe-contato-a">CALCULADORA FINANCEIRA</a>
-                <a href="#" class= class="equipe-contato-img""equipe-contato-a">CADASTRO< class="equipe-contato-img"/a>
+                <a href="#" class=class="equipe-contato-img""equipe-contato-a">VISÃO GERAL</a>
+                <a href="#" class=class="equipe-contato-img""equipe-contato-a">DETALHES</a>
+                <a href="#" class=class="equipe-contato-img""equipe-contato-a">CALCULADORA FINANCEIRA</a>
+                <a href="#" class=class="equipe-contato-img""equipe-contato-a">CADASTRO< class="equipe-contato-img" /a>
             </div>
         </div>
 
