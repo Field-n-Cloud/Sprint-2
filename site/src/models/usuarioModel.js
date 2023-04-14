@@ -15,6 +15,15 @@ function entrar(email, senha) {
         SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
+    
+    
+    // VERIFICAÇÃO DE LOGIN CASO FOR DE CLUBES
+    // if(database.executar(instrucao).length == 0) {
+    //     instrucao = `
+    //         SELECT * FROM clube WHERE email = '${email}' AND senha = '${senha}';
+    //     `;
+    // }
+        
     return database.executar(instrucao);
 }
 

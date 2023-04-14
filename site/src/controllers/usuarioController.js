@@ -38,9 +38,12 @@ function entrar(req, res) {
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
                     if (resultado.length == 1) {
+
+                        // VERIFICAR SE É UM FUNCIONÁRIO OU UM CLUBE
+
                         console.log(resultado);
                         res.json(resultado[0]);
                     } else if (resultado.length == 0) {
@@ -48,6 +51,7 @@ function entrar(req, res) {
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
+
                 }
             ).catch(
                 function (erro) {
@@ -56,6 +60,11 @@ function entrar(req, res) {
                     res.status(500).json(erro.sqlMessage);
                 }
             );
+
+            // var contador = 0;            
+            // while (contador < resultado.length) {
+            //     resultado[contador];
+            // }
     }
 
 }

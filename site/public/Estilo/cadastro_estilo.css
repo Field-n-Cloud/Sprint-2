@@ -1,7 +1,4 @@
-@font-face {
-    font-family: Lexend;
-    src: url('../Fontes/Lexend-VariableFont_wght.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=K2D&family=Lexend:wght@300;500;700&family=Roboto+Condensed:wght@400;700&display=swap');
 
 * {
     margin: 0;

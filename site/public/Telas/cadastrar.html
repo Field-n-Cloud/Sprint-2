@@ -7,6 +7,8 @@
     <title>Safe Lawn - Cadastro</title>
 
     <link rel="stylesheet" href="../Estilo/cadastro_estilo.css" />
+    
+    <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon">
     <script src="../js/funcoes.js"></script> 
   </head>
   <body>
@@ -57,7 +59,15 @@
                     </div>
               </div>
               
-              <button class="btn-entrar">ENTRAR</button>
+              <button class="btn-entrar"> CADASTRAR</button>
+
+              <select name="" id="">
+                <option value="1">Corinthians</option>
+                <option value="2">Santos</option>
+                <option value="3">Palmeiras</option>
+                <option value="4">São Paulo</option>
+              </select>
+
               <span class="frase"
                 >Já possui cadastro?
                 <a href="../Telas/login.html" class="link-cadastro">FAÇA O LOGIN!</a>
@@ -67,6 +77,8 @@
         </div>
       </div>
       <div class="background"></div>
+
+
     </div>
   </body>
 </html>
@@ -137,5 +149,28 @@
   function sumirMensagem() {
       cardErro.style.display = "none"
   }
+
+  // ORDEM 1(Errada):
+  // 1- Nós cadastramos o clube diretamente no Banco de Dados
+  // 2- O clube pode cadastrar funcionários
+  // 3- Funcionários podem fazer o login
+  // 4- Com o login feito, irá para a dashboard 
+  // 5- Pegar o clube do funcionário a partir da fkClube no funcionário
+
+  // ORDEM 2(Certa):
+  // 1- A clube se cadastra no site
+  // 2- Logo após, ela cadastra seus funcionários
+  // 3- A clube faz seu login
+  // 4- No dashboard da clube, ela pode cadastrar mais funcionarios
+  // 5- O funcionário faz seu login
+  // 6- O funcionário não pode cadastrar funcionários
+
+  // TELAS:
+  // - Cadastro clube
+  // - Cadastro Funcionário
+  // - Login 
+  // - Dashboard (caso for de clube, com um botão de cadastrar funcionários)
+
+  // SOMENTE UM CLUBE PODE CADASTRAR UM FUNCIONÁRIO
 
 </script>
