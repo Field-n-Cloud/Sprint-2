@@ -8,7 +8,7 @@ body{
 }
 
 .div_home {
-    background-image: url('../../Imagens/imagemhome.png');
+    background-image: url('../../assets/Imagens/imagemhome.png');
     background-size: cover;
     margin: 0;
     height: 100vh;

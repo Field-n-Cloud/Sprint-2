@@ -35,7 +35,7 @@ body {
 
 .fundo {
     padding: 50px;
-    background-image: url('../../Imagens/fundo_produto1.png');
+    background-image: url('../../assets/Imagens/fundo_produto1.png');
     background-size: cover;
     background-repeat: no-repeat;
 }

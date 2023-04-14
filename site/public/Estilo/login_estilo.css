@@ -1,9 +1,4 @@
-@font-face {
-    font-family: Lexend;
-    src: url('../Fontes/Lexend-VariableFont_wght.ttf');
-}
-
-
+@import url('https://fonts.googleapis.com/css2?family=K2D&family=Lexend:wght@300;500;700&family=Roboto+Condensed:wght@400;700&display=swap');
 
 *{
     margin: 0;
@@ -19,7 +14,7 @@
 
 .background{
     width: 60%;
-    background-image: url('../Imagens/img_login.png');
+    background-image: url('../assets/Imagens/img_login.png');
     background-size: cover;
 }
 
@@ -58,7 +53,6 @@
 
 .form{
     width: 100%;
-    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
