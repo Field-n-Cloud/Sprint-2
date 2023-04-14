@@ -61,6 +61,7 @@ function entrar(req, res) {
                 }
             );
 
+            // LÓGICA DO JSON PARA VÁRIOS VALRES DOS SENSORES NO GRÁFICO
             // var contador = 0;            
             // while (contador < resultado.length) {
             //     resultado[contador];
