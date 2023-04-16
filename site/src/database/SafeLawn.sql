@@ -7,17 +7,19 @@ CREATE TABLE clube (
 	nomeClube VARCHAR(45),
 	cnpj CHAR(14),
 	email VARCHAR(45),
+    telefoneCelular CHAR(11),
 	uf CHAR(2)
 );
 
 CREATE TABLE funcionario (
-	idFuncionario INT PRIMARY KEY AUTO_INCREMENT,
-	nomeFunc VARCHAR(45),
+	idFuncionario INT AUTO_INCREMENT,
+	nomeF VARCHAR(45),
 	email VARCHAR(45),
 	senha VARCHAR(20),
-	telCel CHAR(11),
-	fkClube INT, CONSTRAINT fkClubeFuncionario FOREIGN KEY (fkClube) REFERENCES clube(idClube),
-	CONSTRAINT pkCompostaClubeFuncionario PRIMARY KEY (idFuncionario, fkClube)
+	telefoneCelular CHAR(11),
+	fkClube INT, 
+    FOREIGN KEY (fkClube) REFERENCES clube(idClube),
+	PRIMARY KEY (idFuncionario, fkClube)
 );
 
 CREATE TABLE endereco (
@@ -40,15 +42,18 @@ CREATE TABLE estadio (
 	idEstadio INT PRIMARY KEY AUTO_INCREMENT,
 	nomeEstadio VARCHAR(40),
 	fkClube INT,
-	fkEndereco INT, CONSTRAINT fkEnderecoEstadio FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco),
-    fkGramado INT, CONSTRAINT fkGramadoEstadio FOREIGN KEY (fkGramado) REFERENCES gramadoEstadio(idGramadoEstadio)
+	fkEndereco INT,
+    fkGramado INT, 
+    FOREIGN KEY (fkClube) REFERENCES clube(idClube),
+    FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco),
+    FOREIGN KEY (fkGramado) REFERENCES gramadoEstadio(idGramadoEstadio)
 );
 
 CREATE TABLE SetorEstadio (
 	idSetor INT PRIMARY KEY AUTO_INCREMENT,
     nomeSetor VARCHAR(45),
     fkEstadio INT,
-    CONSTRAINT fkSetorEstadio FOREIGN KEY (fkEstadio) REFERENCES estadio(idEstadio)
+    FOREIGN KEY (fkEstadio) REFERENCES estadio(idEstadio)
 );
 
 CREATE TABLE Sensor (
@@ -56,7 +61,8 @@ CREATE TABLE Sensor (
     modelo VARCHAR(10),
     statusSensor VARCHAR(15),
     Observacoes VARCHAR(100),
-    fkSetorSensor INT, CONSTRAINT fkSensorSetor FOREIGN KEY (fkSensor) REFERENCES SetorEstadio(idSetor)
+    fkSetor INT, 
+    FOREIGN KEY (fkSetor) REFERENCES SetorEstadio(idSetor)
 );
 
 
@@ -65,6 +71,6 @@ CREATE TABLE DadosSensor (
     dtCaptura DATE,
     valorDados FLOAT,
     fkSensor INT,
-    CONSTRAINT fkDadosSensor FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
-    CONSTRAINT pkCompostaDadosSensor PRIMARY KEY (idCaptura, fkSensor)
+    FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
+    PRIMARY KEY (idCaptura, fkSensor)
 );
