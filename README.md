@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./Imagens/logo_completa.png" height="100">
+    <img src="./site/public/assets/Imagens/logo_completa.png" height="100">
 </div>
 
 <br>
