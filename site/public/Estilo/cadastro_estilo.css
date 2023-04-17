@@ -83,12 +83,14 @@
 
 .form-wrapper .container {
     height: 580px;
+    width: 40vw;
     display: flex;
     justify-content: center;
 }
 
 
 .form-group {
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -162,8 +164,14 @@
     border: 3px #009A46 solid;
 }
 
+.form-acao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .btn-form {
-    color: white;
     font-weight: bold;
     font-size: 11px;
     background-color: #009A46;
@@ -176,11 +184,18 @@
     transition: .3s all ease-in-out;
     font: 500 14px Lexend;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .btn-form:hover {
     background-color: #1ECE43;
     transform: scale(1.1);
+}
+
+.btn-form a {
+    color: white;
+    width: 100%;
 }
 
 .form-a {

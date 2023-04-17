@@ -21,8 +21,8 @@
           <div class="form">
             <div class="progresso">
               <div class="ponto-progresso feito"></div>
-              <hr class="barra-progresso">
-              <div class="ponto-progresso"></div>
+              <hr class="barra-progresso feito">
+              <div class="ponto-progresso feito"></div>
               <hr class="barra-progresso">
               <div class="ponto-progresso"></div>
             </div>
@@ -30,89 +30,39 @@
               <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
               <div class="cabecalho-titulos">
                 <h1>Cadastro</h1>
-                <h3>(dados do clube)</h3>
+                <h3>(dados do endereço)</h3>
               </div>
             </div>
             <div class="form-group">
               <div class="flex-input">
-                <span>Nome:</span>
-                <input class="input-nome" id="input_nome" placeholder="Digite seu nome..." />
+                <span>CEP:</span>
+                <input class="input-nome" id="input_cep" placeholder="Digite seu CEP..." />
               </div>
 
               <div class="flex-input">
-                <span>Email:</span>
-                <input class="input-email" id="input_email" placeholder="Digite seu email..." />
-              </div>
-
-              <div class="row-group">
-                <div class="flex-input">
-                  <span>Senha:</span>
-                  <input type="password" class="input-senha" placeholder="Digite sua senha..." id="input_senha" />
-                </div>
-                <div class="flex-input">
-                  <span>Confirme sua Senha:</span>
-                  <input type="password" class="input-confirme-senha" placeholder="Confirme sua Senha..."
-                    id="input_confirme_senha" />
-                </div>
+                <span>Logradouro:</span>
+                <input class="input-email" id="input-logradouro" placeholder="Digite sua rua ou avenida..." />
               </div>
 
               <div class="flex-input">
-                <span>Telefone:</span>
-                <input class="input-telefone" id="input_telefone" placeholder="Digite seu email..." />
-              </div>
-              
-              <div class="row-group">
-                <div class="flex-input">
-                  <span>CNPJ:</span>
-                  <input class="input-cnpj" id="input_cnpj" placeholder="Digite seu CNPJ..." />
-                </div>
-                <div class="flex-input">
-                  <span>Estado:</span>
-                  <select class="form-select" id="select_uf">
-                    <option class="sel-option" value="AC">AC</option>
-                    <option class="sel-option" value="AL">AL</option>
-                    <option class="sel-option" value="AM">AM</option>
-                    <option class="sel-option" value="AP">AP</option>
-                    <option class="sel-option" value="BA">BA</option>
-                    <option class="sel-option" value="CE">CE</option>
-                    <option class="sel-option" value="DF">DF</option>
-                    <option class="sel-option" value="ES">ES</option>
-                    <option class="sel-option" value="GO">GO</option>
-                    <option class="sel-option" value="MA">MA</option>
-                    <option class="sel-option" value="MT">MT</option>
-                    <option class="sel-option" value="MS">MS</option>
-                    <option class="sel-option" value="MG">MG</option>
-                    <option class="sel-option" value="PA">PA</option>
-                    <option class="sel-option" value="PB">PB</option>
-                    <option class="sel-option" value="PR">PR</option>
-                    <option class="sel-option" value="PE">PE</option>
-                    <option class="sel-option" value="PI">PI</option>
-                    <option class="sel-option" value="RJ">RJ</option>
-                    <option class="sel-option" value="RN">RN</option>
-                    <option class="sel-option" value="RS">RS</option>
-                    <option class="sel-option" value="RO">RO</option>
-                    <option class="sel-option" value="RR">RR</option>
-                    <option class="sel-option" value="SC">SC</option>
-                    <option class="sel-option" value="SP">SP</option>
-                    <option class="sel-option" value="SE">SE</option>
-                    <option class="sel-option" value="TO">TO</option>
-                  </select>
-                </div>
+                <span>Número:</span>
+                <input type="password" class="input-numero" placeholder="Digite o nº do endereço..." id="input_senha" />
               </div>
 
-              <span class="frase">Já possui cadastro?
-                <a href="../Telas/login.html" class="link-cadastro">FAÇA O LOGIN!</a>
-              </span>
+              <div class="flex-input">
+                <span>Complemento:</span>
+                <input class="input-telefone" id="input_complemento" placeholder="Digite o complemento do endereço..." />
+              </div>
 
               <div class="form-acao">
                 <button class="btn-form">
-                  <a href="./cadastro_endereco.html">
+                  <a href="./cadastro_estadio.html">
                     PRÓXIMO
-                  </a> 
+                  </a>
                 </button>
-                <a href="../index.html" class="form-a cancelar">CANCELAR</a>
-              </div>
 
+                <a href="./cadastro_clube.html" class="form-a">VOLTAR</a>
+              </div>
             </div>
           </div>
         </div>
