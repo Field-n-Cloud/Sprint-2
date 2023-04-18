@@ -9,7 +9,7 @@
 
 .sidebar {
     width: 20%;
-    height: 650px;
+    height: 100vh;
     background-color: #032311;
 
     display: flex;
@@ -81,7 +81,7 @@
 
 .dashboard-wrapper {
     width: 80%;
-    height: 670px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     background-color: #D9D9D9;
