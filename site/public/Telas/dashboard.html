@@ -20,7 +20,7 @@
                 <img src="../assets/Imagens/logo_imagem.png" alt="logo safe lawn" class="logo">
 
                 <div class="perfil">
-                    <img src="./Imagens/perfil-exemplo.png" alt="imagem de perfil" class="img-perfil">
+                    <img src="../assets/Imagens/perfil-exemplo.png" alt="imagem de perfil" class="img-perfil">
                     <p class="nome-perfil">Nome Estádio</p>
                     <span class="desc-perfil">Desc Estádio</span>
                 </div>
@@ -42,22 +42,44 @@
             <div class="container">
                 <div class="grupo-card">
                     <div class="card card-sensores">
-                        <h3>Sensores em campo</h3> 
-                        <h2 class="dados-card">
-                            4
-                        </h2>
+                        <div>
+                            <span class="card-date">11/04/2023 - 10:00</span>
+                            <h3>Sensores em campo</h3> 
+                        </div>
+                        
+                        <div class="row">
+                            <img src="../assets/icon/icone-sensor.png" alt="Icone Sensor">
+                            <h2 class="dados-card"> 4 </h2>
+                        </div>
+                        
                     </div>
                     <div class="card card-umidade">
-                        <h3>Umidade do campo</h3>
-                        <h2 class="dados-card">
-                            20%
-                        </h2>
+                        <div>
+                            <span class="card-date">11/04/2023 - 10:00</span>
+                            <h3>Umidade do campo</h3>
+                        </div>
+                        
+                        <div class="row">
+                            <img src="../assets/icon/icone-umidade.png" alt="Icone Umidade">
+                            <h2 class="dados-card"> 20% </h2>
+                        </div>
+                        
                     </div>
                     <div class="card card-jogabilidade"> 
-                        <h3>Jogabilidade</h3> 
-                        <h2 class="dados-card">
-                            80%
-                        </h2>
+                        <div>
+                            <span class="card-date">11/04/2023 - 10:00</span>
+                            <h3>Jogabilidade</h3> 
+                        </div>
+                        
+                        <div class="row">
+                            <section class="graficoJogabilidade">
+                                <canvas id="jogabilidade"></canvas>
+                            </section>
+                            <h2 class="dados-card">
+                                80%
+                            </h2>
+                        </div>
+                        
                     </div>
 
                 </div>
@@ -130,9 +152,42 @@
             }
         }
     );
+
+    /* -- dht11Umidade -- */
+    var contextoJogabilidade = document.getElementById('jogabilidade').getContext('2d');
+    contextoJogabilidade.canvas.width = 150;
+    contextoJogabilidade.canvas.height = 120;
+    var jogabilidade = new Chart(
+        contextoJogabilidade,
+        {
+            type: 'doughnut',
+            data: {
+            labels: [
+                'Jogável',
+                'Não Jogável',
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [80, 20],
+                backgroundColor: [
+                '#2E793D',
+                '#C70520'
+                ],
+                borderColor: 'transparent',
+                hoverOffset: 4
+            }]
+            },
+            options: {
+                legend: {
+                display: false // definir display como false
+                },
+                // outras opções do gráfico
+            }
+        }
+    );
     
-    setInterval(() => {
-        obterDados(dht11Umidade, 'dht11/umidade');
-    }, 1000);
+    // setInterval(() => {
+    //     obterDados(dht11Umidade, 'dht11/umidade');
+    // }, 1000);
 
 </script>
