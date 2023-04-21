@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
 
     <title>Safe Lawn - Dashboard</title>
 </head>
+
 <body>
     <div class="dashboard-section">
         <div class="sidebar">
@@ -25,7 +27,7 @@
                     <span class="desc-perfil">Desc Estádio</span>
                 </div>
             </div>
-            
+
 
             <ul class="options">
                 <li class="list-item selecionado">Dashboard</li>
@@ -36,13 +38,13 @@
             </ul>
 
             <p class="list-item">Suporte</p>
-            
+
         </div>
         <div class="dashboard-wrapper">
             <div class="container">
                 <div class="grupo-card">
                     <div class="card card-sensores">
-                        <h3>Sensores em campo</h3> 
+                        <h3>Sensores em campo</h3>
                         <h2 class="dados-card">
                             4
                         </h2>
@@ -53,65 +55,91 @@
                             20%
                         </h2>
                     </div>
-                    <div class="card card-jogabilidade"> 
-                        <h3>Jogabilidade</h3> 
+                    <div class="card card-jogabilidade">
+                        <h3>Jogabilidade</h3>
                         <h2 class="dados-card">
                             80%
                         </h2>
                     </div>
 
                 </div>
-    
+
                 <section class="grafico">
                     <canvas id="dht11Umidade"></canvas>
                 </section>
-            </div>    
+            </div>
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
     /* -- dht11Umidade -- */
+    const horarios = ['00:05','00:15','00:25','00:40','00:45','00:50','00:55','00:60','00:70','00:80','00:90']
     var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
     contextoDht11Umidade.canvas.width = 1000;
-    contextoDht11Umidade.canvas.height = 300;
+    contextoDht11Umidade.canvas.height = 400;
     var dht11Umidade = new Chart(
         contextoDht11Umidade,
         {
             type: 'line',
             data: {
+                labels: horarios,
                 datasets: [{
                     label: 'Norte-Leste',
                     type: 'line',
+                    fill: false,
                     borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    backgroundColor: ['#89cff0'],
+                    data: [73, 45, 30, 48, 25, 30],
+                    pointHoverBorderColor: '#89cff0',
+                    pointHoverBackgroundColor: '#89cff0',
                 },
                 {
                     label: 'Norte-Oeste',
                     type: 'line',
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    fill: false,
+                    borderColor: ['#0800E5'],
+                    backgroundColor: ['#0800E5'],
+                    data: [60, 35, 28, 40, 35, 31],
+                    pointHoverBorderColor: '#0800E5',
+                    pointHoverBackgroundColor: '#0800E5'
                 },
                 {
                     label: 'Sul-Leste',
                     type: 'line',
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    fill: false,
+                    borderColor: ['#D1D10E'],
+                    backgroundColor: ['#D1D10E'],
+                    data: [50, 30, 50, 15, 30, 33],
+                    pointHoverBorderColor: '#D1D10E',
+                    pointHoverBackgroundColor: '#D1D10E'
                 },
                 {
                     label: 'Sul-Oeste',
                     type: 'line',
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    fill: false,
+                    borderColor: ['#2E793D'],
+                    backgroundColor: ['#2E793D'],
+                    data: [65, 15, 25, 10, 15, 25],
+                    pointHoverBorderColor: '#2E793D',
+                    pointHoverBackgroundColor: '#2E793D'
                 }],
             },
             options: {
+                layout: {
+                    padding: 10
+                },
                 scales: {
                     xAxes: [{
                         distribution: 'series',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Minutos da Partida'
+                        },
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
                         }
                     }],
                     yAxes: [{
@@ -130,7 +158,7 @@
             }
         }
     );
-    
+
     setInterval(() => {
         obterDados(dht11Umidade, 'dht11/umidade');
     }, 1000);
