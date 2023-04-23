@@ -28,7 +28,7 @@
 }
 
 .formulario{
-    width: 45%;
+    width: 50%;
     height: 70%;
     background-color: lightgrey;
     border: 3px #009A46 solid;
@@ -106,8 +106,16 @@
     font-size: 13px;
 }
 
-.form a:hover{
-    color: #04d361;
+.flex-input a:hover{
+    cursor: pointer;
+    color: #1ECE43;
+    transform: scale(1.1);
+    transition: .3s all ease-in-out;
+}
+
+.link-cadastro:hover{
+    cursor: pointer;
+    color: #1ECE43;
 }
 
 .btn-entrar{
@@ -122,7 +130,9 @@
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.445); 
 } 
 
-.btn-entrar:hover{
+.btn-entrar:hover {
     cursor: pointer;
-    background-color: #04d361;
+    background-color: #1ECE43;
+    transform: scale(1.1);
+    transition: .3s all ease-in-out;
 }

@@ -16,71 +16,68 @@
 <body>
 
     <div id="calcWrapper" class="calc-wrapper">
-        
+
         <div class="container">
             <div id="recalc" class="calc">
                 <div class="calc-header">
                     <img src="./logo.png" alt="logo" class="logo">
-                    <div>
-                        
+                    <div class="text-header">
+
                         <h1>Calculadora Financeira <b class="corEmpresa">Safe Lawn</b></h1>
                         <p class="calc-texto">
-                            As fortes chuvas além de prejudicar o gramado, tendo que reformar e substituir, também causam
+                            As fortes chuvas além de prejudicar o gramado, tendo que reformar e substituir, também
+                            causam
                             multas
                             pelos contratos com emissoras.<br>
                             Por esses problemas criamos a empresa <b>Safe Law</b>, que visa resolver esses tipos de
                             problemas.<br>
-                        
+
                     </div>
                     </p>
                 </div>
-    
+
                 <h2>Então gostariamos de saber:</h2>
-    
-    
-                <div class="questao">
-                    Nome do estádio: <br>
-                    <input id="input_nomeEstadio"><br>
-                    <br>
-                </div>
-    
-                <div class="questao">
-                    Quantas vezes a partida foi cancelada por conta do alagamento? <br>
-                    <input id="input_qtdPartidasCanceladas"><br>
-                </div>
-    
-                <div class="questao">
-                    Quantas vezes teve atraso nas partidas por causa do alagamento? <br>
-                    <input id="input_qtdAtrasosPartida"><br>
-                </div>
-    
-                <div class="questao">
-                    Qual a média (em minutos) de atraso nas partidas quando estava alagado? <br>
-                    <input id="input_mediaAtrasoPartida"><br>
-                </div>
-    
-                <div class="questao">
-                    Qual era o valor da transmissão do jogo? <br>
-                    <input id="input_custoPartida"><br>
-                </div>
-    
-                <div class="questao">
-                    Quantas vezes você teve que reformar e substituir o gramado danificado pela chuva? <br>
-                    <input id="input_reformaEstadio"><br>
-                </div>
-    
-                <div class="questao">
-                    Qual foi a média de custo das reformas que você fez no gramado? <br>
-                    <input id="input_custoReforma"><br>
-                    <br>
-                </div>
-    
-                <div class="btn-wrapper">
-                    <button onclick="calcular_gasto()" class="btn-calcular"> Ver Gasto Total</button>
+
+                <div class="flex-input">
+                    <div class="questao">
+                        Nome do estádio: <br>
+                        <input id="input_nomeEstadio">
+                    </div>
+                    <div class="questao">
+                        Quantas vezes a partida foi cancelada por conta do alagamento?
+                        <input id="input_qtdPartidasCanceladas">
+                    </div>
+
+                    <div class="questao">
+                        Quantas vezes teve atraso nas partidas por causa do alagamento?
+                        <input id="input_qtdAtrasosPartida">
+                    </div>
+                    <div class="questao">    
+                        Qual a média (em minutos) de atraso nas partidas quando estava alagado?
+                        <input id="input_mediaAtrasoPartida">
+                    </div>
+
+                    <div class="questao">
+                        Qual era o valor da transmissão do jogo?
+                        <input id="input_custoPartida">
+                    </div>
+
+                    <div class="questao">
+                        Quantas vezes você teve que reformar e substituir o gramado danificado pela chuva?
+                        <input id="input_reformaEstadio">
+                    </div>
+                    <div class="questao">
+                        Qual foi a média de custo das reformas que você fez no gramado?
+                        <input id="input_custoReforma">
+                    </div>
+
+                    <div class="btn-wrapper">
+                        <button onclick="calcular_gasto()" class="btn-calcular"> Ver Gasto Total</button>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
 
         <div id="results" class="resultado">
             <p id="p_resultado">
@@ -99,7 +96,7 @@
         recalc.className = "calc mostrar"
         results.className = "resultado mostrar"
 
-        
+
 
         results.style = `height: ${calcWrapper.clientHeight}px;`
         var nomeEstadio = input_nomeEstadio.value // nome do estadio

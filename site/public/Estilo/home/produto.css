@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D&family=Lexend:wght@300;500;700&family=Roboto+Condensed:wght@400;700&display=swap');
 body {
     margin: 0;
     padding: 0;
@@ -5,8 +6,11 @@ body {
 }
 
 .div_produto {
+    height: 100vh;
     background-color: #172C20;
     padding: 75px 50px;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -35,7 +39,7 @@ body {
 
 .fundo {
     padding: 50px;
-    background-image: url('../../assets/Imagens/fundo_produto1.png');
+    background-image: url('../../assets/Imagens/fundo_produto.png');
     background-size: cover;
     background-repeat: no-repeat;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,145 +9,189 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-
+    <script src="../js/dashboard.js"></script>
     <link rel="stylesheet" href="../Estilo/dashboard.css">
 
     <title>Safe Lawn - Dashboard</title>
 </head>
+
 <body>
     <div class="dashboard-section">
         <div class="sidebar">
             <div class="sidebar-header">
-                <img src="../assets/Imagens/logo_imagem.png" alt="logo safe lawn" class="logo">
-
+                <a href="../index.html">
+                    <img src="../assets/Imagens/logo_imagem.png" alt="logo safe lawn" class="logo">
+                </a>        
                 <div class="perfil">
-                    <img src="../assets/Imagens/perfil-exemplo.png" alt="imagem de perfil" class="img-perfil">
+                    <img src="../assets/Imagens/perfil.png" alt="imagem de perfil" class="img-perfil">
                     <p class="nome-perfil">Nome Estádio</p>
                     <span class="desc-perfil">Desc Estádio</span>
                 </div>
             </div>
-            
-
             <ul class="options">
-                <li class="list-item selecionado">Dashboard</li>
-                <li class="list-item">Norte-Leste</li>
-                <li class="list-item">Norte-Oeste</li>
-                <li class="list-item">Sul-Leste</li>
-                <li class="list-item">Sul-Oeste</li>
+                <li class="list-item">
+                    <a onclick="dashboard()" href="#">Dashboard</a>
+                </li>
+                <li class="list-item">
+                    <a onclick="norte_leste()" href="#">Norte-Leste</a>
+                </li>
+                <li class="list-item">
+                    <a onclick="norte_oeste()" href="#">Norte-Oeste</a>
+                </li>
+                <li class="list-item">
+                    <a onclick="sul_leste()" href="#">Sul-Leste</a>
+                </li>
+                <li class="list-item">
+                    <a onclick="sul_oeste()" href="#">Sul-Oeste</a>
+                </li>
             </ul>
-
-            <p class="list-item">Suporte</p>
-            
+            <p class="list-item">
+                <a href="#">Suporte
+                </a>
+            </p>
         </div>
         <div class="dashboard-wrapper">
             <div class="container">
                 <div class="grupo-card">
                     <div class="card card-sensores">
                         <div>
-                            <span class="card-date">11/04/2023 - 10:00</span>
-                            <h3>Sensores em campo</h3> 
+                            <span class="card-date">24/04/2023 - 13:55</span>
+                            <h3>Sensores em campo</h3>
                         </div>
-                        
+
                         <div class="row">
                             <img src="../assets/icon/icone-sensor.png" alt="Icone Sensor">
                             <h2 class="dados-card"> 4 </h2>
                         </div>
-                        
+
                     </div>
-                    <div class="card card-umidade">
+                    <div class="card card-umidade" id="card_umidade">
                         <div>
-                            <span class="card-date">11/04/2023 - 10:00</span>
-                            <h3>Umidade do campo</h3>
+                            <span class="card-date">24/04/2023 - 13:55</span>
+                            <h3 id="titulo_umidade" >Umidade do campo</h3>
                         </div>
-                        
+
                         <div class="row">
                             <img src="../assets/icon/icone-umidade.png" alt="Icone Umidade">
-                            <h2 class="dados-card"> 20% </h2>
+                            <h2 class="dados-card" id="dados_umidade"> 33% </h2>
                         </div>
-                        
+
                     </div>
-                    <div class="card card-jogabilidade"> 
+                    <div class="card card-jogabilidade">
                         <div>
-                            <span class="card-date">11/04/2023 - 10:00</span>
-                            <h3>Jogabilidade</h3> 
+                            <span class="card-date">24/04/2023 - 13:55</span>
+                            <h3>Jogabilidade</h3>
                         </div>
-                        
+
                         <div class="row">
                             <section class="graficoJogabilidade">
                                 <canvas id="jogabilidade"></canvas>
                             </section>
                             <h2 class="dados-card">
-                                80%
+                                97%
                             </h2>
                         </div>
-                        
+
                     </div>
 
                 </div>
-    
-                <section class="grafico">
-                    <canvas id="dht11Umidade"></canvas>
-                </section>
-            </div>    
+                <br>
+                <div class="graficos-container">
+                    <div id="grafico_geral" class="grafico">
+                        <canvas id="dht11Umidade"></canvas>
+                    </div>
+
+                    <div id="grafico_historico" class="grafico">
+                        <canvas id="historico"></canvas>
+                    </div>
+                    <div id="grafico_norte_leste" class="grafico norte_leste">
+                        <canvas id="norte_leste"></canvas>
+                    </div>
+
+                    <div id="grafico_norte_oeste" class="grafico norte_oeste">
+                        <canvas id="norte_oeste"></canvas>
+                    </div>
+                    <div id="grafico_sul_leste" class="grafico sul_leste">
+                        <canvas id="sul_leste"></canvas>
+                    </div>
+                    <div id="grafico_sul_oeste" class="grafico sul_oeste">
+                        <canvas id="sul_oeste"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
     /* -- dht11Umidade -- */
+    const horarioDHT11 = ['13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
     var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
-    contextoDht11Umidade.canvas.width = 1000;
-    contextoDht11Umidade.canvas.height = 300;
-
-    var horarios = [5];
-    var contador = 0;
-    var tempo_partida = 50;
-
-    while(contador < tempo_partida) {
-        if(contador % 5 == 0) {
-            horarios[horarios.length] = horarios[horarios.length-1] + 5;
-        }
-        contador++
-    }
-
+    contextoDht11Umidade.canvas.width = '80%';
+    contextoDht11Umidade.canvas.height = '100%';
     var dht11Umidade = new Chart(
         contextoDht11Umidade,
         {
             type: 'line',
             labels: horarios,
             data: {
+                labels: horarioDHT11,
                 datasets: [{
                     label: 'Norte-Leste',
                     type: 'line',
+                    fill: false,
                     borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    backgroundColor: ['#89cff0'],
+                    data: [62.5, 62.5, 60, 60, 57.5, 57.5, 55, 55, 55, 52.5, 32.5],
+                    pointHoverBorderColor: '#89cff0',
+                    pointHoverBackgroundColor: '#89cff0',
                 },
                 {
                     label: 'Norte-Oeste',
                     type: 'line',
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    fill: false,
+                    borderColor: ['#0800E5'],
+                    backgroundColor: ['#0800E5'],
+                    data: [62, 50, 50, 47.5, 45, 42.5, 42.5, 40, 40, 39, 33],
+                    pointHoverBorderColor: '#0800E5',
+                    pointHoverBackgroundColor: '#0800E5'
                 },
                 {
                     label: 'Sul-Leste',
                     type: 'line',
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    fill: false,
+                    borderColor: ['#D1D10E'],
+                    backgroundColor: ['#D1D10E'],
+                    data: [52, 62, 61, 60, 60, 57, 57.5, 55, 55, 52.5, 49, 30],
+                    pointHoverBorderColor: '#D1D10E',
+                    pointHoverBackgroundColor: '#D1D10E'
                 },
                 {
                     label: 'Sul-Oeste',
                     type: 'line',
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
+                    fill: false,
+                    borderColor: ['#2E793D'],
+                    backgroundColor: ['#2E793D'],
+                    data: [65, 52, 52.3, 49, 47, 43, 41, 40, 39.2, 38, 33],
+                    pointHoverBorderColor: '#2E793D',
+                    pointHoverBackgroundColor: '#2E793D'
                 }],
             },
             options: {
+                layout: {
+                    padding: 10
+                },
                 scales: {
                     xAxes: [{
                         distribution: 'series',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Horário'
+                        },
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
                         }
                     }],
                     yAxes: [{
@@ -166,41 +211,297 @@
         }
     );
 
-    /* -- dht11Umidade -- */
+ 
+    var ctx = document.getElementById('historico').getContext('2d');
+    ctx.canvas.width = '80%';
+    ctx.canvas.height = '100%';
+    var historico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Norte-Leste', 'Norte-Oeste', 'Sul-Leste', 'Sul-Oeste'],
+        datasets: [{
+            label: 'Umidade',
+            data: [ 57.5,42.5,57.5,43, 0],
+            backgroundColor:'#006437' , 
+            borderColor: '#006437',
+            borderWidth: 0.5 
+        }]
+    },
+   
+    options: {
+        responsive: true,
+        scales: {
+            x: {
+                beginAtZero: true
+            },
+            y: {
+                scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+            }
+        }
+    }
+    });
+
+
+
+    /* -- jogabilidade -- */
     var contextoJogabilidade = document.getElementById('jogabilidade').getContext('2d');
     contextoJogabilidade.canvas.width = 150;
-    contextoJogabilidade.canvas.height = 120;
+    contextoJogabilidade.canvas.height = 80;
     var jogabilidade = new Chart(
         contextoJogabilidade,
         {
             type: 'doughnut',
             data: {
-            labels: [
-                'Jogável',
-                'Não Jogável',
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [80, 20],
-                backgroundColor: [
-                '#2E793D',
-                '#C70520'
+                labels: [
+                    'Jogável',
+                    'Não Jogável',
                 ],
-                borderColor: 'transparent',
-                hoverOffset: 4
-            }]
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [97,3],
+                    backgroundColor: [
+                        '#2E793D',
+                        '#C70520'
+                    ],
+                    borderColor: 'transparent',
+                    hoverOffset: 4
+                }]
             },
             options: {
                 legend: {
-                display: false // definir display como false
+                    display: false // definir display como false
                 },
                 // outras opções do gráfico
             }
         }
     );
-    
+
     // setInterval(() => {
     //     obterDados(dht11Umidade, 'dht11/umidade');
     // }, 1000);
+
+
+
+    // Norte-Leste
+
+    const horarios = ['13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55'];
+    var contextoNorte_Leste = document.getElementById('norte_leste').getContext('2d');
+    contextoNorte_Leste.canvas.width = '100%';
+    contextoNorte_Leste.canvas.height = '100%';
+    var norte_lesteVar = new Chart(
+        contextoNorte_Leste,
+        {
+            type: 'line',
+            data: {
+                labels: horarios,
+                datasets: [                {
+                    label: 'Norte-Leste',
+                    type: 'line',
+                    fill: false,
+                    borderColor: ['#45b3e7'],
+                    backgroundColor: ['#89cff0'],
+                    data: [62.5, 62.5, 60, 60, 57.5, 57.5, 55, 55, 55, 52.5, 32.5],
+                    pointHoverBorderColor: '#89cff0',
+                    pointHoverBackgroundColor: '#89cff0',
+                }],
+                
+            },
+            options: {
+                layout: {
+                    padding: 10
+                },
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Horário'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 1
+                }
+            }
+        }
+    );
+
+    // norte-oeste
+
+
+    var contextoNorte_Oeste = document.getElementById('norte_oeste').getContext('2d');
+    contextoNorte_Oeste.canvas.width = 150;
+    contextoNorte_Oeste.canvas.height = '100%';
+    var norte_oesteVar = new Chart(
+        contextoNorte_Oeste,
+        {
+            type: 'line',
+            data: {
+                labels: horarios,
+                datasets: [{
+                    label: 'Norte-Oeste',
+                    type: 'line',
+                    fill: false,
+                    borderColor: ['#0800E5'],
+                    backgroundColor: ['#0800E5'],
+                    data: [62, 50, 50, 47.5, 45, 42.5, 42.5, 40, 40, 39, 33],
+                    pointHoverBorderColor: '#0800E5',
+                    pointHoverBackgroundColor: '#0800E5'
+                }],
+            },
+            options: {
+                layout: {
+                    padding: 10
+                },
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Horário'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 1
+                }
+            }
+        }
+    );
+
+    //sul-leste
+
+    var contextoSul_Leste = document.getElementById('sul_leste').getContext('2d');
+    contextoSul_Leste.canvas.width = 150;
+    contextoSul_Leste.canvas.height = '100%';
+    var sul_lesteVar = new Chart(
+        contextoSul_Leste,
+        {
+            type: 'line',
+            data: {
+                labels: horarios,
+                datasets: [{
+                    label: 'Sul-Leste',
+                    type: 'line',
+                    fill: false,
+                    borderColor: ['#D1D10E'],
+                    backgroundColor: ['#D1D10E'],
+                    data: [52, 62, 61, 60, 60, 57, 57.5, 55, 55, 52.5, 49, 30],
+                    pointHoverBorderColor: '#D1D10E',
+                    pointHoverBackgroundColor: '#D1D10E'
+                }],
+            },
+            options: {
+                layout: {
+                    padding: 10
+                },
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Horário'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 1
+                }
+            }
+        }
+    );
+
+    // sul-oeste
+
+    var contextoSul_Oeste = document.getElementById('sul_oeste').getContext('2d');
+    contextoSul_Oeste.canvas.width = 150;
+    contextoSul_Oeste.canvas.height = '100%';
+    var sul_oesteVar = new Chart(
+        contextoSul_Oeste,
+        {
+            type: 'line',
+            data: {
+                labels: horarios,
+                datasets: [{
+                    label: 'Sul-Oeste',
+                    type: 'line',
+                    fill: false,
+                    borderColor: ['#2E793D'],
+                    backgroundColor: ['#2E793D'],
+                    data: [65, 52, 52.3, 49, 47, 43, 41, 40, 39.2, 38, 33],
+                    pointHoverBorderColor: '#2E793D',
+                    pointHoverBackgroundColor: '#2E793D'
+                }],
+            },
+            options: {
+                layout: {
+                    padding: 10
+                },
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Horário'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 1
+                }
+            }
+        }
+    );
 
 </script>
