@@ -98,10 +98,23 @@
     var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
     contextoDht11Umidade.canvas.width = 1000;
     contextoDht11Umidade.canvas.height = 300;
+
+    var horarios = [5];
+    var contador = 0;
+    var tempo_partida = 50;
+
+    while(contador < tempo_partida) {
+        if(contador % 5 == 0) {
+            horarios[horarios.length] = horarios[horarios.length-1] + 5;
+        }
+        contador++
+    }
+
     var dht11Umidade = new Chart(
         contextoDht11Umidade,
         {
             type: 'line',
+            labels: horarios,
             data: {
                 datasets: [{
                     label: 'Norte-Leste',
