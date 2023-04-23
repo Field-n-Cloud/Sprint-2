@@ -46,33 +46,33 @@
                     <div class="card card-sensores">
                         <div>
                             <span class="card-date">11/04/2023 - 10:00</span>
-                            <h3>Sensores em campo</h3> 
+                            <h3>Sensores em campo</h3>
                         </div>
-                        
+
                         <div class="row">
                             <img src="../assets/icon/icone-sensor.png" alt="Icone Sensor">
                             <h2 class="dados-card"> 4 </h2>
                         </div>
-                        
+
                     </div>
                     <div class="card card-umidade">
                         <div>
                             <span class="card-date">11/04/2023 - 10:00</span>
                             <h3>Umidade do campo</h3>
                         </div>
-                        
+
                         <div class="row">
                             <img src="../assets/icon/icone-umidade.png" alt="Icone Umidade">
                             <h2 class="dados-card"> 20% </h2>
                         </div>
-                        
+
                     </div>
-                    <div class="card card-jogabilidade"> 
+                    <div class="card card-jogabilidade">
                         <div>
                             <span class="card-date">11/04/2023 - 10:00</span>
-                            <h3>Jogabilidade</h3> 
+                            <h3>Jogabilidade</h3>
                         </div>
-                        
+
                         <div class="row">
                             <section class="graficoJogabilidade">
                                 <canvas id="jogabilidade"></canvas>
@@ -81,14 +81,19 @@
                                 80%
                             </h2>
                         </div>
-                        
+
                     </div>
 
                 </div>
-
+<br>
                 <section class="grafico">
                     <canvas id="dht11Umidade"></canvas>
                 </section>
+<br>
+                <section class="grafico">
+                    <canvas id="historico"></canvas>
+                </section>
+                
             </div>
         </div>
     </div>
@@ -98,7 +103,7 @@
 
 <script>
     /* -- dht11Umidade -- */
-    const horarios = ['00:05','00:15','00:25','00:40','00:45','00:50','00:55','00:60','00:70','00:80','00:90']
+    const horarios = ['13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
     var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
     contextoDht11Umidade.canvas.width = 1000;
     contextoDht11Umidade.canvas.height = 400;
@@ -114,7 +119,7 @@
                     fill: false,
                     borderColor: ['#45b3e7'],
                     backgroundColor: ['#89cff0'],
-                    data: [73, 45, 30, 48, 25, 30],
+                    data: [73, 45, 30, 48, 25, 30, 35, 40, 45, 40, 50],
                     pointHoverBorderColor: '#89cff0',
                     pointHoverBackgroundColor: '#89cff0',
                 },
@@ -124,7 +129,7 @@
                     fill: false,
                     borderColor: ['#0800E5'],
                     backgroundColor: ['#0800E5'],
-                    data: [60, 35, 28, 40, 35, 31],
+                    data: [60, 35, 28, 40, 35, 31, 35, 40, 41, 37, 35],
                     pointHoverBorderColor: '#0800E5',
                     pointHoverBackgroundColor: '#0800E5'
                 },
@@ -134,7 +139,7 @@
                     fill: false,
                     borderColor: ['#D1D10E'],
                     backgroundColor: ['#D1D10E'],
-                    data: [50, 30, 50, 15, 30, 33],
+                    data: [50, 30, 50, 15, 30, 33, 40, 45, 42, 34, 37, 40, 45],
                     pointHoverBorderColor: '#D1D10E',
                     pointHoverBackgroundColor: '#D1D10E'
                 },
@@ -144,7 +149,7 @@
                     fill: false,
                     borderColor: ['#2E793D'],
                     backgroundColor: ['#2E793D'],
-                    data: [65, 15, 25, 10, 15, 25],
+                    data: [65, 15, 25, 10, 15, 25, 30, 24, 20, 10, 15],
                     pointHoverBorderColor: '#2E793D',
                     pointHoverBackgroundColor: '#2E793D'
                 }],
@@ -181,7 +186,37 @@
         }
     );
 
-    /* -- dht11Umidade -- */
+    var ctx = document.getElementById('historico').getContext('2d');
+var historico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Norte-Leste', 'Norte-Oeste', 'Sul-Leste', 'Sul-Oeste'],
+        datasets: [{
+            label: 'Umidade',
+            data: [60,57,62,59],
+            backgroundColor:'#006437' , 
+            borderColor: '#006437',
+            borderWidth: 0.5 
+        }]
+    },
+   
+    options: {
+        responsive: true,
+        scales: {
+            x: {
+                beginAtZero: true
+            },
+            y: {
+                scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+            }
+        }
+    }
+});
+
+    /* -- jogabilidade -- */
     var contextoJogabilidade = document.getElementById('jogabilidade').getContext('2d');
     contextoJogabilidade.canvas.width = 150;
     contextoJogabilidade.canvas.height = 120;
@@ -190,30 +225,30 @@
         {
             type: 'doughnut',
             data: {
-            labels: [
-                'Jogável',
-                'Não Jogável',
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [80, 20],
-                backgroundColor: [
-                '#2E793D',
-                '#C70520'
+                labels: [
+                    'Jogável',
+                    'Não Jogável',
                 ],
-                borderColor: 'transparent',
-                hoverOffset: 4
-            }]
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [80, 20],
+                    backgroundColor: [
+                        '#2E793D',
+                        '#C70520'
+                    ],
+                    borderColor: 'transparent',
+                    hoverOffset: 4
+                }]
             },
             options: {
                 legend: {
-                display: false // definir display como false
+                    display: false // definir display como false
                 },
                 // outras opções do gráfico
             }
         }
     );
-    
+
     // setInterval(() => {
     //     obterDados(dht11Umidade, 'dht11/umidade');
     // }, 1000);
