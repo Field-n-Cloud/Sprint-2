@@ -15,6 +15,11 @@
 
 <body>
   <div class="cadastro-wrapper">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+      </div>
+    </div>
     <div class="background">
       <div class="form-wrapper">
         <div class="container">
@@ -41,12 +46,12 @@
 
               <div class="flex-input">
                 <span>Logradouro:</span>
-                <input class="input-email" id="input-logradouro" placeholder="Digite sua rua ou avenida..." />
+                <input class="input-email" id="input_logradouro" placeholder="Digite sua rua ou avenida..." />
               </div>
 
               <div class="flex-input">
                 <span>Número:</span>
-                <input type="password" class="input-numero" placeholder="Digite o nº do endereço..." id="input_senha" />
+                <input type="text" class="input_numero" placeholder="Digite o nº do endereço..." id="input_numero" />
               </div>
 
               <div class="flex-input">
@@ -56,6 +61,7 @@
 
               <div class="form-acao">
                 <button class="btn-form">
+                  <!-- onclick="cadastrarEndereco()" -->
                   <a href="./cadastro_estadio.html">
                     PRÓXIMO
                   </a>
@@ -76,19 +82,17 @@
 </html>
 
 <script>
-  function cadastrar() {
+  function cadastrarEndereco() {
     aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirme_senha_input.value;
-    var emailVar = email_input.value;
-    var cnpjVar = cnpj_input.value;
-    var telefoneVar = telefone_input.value;
+    var cepVar = input_cep.value;
+    var logradouroVar = input_logradouro.value;
+    var numeroVar = input_numero.value;
+    var complementoVar = input_complemento.value;
 
-    if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || emailVar == "", cnpjVar == "", telefoneVar == "") {
+    if (cepVar == "" || logradouroVar == "" || numeroVar == "" || complementoVar == "") {
       cardErro.style.display = "block"
       mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -100,7 +104,7 @@
     }
 
     // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+    fetch("/usuarios/cadastrarEndereco", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -108,9 +112,10 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar
+        cepServer: cepVar,
+        logradouroServer: logradouroVar,
+        numeroServer: numeroVar,
+        complementoServer: complementoVar
       })
     }).then(function (resposta) {
 
@@ -122,7 +127,7 @@
         mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
         setTimeout(() => {
-          window.location = "login.html";
+          window.location = "./cadastro_estadio.html";
         }, "2000")
 
         limparFormulario();

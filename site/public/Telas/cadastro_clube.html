@@ -15,6 +15,11 @@
 
 <body>
   <div class="cadastro-wrapper">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+      </div>
+    </div>
     <div class="background">
       <div class="form-wrapper">
         <div class="container">
@@ -106,7 +111,8 @@
 
               <div class="form-acao">
                 <button class="btn-form">
-                  <a href="./cadastro_endereco.html">
+                  <!-- onclick="cadastrarClube()" -->
+                  <a href="./">
                     PRÓXIMO
                   </a> 
                 </button>
@@ -126,17 +132,18 @@
 </html>
 
 <script>
-  function cadastrar() {
+  function cadastrarClube() {
     aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirme_senha_input.value;
-    var emailVar = email_input.value;
-    var cnpjVar = cnpj_input.value;
-    var telefoneVar = telefone_input.value;
+    var nomeVar = input_nome.value;
+    var senhaVar = input_senha.value;
+    var confirmacaoSenhaVar = input_confirme_senha.value;
+    var emailVar = input_email.value;
+    var cnpjVar = input_cnpj.value;
+    var telefoneVar = input_telefone.value;
+    var ufVar = select_uf.value;
 
     if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || emailVar == "", cnpjVar == "", telefoneVar == "") {
       cardErro.style.display = "block"
@@ -150,7 +157,7 @@
     }
 
     // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+    fetch("/usuarios/cadastrarClube", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -160,7 +167,10 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar
+        senhaServer: senhaVar,
+        cnpjServer: cnpjVar,
+        telefoneServer: telefoneVar,
+        ufServer: ufVar
       })
     }).then(function (resposta) {
 
@@ -172,7 +182,7 @@
         mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
         setTimeout(() => {
-          window.location = "login.html";
+          window.location = "./cadastro_endereco.html";
         }, "2000")
 
         limparFormulario();
