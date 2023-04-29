@@ -5,6 +5,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lexend', Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 .conteudo {
@@ -69,68 +71,6 @@
     font-family: 'Roboto Condensed', sans-serif;
     color: white;
     font-size: 16px;
-}
-
-/* NOSSA EQUIPE */
-.nossa-equipe {
-    background-image: url('../../assets/Imagens/nossa_equipe_bg.png');
-    padding: 50px 150px;
-}
-
-.equipe-titulo {
-    color: #FFFFFF;
-    font-family: 'Lexend';
-    font-size: 40px;
-    text-align: center;
-    margin: 20px;
-}
-
-.equipe-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.equipe-linha {
-    margin: 15px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.equipe-linha:nth-child(2) {
-    justify-content: space-around;
-}
-
-.equipe-linha:nth-child(4) {
-    justify-content: space-between;
-}
-
-.equipe-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    color: #FFFFFF;
-    font-family: 'K2D';
-}
-
-.equipe-foto {
-    width: 125px;
-    border-radius: 100%;
-}
-
-.equipe-contato-a {
-    text-decoration: none;
-}
-
-.equipe-contato-img {
-    transition: all ease-in-out .25s;
-    width: 30px;
-    margin: 5px;
-}
-
-.equipe-contato-img:hover {
-    transform: scale(1.25);
 }
 
 /* FOOTER / RODAPÉ */
