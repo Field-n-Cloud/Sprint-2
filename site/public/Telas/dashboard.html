@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="../js/dashboard.js"></script>
+   
+    <script src="https://desk.zoho.com/portal/api/feedbackwidget/861047000000250005?orgId=811102377&displayType=popout"></script>
+
     <link rel="stylesheet" href="../Estilo/dashboard.css">
     <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon">
     <title>Safe Lawn - Dashboard</title>
@@ -45,10 +48,8 @@
                     <a onclick="sul_oeste()" href="#">Sul-Oeste</a>
                 </li>
             </ul>
-            <p class="list-item">
-                <a href="#">Suporte
-                </a>
-            </p>
+
+
         </div>
         <div class="dashboard-wrapper">
             <div class="container">
@@ -91,7 +92,6 @@
                                 97%
                             </h2>
                         </div>
-
                     </div>
 
                 </div>
@@ -126,6 +126,7 @@
 </html>
 
 <script>
+    
     /* -- dht11Umidade -- */
     const horarioDHT11 = ['13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
     var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
@@ -502,5 +503,7 @@
             }
         }
     );
+
+    
 
 </script>
