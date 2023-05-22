@@ -70,6 +70,18 @@
     background-color: #1ECE43;
 }
 
+.cadastro-clube, .cadastro-endereco, .cadastro-estadio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.cadastro-endereco, .cadastro-estadio {
+    display: none;
+}
+
 .cabecalho-form {
     height: 30%;
     display: flex;
@@ -203,6 +215,7 @@
     color: #7D7D7D;
     font: 800 14px Lexend;
     transition: .3s all ease-in-out;
+    cursor: pointer;
 }
 
 .form-a:hover {

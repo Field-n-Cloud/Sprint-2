@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safe Lawn - Cadastro</title>
+
+    <link rel="stylesheet" href="../Estilo/cadastro_estilo.css" />
+
+    <link
+      rel="shortcut icon"
+      href="../assets/Imagens/logo_imagem.png"
+      type="image/x-icon"
+    />
+    <script src="../js/funcoes.js"></script>
+  </head>
+
+  <body>
+    <div class="cadastro-wrapper">
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div>
+      </div>
+      <div class="background">
+        <div class="form-wrapper">
+          <div class="container">
+            <div class="form">
+              <div class="progresso">
+                <div id="ponto_prog_1" class="ponto-progresso feito"></div>
+                <hr id="barra_prog_1" class="barra-progresso" />
+                <div id="ponto_prog_2" class="ponto-progresso"></div>
+                <hr id="barra_prog_2" class="barra-progresso" />
+                <div id="ponto_prog_3" class="ponto-progresso"></div>
+              </div>
+              <section id="cad_clube" class="cadastro-clube">
+                <div class="cabecalho-form">
+                  <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
+                  <div class="cabecalho-titulos">
+                    <h1>Cadastro</h1>
+                    <h3>(dados do clube)</h3>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="flex-input">
+                    <span>Nome:</span>
+                    <input
+                      class="input-nome"
+                      id="input_nome"
+                      placeholder="Digite seu nome..."
+                    />
+                  </div>
+
+                  <div class="flex-input">
+                    <span>Email:</span>
+                    <input
+                      class="input-email"
+                      id="input_email"
+                      placeholder="Digite seu email..."
+                    />
+                  </div>
+
+                  <div class="row-group">
+                    <div class="flex-input">
+                      <span>Senha:</span>
+                      <input
+                        type="password"
+                        class="input-senha"
+                        placeholder="Digite sua senha..."
+                        id="input_senha"
+                      />
+                    </div>
+                    <div class="flex-input">
+                      <span>Confirme sua Senha:</span>
+                      <input
+                        type="password"
+                        class="input-confirme-senha"
+                        placeholder="Confirme sua Senha..."
+                        id="input_confirme_senha"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="flex-input">
+                    <span>Telefone:</span>
+                    <input
+                      class="input-telefone"
+                      id="input_telefone"
+                      placeholder="Digite seu email..."
+                    />
+                  </div>
+
+                  <div class="row-group">
+                    <div class="flex-input">
+                      <span>CNPJ:</span>
+                      <input
+                        class="input-cnpj"
+                        id="input_cnpj"
+                        placeholder="Digite seu CNPJ..."
+                      />
+                    </div>
+                    <div class="flex-input">
+                      <span>Estado:</span>
+                      <select class="form-select" id="select_uf">
+                        <option class="sel-option" value="AC">AC</option>
+                        <option class="sel-option" value="AL">AL</option>
+                        <option class="sel-option" value="AM">AM</option>
+                        <option class="sel-option" value="AP">AP</option>
+                        <option class="sel-option" value="BA">BA</option>
+                        <option class="sel-option" value="CE">CE</option>
+                        <option class="sel-option" value="DF">DF</option>
+                        <option class="sel-option" value="ES">ES</option>
+                        <option class="sel-option" value="GO">GO</option>
+                        <option class="sel-option" value="MA">MA</option>
+                        <option class="sel-option" value="MT">MT</option>
+                        <option class="sel-option" value="MS">MS</option>
+                        <option class="sel-option" value="MG">MG</option>
+                        <option class="sel-option" value="PA">PA</option>
+                        <option class="sel-option" value="PB">PB</option>
+                        <option class="sel-option" value="PR">PR</option>
+                        <option class="sel-option" value="PE">PE</option>
+                        <option class="sel-option" value="PI">PI</option>
+                        <option class="sel-option" value="RJ">RJ</option>
+                        <option class="sel-option" value="RN">RN</option>
+                        <option class="sel-option" value="RS">RS</option>
+                        <option class="sel-option" value="RO">RO</option>
+                        <option class="sel-option" value="RR">RR</option>
+                        <option class="sel-option" value="SC">SC</option>
+                        <option class="sel-option" value="SP">SP</option>
+                        <option class="sel-option" value="SE">SE</option>
+                        <option class="sel-option" value="TO">TO</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <span class="frase"
+                  >Já possui cadastro?
+                  <a href="../Telas/login.html" class="link-cadastro"
+                    >FAÇA O LOGIN!</a
+                  >
+                </span>
+
+                <div class="form-acao">
+                  <button
+                    onclick="alternarSecao('cad_clube', 'cad_endereco', 'proximo')"
+                    class="btn-form"
+                  >
+                    <!-- onclick="cadastrarClube()" -->
+                    <a> PRÓXIMO </a>
+                  </button>
+                  <a href="../index.html" class="form-a cancelar">CANCELAR</a>
+                </div>
+              </section>
+
+              <section class="cadastro-endereco" id="cad_endereco">
+                <div class="cabecalho-form">
+                  <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
+                  <div class="cabecalho-titulos">
+                    <h1>Cadastro</h1>
+                    <h3>(dados do endereço)</h3>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="flex-input">
+                    <span>CEP:</span>
+                    <input
+                      class="input-nome"
+                      id="input_cep"
+                      placeholder="Digite seu CEP..."
+                    />
+                  </div>
+
+                  <div class="flex-input">
+                    <span>Logradouro:</span>
+                    <input
+                      class="input-email"
+                      id="input_logradouro"
+                      placeholder="Digite sua rua ou avenida..."
+                    />
+                  </div>
+
+                  <div class="flex-input">
+                    <span>Número:</span>
+                    <input
+                      type="text"
+                      class="input_numero"
+                      placeholder="Digite o nº do endereço..."
+                      id="input_numero"
+                    />
+                  </div>
+
+                  <div class="flex-input">
+                    <span>Complemento:</span>
+                    <input
+                      class="input-telefone"
+                      id="input_complemento"
+                      placeholder="Digite o complemento do endereço..."
+                    />
+                  </div>
+
+                  <div class="form-acao">
+                    <button
+                      onclick="alternarSecao('cad_endereco', 'cad_estadio', 'proximo')"
+                      class="btn-form"
+                    >
+                      <!-- onclick="cadastrarEndereco()" -->
+                      <a> PRÓXIMO </a>
+                    </button>
+
+                    <a
+                      onclick="alternarSecao('cad_endereco', 'cad_clube', 'voltar')"
+                      class="form-a"
+                      >VOLTAR</a
+                    >
+                  </div>
+                </div>
+              </section>
+
+              <section class="cadastro-estadio" id="cad_estadio">
+                <div class="cabecalho-form">
+                  <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
+                  <div class="cabecalho-titulos">
+                    <h1>Cadastro</h1>
+                    <h3>(dados do estádio)</h3>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="flex-input">
+                    <span>Estádio:</span>
+                    <input
+                      class="input-estadio"
+                      id="input_estadio"
+                      placeholder="Digite o nome do estádio..."
+                    />
+                  </div>
+
+                  <div class="flex-input">
+                    <span>CNPJ:</span>
+                    <input
+                      class="input-cnpj-estadio"
+                      id="input_cnpj_estadio"
+                      placeholder="Digite o CNPJ do estádio..."
+                    />
+                  </div>
+
+                  <div class="flex-input">
+                    <span>Fornecedor:</span>
+                    <input
+                      type="password"
+                      class="input-fornecedor"
+                      placeholder="Digite seu fornecedor de gramado..."
+                      id="input_senha"
+                    />
+                  </div>
+
+                  <div class="flex-input">
+                    <span>Modelo:</span>
+                    <input
+                      class="input-modelo"
+                      id="input_modelo"
+                      placeholder="Digite seu modelo de gramado..."
+                    />
+                  </div>
+
+                  <div class="form-acao">
+                    <button class="btn-form" onclick="cadastrar()">
+                      <a> CADASTRAR </a>
+                    </button>
+
+                    <a
+                      onclick="alternarSecao('cad_estadio', 'cad_endereco', 'voltar')"
+                      class="form-a"
+                      >VOLTAR</a
+                    >
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  var contadorSecao = 0;
+
+  function alternarSecao(prevSection, nextSection, direcao) {
+    var prevSect = document.getElementById(prevSection);
+    var nextSect = document.getElementById(nextSection);
+
+    prevSect.style.display = "none";
+    nextSect.style.display = "flex";
+
+    if (direcao == "proximo") {
+      contadorSecao++;
+
+      if (contadorSecao == 1) {
+        document.getElementById("barra_prog_1").classList.add("feito");
+        document.getElementById("ponto_prog_2").classList.add("feito");
+      } else {
+        document.getElementById("barra_prog_2").classList.add("feito");
+        document.getElementById("ponto_prog_3").classList.add("feito");
+      }
+    } else {
+      contadorSecao--;
+
+      if (contadorSecao == 1) {
+        document.getElementById("barra_prog_2").classList.remove("feito");
+        document.getElementById("ponto_prog_3").classList.remove("feito");
+      } else {
+        document.getElementById("barra_prog_1").classList.remove("feito");
+        document.getElementById("ponto_prog_2").classList.remove("feito");
+      }
+    }
+  }
+
+  function cadastrar() {
+    var dadosCadastro = {
+      clube: {
+        nomeClube: "",
+        emailClube: "",
+        senhaClube: "",
+        confirmarSenhaClube: "",
+        telefoneClube: "",
+        cnpjClube: "",
+        estadoClube: "",
+      },
+      endereco: {
+        cepEndereco: "",
+        logradouroEndereco: "",
+        numeroEndereco: "",
+        complementoEndereco: "",
+      },
+      estadio: {
+        nomeEstadio: "",
+        cnpjEstadio: "",
+      },
+      gramado: {
+        fornecedorGramado: "",
+        modeloGramado: "",
+      },
+    };
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        clubeServer: dadosCadastro.clube,
+        enderecoServer: dadosCadastro.endereco,
+        estadioServer: dadosCadastro.estadio,
+        gramadoServer: dadosCadastro.gramado
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          // cardErro.style.display = "block";
+
+          // mensagem_erro.innerHTML =
+          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "./cadastro_endereco.html";
+          }, "2000");
+
+          // limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function cadastrarClube() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = input_nome.value;
+    var senhaVar = input_senha.value;
+    var confirmacaoSenhaVar = input_confirme_senha.value;
+    var emailVar = input_email.value;
+    var cnpjVar = input_cnpj.value;
+    var telefoneVar = input_telefone.value;
+    var ufVar = select_uf.value;
+
+    if (
+      (nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == "" ||
+        emailVar == "",
+      cnpjVar == "",
+      telefoneVar == "")
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrarClube", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        cnpjServer: cnpjVar,
+        telefoneServer: telefoneVar,
+        ufServer: ufVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "./cadastro_endereco.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
