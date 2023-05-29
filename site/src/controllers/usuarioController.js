@@ -87,8 +87,7 @@ function cadastrar(req, res) {
     // } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(clube, edereco, estadio, gramado)
-            .then(
+        usuarioModel.cadastrar(clube, endereco, estadio, gramado).then(
                 function (resultado) {
                     res.json(resultado);
                 }
@@ -96,7 +95,7 @@ function cadastrar(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "Houve um erro ao realizar o cadastro! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);

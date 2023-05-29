@@ -126,6 +126,12 @@
 </html>
 
 <script>
+
+    if (sessionStorage.TIPO_USUARIO == 1) {
+        console.log("Mostrar")
+    } else {
+    console.log("Não Mostra")
+    }
     
     /* -- dht11Umidade -- */
     const horarioDHT11 = ['13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
@@ -503,7 +509,7 @@
             }
         }
     );
-
+    
     
 
 </script>

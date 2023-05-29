@@ -248,10 +248,10 @@
                   <div class="flex-input">
                     <span>Fornecedor:</span>
                     <input
-                      type="password"
+                      type="text"
                       class="input-fornecedor"
                       placeholder="Digite seu fornecedor de gramado..."
-                      id="input_senha"
+                      id="input_fornecedor"
                     />
                   </div>
 
@@ -321,27 +321,27 @@
   function cadastrar() {
     var dadosCadastro = {
       clube: {
-        nomeClube: "",
-        emailClube: "",
-        senhaClube: "",
-        confirmarSenhaClube: "",
-        telefoneClube: "",
-        cnpjClube: "",
-        estadoClube: "",
+        nomeClube: input_nome.value,
+        emailClube: input_email.value,
+        senhaClube: input_senha.value,
+        confirmarSenhaClube: input_confirme_senha.value,
+        telefoneClube: input_telefone.value,
+        cnpjClube: input_cnpj.value,
+        estadoClube: select_uf.value,
       },
       endereco: {
-        cepEndereco: "",
-        logradouroEndereco: "",
-        numeroEndereco: "",
-        complementoEndereco: "",
+        cepEndereco: input_cep.value,
+        logradouroEndereco: input_logradouro.value,
+        numeroEndereco: input_numero.value,
+        complementoEndereco: input_complemento.value,
       },
       estadio: {
-        nomeEstadio: "",
-        cnpjEstadio: "",
+        nomeEstadio: input_estadio.value,
+        cnpjEstadio: input_cnpj_estadio.value,
       },
       gramado: {
-        fornecedorGramado: "",
-        modeloGramado: "",
+        fornecedorGramado: input_fornecedor.value,
+        modeloGramado: input_modelo.value,
       },
     };
 
@@ -367,7 +367,7 @@
           //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
           setTimeout(() => {
-            window.location = "./cadastro_endereco.html";
+            window.location = "./login.html";
           }, "2000");
 
           // limparFormulario();
