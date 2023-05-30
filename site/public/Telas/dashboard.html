@@ -2,514 +2,329 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-    <script src="../js/dashboard.js"></script>
-   
-    <script src="https://desk.zoho.com/portal/api/feedbackwidget/861047000000250005?orgId=811102377&displayType=popout"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../Estilo/dashboard.css">
-    <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon">
-    <title>Safe Lawn - Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+  <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+  <script src="../js/dashboard.js"></script>
+
+  <script
+    src="https://desk.zoho.com/portal/api/feedbackwidget/861047000000250005?orgId=811102377&displayType=popout"></script>
+
+  <script src="../js/funcoes.js"></script>
+  <link rel="stylesheet" href="../Estilo/dashboard.css" />
+  <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon" />
+  <title>Safe Lawn - Dashboard</title>
 </head>
 
 <body>
-    <div class="dashboard-section">
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <a href="../index.html">
-                    <img src="../assets/Imagens/logo_imagem.png" alt="logo safe lawn" class="logo">
-                </a>        
-                <div class="perfil">
-                    <img src="../assets/Imagens/perfil.png" alt="imagem de perfil" class="img-perfil">
-                    <p class="nome-perfil">Nome Estádio</p>
-                    <span class="desc-perfil">Desc Estádio</span>
-                </div>
-            </div>
-            <ul class="options">
-                <li class="list-item">
-                    <a onclick="dashboard()" href="#">Dashboard</a>
-                </li>
-                <li class="list-item">
-                    <a onclick="norte_leste()" href="#">Norte-Leste</a>
-                </li>
-                <li class="list-item">
-                    <a onclick="norte_oeste()" href="#">Norte-Oeste</a>
-                </li>
-                <li class="list-item">
-                    <a onclick="sul_leste()" href="#">Sul-Leste</a>
-                </li>
-                <li class="list-item">
-                    <a onclick="sul_oeste()" href="#">Sul-Oeste</a>
-                </li>
-            </ul>
-
-
+  <div class="dashboard-section">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html">
+          <img src="../assets/Imagens/logo_imagem.png" alt="logo safe lawn" class="logo" />
+        </a>
+        <div class="perfil">
+          <img src="../assets/Imagens/perfil.png" alt="imagem de perfil" class="img-perfil" />
+          <p class="nome-perfil">Nome Estádio</p>
+          <span class="desc-perfil">Desc Estádio</span>
         </div>
-        <div class="dashboard-wrapper">
-            <div class="container">
-                <div class="grupo-card">
-                    <div class="card card-sensores">
-                        <div>
-                            <span class="card-date">24/04/2023 - 13:55</span>
-                            <h3>Sensores em campo</h3>
-                        </div>
-
-                        <div class="row">
-                            <img src="../assets/icon/icone-sensor.png" alt="Icone Sensor">
-                            <h2 class="dados-card"> 4 </h2>
-                        </div>
-
-                    </div>
-                    <div class="card card-umidade" id="card_umidade">
-                        <div>
-                            <span class="card-date">24/04/2023 - 13:55</span>
-                            <h3 id="titulo_umidade" >Umidade do campo</h3>
-                        </div>
-
-                        <div class="row">
-                            <img src="../assets/icon/icone-umidade.png" alt="Icone Umidade">
-                            <h2 class="dados-card" id="dados_umidade"> 33% </h2>
-                        </div>
-
-                    </div>
-                    <div class="card card-jogabilidade">
-                        <div>
-                            <span class="card-date">24/04/2023 - 13:55</span>
-                            <h3>Jogabilidade</h3>
-                        </div>
-
-                        <div class="row">
-                            <section class="graficoJogabilidade">
-                                <canvas id="jogabilidade"></canvas>
-                            </section>
-                            <h2 class="dados-card">
-                                97%
-                            </h2>
-                        </div>
-                    </div>
-
-                </div>
-                <br>
-                <div class="graficos-container">
-                    <div id="grafico_geral" class="grafico">
-                        <canvas id="dht11Umidade"></canvas>
-                    </div>
-
-                    <div id="grafico_historico" class="grafico">
-                        <canvas id="historico"></canvas>
-                    </div>
-                    <div id="grafico_norte_leste" class="grafico norte_leste">
-                        <canvas id="norte_leste"></canvas>
-                    </div>
-
-                    <div id="grafico_norte_oeste" class="grafico norte_oeste">
-                        <canvas id="norte_oeste"></canvas>
-                    </div>
-                    <div id="grafico_sul_leste" class="grafico sul_leste">
-                        <canvas id="sul_leste"></canvas>
-                    </div>
-                    <div id="grafico_sul_oeste" class="grafico sul_oeste">
-                        <canvas id="sul_oeste"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+      <ul class="options">
+        <li class="list-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="list-item">
+          <a href="#">Norte-Leste</a>
+        </li>
+        <li class="list-item">
+          <a href="#">Norte-Oeste</a>
+        </li>
+        <li class="list-item">
+          <a href="#">Sul-Leste</a>
+        </li>
+        <li class="list-item">
+          <a href="#">Sul-Oeste</a>
+        </li>
+      </ul>
     </div>
+    <div class="dashboard-wrapper">
+      <div class="container">
+        <div class="grupo-card">
+          <div class="card card-sensores">
+            <div>
+              <span class="card-date">24/04/2023 - 13:55</span>
+              <h3>Sensores em campo</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-sensor.png" alt="Icone Sensor" />
+              <h2 class="dados-card">4</h2>
+            </div>
+          </div>
+          <div class="card card-umidade" id="card_umidade">
+            <div>
+              <span class="card-date">24/04/2023 - 13:55</span>
+              <h3 id="titulo_umidade">Umidade do campo</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-umidade.png" alt="Icone Umidade" />
+              <h2 class="dados-card" id="dados_umidade">33%</h2>
+            </div>
+          </div>
+          <div class="card card-jogabilidade">
+            <div>
+              <span class="card-date">24/04/2023 - 13:55</span>
+              <h3>Jogabilidade</h3>
+            </div>
+
+            <div class="row">
+              <section class="graficoJogabilidade">
+                <canvas id="jogabilidade"></canvas>
+              </section>
+              <h2 class="dados-card">97%</h2>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="graficos-container">
+          <div id="grafico1" class="display-block">
+            <h3 class="tituloGraficos">
+              <span id="tituloAquario1"></span>
+            </h3>
+            <div class="graph">
+              <canvas id="myChartCanvas1"></canvas>
+            </div>
+            <div class="label-captura">
+              <p id="avisoCaptura1" style="color: white"></p>
+            </div>
+          </div>
+
+          <!-- <div id="grafico_geral" class="grafico">
+                        <canvas id="dht11Umidade"></canvas>
+                    </div> -->
+
+          <!-- <div id="grafico_historico" class="grafico">
+                        <canvas id="historico"></canvas>
+                    </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
 
 <script>
 
-    if (sessionStorage.TIPO_USUARIO == 1) {
-        console.log("Mostrar")
-    } else {
-    console.log("Não Mostra")
+  function mapeamentoSetores(resposta) {
+    var mapeamentoSetores = [];
+
+    for (var i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      var idSetor = registro.idSetor;
+
+      if (!mapeamentoSetores.includes(idSetor)) {
+        if (idSetor > mapeamentoSetores[i]) {
+          mapeamentoSetores.push(idSetor);
+        } else {
+          mapeamentoSetores.unshift(idSetor);
+        }
+      }
     }
-    
-    /* -- dht11Umidade -- */
-    const horarioDHT11 = ['13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
-    var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
-    contextoDht11Umidade.canvas.width = '80%';
-    contextoDht11Umidade.canvas.height = '100%';
-    var dht11Umidade = new Chart(
-        contextoDht11Umidade,
-        {
-            type: 'line',
-            data: {
-                labels: horarioDHT11,
-                datasets: [{
-                    label: 'Norte-Leste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0'],
-                    data: [62.5, 62.5, 60, 60, 57.5, 57.5, 55, 55, 55, 52.5, 32.5],
-                    pointHoverBorderColor: '#89cff0',
-                    pointHoverBackgroundColor: '#89cff0',
-                },
-                {
-                    label: 'Norte-Oeste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#0800E5'],
-                    backgroundColor: ['#0800E5'],
-                    data: [62, 50, 50, 47.5, 45, 42.5, 42.5, 40, 40, 39, 33],
-                    pointHoverBorderColor: '#0800E5',
-                    pointHoverBackgroundColor: '#0800E5'
-                },
-                {
-                    label: 'Sul-Leste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#D1D10E'],
-                    backgroundColor: ['#D1D10E'],
-                    data: [52, 62, 61, 60, 60, 57, 57.5, 55, 55, 52.5, 49, 30],
-                    pointHoverBorderColor: '#D1D10E',
-                    pointHoverBackgroundColor: '#D1D10E'
-                },
-                {
-                    label: 'Sul-Oeste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#2E793D'],
-                    backgroundColor: ['#2E793D'],
-                    data: [65, 52, 52.3, 49, 47, 43, 41, 40, 39.2, 38, 33],
-                    pointHoverBorderColor: '#2E793D',
-                    pointHoverBackgroundColor: '#2E793D'
-                }],
-            },
-            options: {
-                layout: {
-                    padding: 10
-                },
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Horário'
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Umidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
-            }
-        }
-    );
 
- 
-    var ctx = document.getElementById('historico').getContext('2d');
-    ctx.canvas.width = '80%';
-    ctx.canvas.height = '100%';
-    var historico = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Norte-Leste', 'Norte-Oeste', 'Sul-Leste', 'Sul-Oeste'],
-        datasets: [{
-            label: 'Umidade',
-            data: [ 57.5,42.5,57.5,43, 0],
-            backgroundColor:'#006437' , 
-            borderColor: '#006437',
-            borderWidth: 0.5 
-        }]
-    },
-   
-    options: {
-        responsive: true,
-        scales: {
-            x: {
-                beginAtZero: true
-            },
-            y: {
-                scaleLabel: {
-                            display: true,
-                            labelString: 'Umidade'
-                        },
-            }
-        }
+    return filtrarSetor(mapeamentoSetores, resposta);
+
+  }
+
+
+  function filtrarSetor(mapeamentoSetores, resposta) {
+    
+    var setores = [[], [], [], []];
+
+    for (var i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      var idSetor = registro.idSetor;
+
+
+
+      if (mapeamentoSetores.includes(idSetor)) {
+        var indiceSetor = mapeamentoSetores.indexOf(idSetor);
+        setores[indiceSetor].push(registro);
+      }
     }
-    });
+
+    console.log(mapeamentoSetores);
+
+    return setores;
+  }
 
 
+  let proximaAtualizacao;
 
-    /* -- jogabilidade -- */
-    var contextoJogabilidade = document.getElementById('jogabilidade').getContext('2d');
-    contextoJogabilidade.canvas.width = 150;
-    contextoJogabilidade.canvas.height = 80;
-    var jogabilidade = new Chart(
-        contextoJogabilidade,
-        {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Jogável',
-                    'Não Jogável',
-                ],
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: [97,3],
-                    backgroundColor: [
-                        '#2E793D',
-                        '#C70520'
-                    ],
-                    borderColor: 'transparent',
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                legend: {
-                    display: false // definir display como false
-                },
-                // outras opções do gráfico
-            }
+  window.onload = obterDadosGraficos();
+
+  function obterDadosGraficos() {
+    obterDadosGrafico();
+  }
+
+  function obterDadosGrafico() {
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/${sessionStorage.ID_ESTADIO}/setores`, {
+      cache: "no-store",
+    })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            var setores = mapeamentoSetores(resposta);
+            plotarGrafico(setores);
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
         }
-    );
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
 
-    // setInterval(() => {
-    //     obterDados(dht11Umidade, 'dht11/umidade');
-    // }, 1000);
+  const cores = ['green', 'blue', 'red', 'yellow'];
+
+  function plotarGrafico(setores) {
+    console.log("Iniciando plotagem do gráfico...");
+
+    var labels = [];
+    var dados = {
+      labels: labels,
+      datasets: [],
+    };
+
+    var horario = [];
+
+    for (var posicaoSetor = 0; posicaoSetor < setores.length; posicaoSetor++) {
+      var setor = setores[posicaoSetor];
 
 
+      var dataset = {
+        label: "Setor " + (posicaoSetor + 1),
+        data: [],
+        fill: false,
+        borderColor: cores[posicaoSetor],
+        tension: 0.1,
+      };
 
-    // Norte-Leste
+      for (var j = 0; j < setor.length; j++) {
+        var registro = setor[j];
+        if (!horario.includes(registro.momento_grafico)) {
+          horario.push(registro.momento_grafico);
+          labels.push(registro.momento_grafico);
+        }
+        dataset.data.push(registro.umidade);
+      }
 
-    const horarios = ['13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55'];
-    var contextoNorte_Leste = document.getElementById('norte_leste').getContext('2d');
-    contextoNorte_Leste.canvas.width = '100%';
-    contextoNorte_Leste.canvas.height = '100%';
-    var norte_lesteVar = new Chart(
-        contextoNorte_Leste,
-        {
-            type: 'line',
-            data: {
-                labels: horarios,
-                datasets: [                {
-                    label: 'Norte-Leste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0'],
-                    data: [62.5, 62.5, 60, 60, 57.5, 57.5, 55, 55, 55, 52.5, 32.5],
-                    pointHoverBorderColor: '#89cff0',
-                    pointHoverBackgroundColor: '#89cff0',
-                }],
-                
-            },
-            options: {
-                layout: {
-                    padding: 10
-                },
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Horário'
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Umidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 1
+      dados.datasets.push(dataset);
+    }
+
+    console.log("Labels:");
+    console.log(labels);
+    console.log("Dados:");
+    console.log(dados.datasets);
+
+    const config = {
+      type: "line",
+      data: dados,
+    };
+
+    var myChart = new Chart(document.getElementById("myChartCanvas1"), config);
+
+    setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+  }
+
+  function atualizarGrafico(dados, myChart) {
+    fetch(`/medidas/tempo-real/${sessionStorage.ID_ESTADIO}/setores`, {
+      cache: "no-store",
+    })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (novoRegistro) {
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            var setores = mapeamentoSetores(novoRegistro).reverse();
+            console.log("Dados atuais do gráfico:");
+            console.log(dados);
+
+            var avisoCaptura = document.getElementById("avisoCaptura1");
+            avisoCaptura.innerHTML = "";
+
+            if (
+              novoRegistro[0].momento_grafico ==
+              dados.labels[dados.labels.length - 1]
+            ) {
+              console.log(
+                "---------------------------------------------------------------"
+              );
+              console.log(
+                "Como não há dados novos para captura, o gráfico não atualizará."
+              );
+              avisoCaptura.innerHTML =
+                "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.";
+              console.log("Horário do novo dado capturado:");
+              console.log(novoRegistro[0].momento_grafico);
+              console.log("Horário do último dado capturado:");
+              console.log(dados.labels[dados.labels.length - 1]);
+              console.log(
+                "---------------------------------------------------------------"
+              );
+            } else {
+              dados.labels.shift();
+              dados.labels.push(novoRegistro[0].momento_grafico);
+              for (var i = 0; i < setores.length; i++) {
+                var dataset = dados.datasets[i];
+                var setor = setores[i];
+                dataset.data.shift();
+
+
+                if (setor.length > 0) {
+                  var ultimoRegistroSetor = setor[setor.length - 1];
+                  dataset.data.push(ultimoRegistroSetor.umidade);
+                } else {
+                  dataset.data.push(null);
                 }
+              }
+
+              myChart.update();
             }
+
+            proximaAtualizacao = setTimeout(
+              () => atualizarGrafico(dados, myChart),
+              2000
+            );
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+          proximaAtualizacao = setTimeout(
+            () => atualizarGrafico(dados, myChart),
+            2000
+          );
         }
-    );
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
 
-    // norte-oeste
-
-
-    var contextoNorte_Oeste = document.getElementById('norte_oeste').getContext('2d');
-    contextoNorte_Oeste.canvas.width = 150;
-    contextoNorte_Oeste.canvas.height = '100%';
-    var norte_oesteVar = new Chart(
-        contextoNorte_Oeste,
-        {
-            type: 'line',
-            data: {
-                labels: horarios,
-                datasets: [{
-                    label: 'Norte-Oeste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#0800E5'],
-                    backgroundColor: ['#0800E5'],
-                    data: [62, 50, 50, 47.5, 45, 42.5, 42.5, 40, 40, 39, 33],
-                    pointHoverBorderColor: '#0800E5',
-                    pointHoverBackgroundColor: '#0800E5'
-                }],
-            },
-            options: {
-                layout: {
-                    padding: 10
-                },
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Horário'
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Umidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 1
-                }
-            }
-        }
-    );
-
-    //sul-leste
-
-    var contextoSul_Leste = document.getElementById('sul_leste').getContext('2d');
-    contextoSul_Leste.canvas.width = 150;
-    contextoSul_Leste.canvas.height = '100%';
-    var sul_lesteVar = new Chart(
-        contextoSul_Leste,
-        {
-            type: 'line',
-            data: {
-                labels: horarios,
-                datasets: [{
-                    label: 'Sul-Leste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#D1D10E'],
-                    backgroundColor: ['#D1D10E'],
-                    data: [52, 62, 61, 60, 60, 57, 57.5, 55, 55, 52.5, 49, 30],
-                    pointHoverBorderColor: '#D1D10E',
-                    pointHoverBackgroundColor: '#D1D10E'
-                }],
-            },
-            options: {
-                layout: {
-                    padding: 10
-                },
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Horário'
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Umidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 1
-                }
-            }
-        }
-    );
-
-    // sul-oeste
-
-    var contextoSul_Oeste = document.getElementById('sul_oeste').getContext('2d');
-    contextoSul_Oeste.canvas.width = 150;
-    contextoSul_Oeste.canvas.height = '100%';
-    var sul_oesteVar = new Chart(
-        contextoSul_Oeste,
-        {
-            type: 'line',
-            data: {
-                labels: horarios,
-                datasets: [{
-                    label: 'Sul-Oeste',
-                    type: 'line',
-                    fill: false,
-                    borderColor: ['#2E793D'],
-                    backgroundColor: ['#2E793D'],
-                    data: [65, 52, 52.3, 49, 47, 43, 41, 40, 39.2, 38, 33],
-                    pointHoverBorderColor: '#2E793D',
-                    pointHoverBackgroundColor: '#2E793D'
-                }],
-            },
-            options: {
-                layout: {
-                    padding: 10
-                },
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Horário'
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Umidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 1
-                }
-            }
-        }
-    );
-    
-    
 
 </script>
