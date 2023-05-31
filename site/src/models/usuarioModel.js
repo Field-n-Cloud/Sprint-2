@@ -36,39 +36,38 @@ function cadastrar(clube, endereco, estadio, gramado) {
     //  e na ordem de inserção dos dados.
     var instrucao1 = `
         INSERT INTO clube 
-        (nomeClube, cnpjClube, senhaClube, emailClube, telefoneClube, ufClube, fkTipoUsuario)
+        (nomeClube, cnpjClube, senhaClube, emailClube, telefoneClube, fkEstado, fkTipoUsuario)
         VALUES 
         ('${clube.nomeClube}', '${clube.cnpjClube}', '${clube.senhaClube}', '${clube.emailClube}', '${clube.telefoneClube}', '${clube.estadoClube}', 1);
     `;
 
     var instrucao2 = `
-        INSERT INTO endereco
-        (cep, logradouro, numero, complemento) 
-        VALUES 
-        ('${endereco.cepEndereco}', '${endereco.logradouroEndereco}', '${endereco.numeroEndereco}', '${endereco.complementoEndereco}');
+    INSERT INTO fornecedorGramado 
+    (nomeFornecedor) 
+    VALUES 
+    ('${gramado.fornecedorGramado}');
     `;
-
+    
     var instrucao3 = `
-        INSERT INTO estadio 
-        (nomeEstadio, cnpjEstadio) 
-        VALUES 
-        ('${estadio.nomeEstadio}', '${estadio.cnpjEstadio}');
+    INSERT INTO modeloGramado 
+    (nomeModelo, fkFornecedorGramado) 
+    VALUES 
+    ('${gramado.modeloGramado}', (SELECT idFornecedorGramado FROM fornecedorGramado WHERE nomeFornecedor = '${gramado.fornecedorGramado}'));
     `;
 
     var instrucao4 = `
-        INSERT INTO modeloGramado 
-        (nomeModelo) 
+        INSERT INTO estadio 
+        (nomeEstadio, cnpjEstadio, fkClube) 
         VALUES 
-        ('${gramado.nomeModelo}');
+        ('${estadio.nomeEstadio}', '${estadio.cnpjEstadio}', (SELECT idClube FROM clube WHERE cnpjClube = '${clube.cnpjClube}'));
     `;
-
+    
     var instrucao5 = `
-        INSERT INTO fornecedorGramado 
-        (nomeFornecedor) 
+        INSERT INTO endereco
+        (cep, logradouro, numero, complemento, fkEstadio) 
         VALUES 
-        ('${gramado.nomeFornecedor}');
+        ('${endereco.cepEndereco}', '${endereco.logradouroEndereco}', '${endereco.numeroEndereco}', '${endereco.complementoEndereco}', (SELECT idEstadio FROM estadio WHERE cnpjEstadio = '${estadio.cnpjEstadio}'));
     `;
-
     database.executar(instrucao1)
     database.executar(instrucao2)
     database.executar(instrucao3)

@@ -1,21 +1,6 @@
 CREATE DATABASE safelawn;
-drop database safelawn;
+DROP DATABASE safelawn;
 USE safelawn;
-
-CREATE TABLE clube (
-	idClube INT PRIMARY KEY AUTO_INCREMENT,
-	nomeClube VARCHAR(45),
-	cnpjClube CHAR(14),
-    senhaClube VARCHAR(10),
-	emailClube VARCHAR(45),
-    telefoneClube CHAR(11),
-	ufClube CHAR(2)
-);
-
-INSERT INTO clube (nomeClube, cnpjClube, senhaClube, emailClube, telefoneClube, ufClube) VALUES
-	('Empresa1 ', '12345678901234', 'senha123', 'contato@empresa1.com.br', '21999999999', 'RJ'),
-	('Empresa2', '23456789012345', 'senha456', 'contato@empresa2.com.br', '11999999999', 'SP'),
-	('Empresa3', '34567890123456', 'senha789', 'contato@empresa3.com.br', '11999999998', 'SP');
 
 CREATE TABLE  tipoUsuario (
 	idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
@@ -25,7 +10,60 @@ CREATE TABLE  tipoUsuario (
 INSERT INTO tipoUsuario (tipoUsuario) VALUES 
 	('Administrador'), 
     ('Funcionario');
+    
+CREATE TABLE estado (
+	idEstado INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    uf CHAR(2)
+);
 
+INSERT INTO estado VALUES 
+	(NULL, 'Acre', 'AC'),
+	(NULL, 'Alagoas', 'AL'),
+	(NULL, 'Amazonas', 'AM'),
+	(NULL, 'Amapá', 'AP'),
+	(NULL, 'Bahia', 'BA'),
+	(NULL, 'Ceará', 'CE'),
+	(NULL, 'Distrito Federal', 'DF'),
+	(NULL, 'Espírito Santo', 'ES'),
+	(NULL, 'Goiás', 'GO'),
+	(NULL, 'Maranhão', 'MA'),
+	(NULL, 'Mato Grosso', 'MG'),
+	(NULL, 'Mato Grosso do Sul', 'MS'),
+	(NULL, 'Minas Gerais', 'MG'),
+	(NULL, 'Pará', 'PA'),
+	(NULL, 'Paraíba', 'PB'),
+	(NULL, 'Paraná', 'PR'),
+	(NULL, 'Pernambuco', 'PE'),
+	(NULL, 'Piauí', 'PI'),
+	(NULL, 'Rio de Janeiro', 'RJ'),
+	(NULL, 'Rio Grande do Norte', 'RN'),
+	(NULL, 'Rio Grande do Sul', 'RS'),
+	(NULL, 'Rondônia', 'RO'),
+	(NULL, 'Roraima', 'RR'),
+	(NULL, 'Santa Catarina', 'SC'),
+	(NULL, 'São Paulo', 'SP'),
+	(NULL, 'Sergipe', 'SE'),
+	(NULL, 'Tocantins', 'TO');
+    
+CREATE TABLE clube (
+	idClube INT PRIMARY KEY AUTO_INCREMENT,
+	nomeClube VARCHAR(45),
+	cnpjClube CHAR(14) UNIQUE,
+    senhaClube VARCHAR(10),
+	emailClube VARCHAR(45),
+    telefoneClube CHAR(11),
+    fkTipoUsuario INT,
+	fkEstado INT,
+    CONSTRAINT fkTipoClube FOREIGN KEY (fkTipoUsuario) REFERENCES tipoUsuario (idTipoUsuario),
+    CONSTRAINT fkEstadoClube FOREIGN KEY (fkEstado) REFERENCES estado(idEstado)
+);
+
+INSERT INTO clube (nomeClube, cnpjClube, senhaClube, emailClube, telefoneClube, fkTipoUsuario, fkEstado) VALUES
+	('São Paulo ', '12345678901234', 'spfc123', 'saopaulo@spfc1.com.br', '11999999999', 1, 1),
+	('Flamengo', '23456789012345', 'mengo456', 'flamengo@crf2.com.br', '21999999999', 1, 2),
+	('Atlético Mineiro', '34567890123456', 'galo789', 'atletico@galo3.com.br', '31999999998', 1, 3);
+    
 CREATE TABLE usuario (
 	idUsuario INT AUTO_INCREMENT,
 	nomeUsuario VARCHAR(45),
@@ -40,102 +78,88 @@ CREATE TABLE usuario (
 );
 
 INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario, telefoneUsuario, fkClube, fkTipoUsuario) VALUES
-	('João Alvares', 'joao.alvares@empresa1.com.br', '123456', '21988888888', 1, 1),
-	('Pedro Roberto', 'pedro.roberto@empresa2.com.br', '123456', '11977777777', 2, 2),
-	('Felipe Silve', 'felipe.silva@empresa3.com.br', '123456', '11966666666', 3, 2);
+	('João Alvares', 'joao.alvares@spfc1.com.br', '123456', '11988888888', 1, 1),
+	('Pedro Roberto', 'pedro.roberto@crf2.com.br', '123456', '21977777777', 2, 2),
+	('Felipe Silve', 'felipe.silva@galo3.com.br', '123456', '31966666666', 3, 2);
+
+CREATE TABLE fornecedorGramado (
+idFornecedorGramado INT PRIMARY KEY AUTO_INCREMENT,
+nomeFornecedor VARCHAR(45) UNIQUE,
+telefoneFornecedor VARCHAR(45),
+emailFornecedor VARCHAR(45)
+);
+
+INSERT INTO fornecedorGramado (nomeFornecedor, telefoneFornecedor, emailFornecedor) VALUES
+	('Fornecedor A', '11987654321', 'contato@fornecedora.com.br'),
+	('Fornecedor B', '21987654321', 'contato@fornecedorb.com.br'),
+	('Fornecedor C', '31987654321', 'contato@fornecedorc.com.br');
+
+CREATE TABLE parametro (
+	idParametro INT PRIMARY KEY AUTO_INCREMENT,
+    min FLOAT,
+    max FLOAT
+);
+
+INSERT INTO parametro VALUES 
+	(NULL, 20.90, 35.40),
+	(NULL, 25.90, 45.40),
+	(NULL, 10.00, 12.20);
+
+CREATE TABLE pisoGramado (
+	idPiso INT PRIMARY KEY AUTO_INCREMENT,
+    material VARCHAR(45)
+);
+
+INSERT INTO pisoGramado VALUES 
+	(NULL, 'cimento'),
+	(NULL, 'areia'),
+	(NULL, 'cascalho');
+
+CREATE TABLE modeloGramado (
+	idmodeloGramado INT PRIMARY KEY AUTO_INCREMENT,
+    nomeModelo VARCHAR(45),
+    fkFornecedorGramado INT,
+    fkPisoGramado INT,
+    fkParametro INT,
+    CONSTRAINT fkFornecedorModelo FOREIGN KEY (fkFornecedorGramado) REFERENCES fornecedorGramado(idFornecedorGramado),
+    CONSTRAINT fkPisoModelo FOREIGN KEY (fkPisoGramado) REFERENCES pisoGramado (idPiso),
+    CONSTRAINT fkParametroModelo FOREIGN KEY (fkParametro) REFERENCES parametro(idParametro)
+);
+  
+ INSERT INTO modeloGramado (nomeModelo, fkFornecedorGramado, fkPisoGramado, fkParametro) VALUES
+	('fibrilatica 3000', 1, 1, 1),
+    ('green camp',2, 2, 2),
+    ('grasslide', 3, 3, 3);
+
+CREATE TABLE estadio (
+	idEstadio INT PRIMARY KEY AUTO_INCREMENT,
+	nomeEstadio VARCHAR(40),
+    cnpjEstadio VARCHAR (14) UNIQUE,
+	fkClube INT,
+    fkModeloGramado INT, 
+    CONSTRAINT fkEstadioCLube FOREIGN KEY (fkClube) REFERENCES clube(idClube),
+    CONSTRAINT fkEstadioModelo FOREIGN KEY (fkModeloGramado) REFERENCES modeloGramado(idmodeloGramado)
+);
+
+INSERT INTO estadio (nomeEstadio, cnpjEstadio, fkClube, fkModeloGramado) VALUES 
+	('Estadio1', '12345678901234', 1, 1),
+	('Estadio2', '23456789012345', 2, 2),
+	('Estadio3', '34567890123456', 3, 3);
 
 CREATE TABLE endereco (
 	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     cep CHAR(8),
 	logradouro VARCHAR(45),
 	numero INT,
-	complemento VARCHAR(45)
+	complemento VARCHAR(45),
+    fkEstadio INT,
+    CONSTRAINT fkEnderecoEstadio FOREIGN KEY (fkEstadio) REFERENCES estadio(idEstadio)
 );
 
-INSERT INTO endereco (cep, logradouro, numero, complemento) VALUES
-	('01234567', 'Rua A', 123, ''),
-	('89012345', 'Avenida B', 456, 'Sala 1'),
-	('65432109', 'Rua C', 789, 'Bloco D');
-
-CREATE TABLE tipoGrama (
-idTipoGrama INT PRIMARY KEY AUTO_INCREMENT,
-TipoGrama VARCHAR(15)
-);
-
-INSERT INTO tipoGrama (tipoGrama) VALUES
-	('Bermuda'),
-	('Zoysia'),
-    ('rizomatosas');
-
-CREATE TABLE medida (
-idMedida INT PRIMARY KEY AUTO_INCREMENT,
-UnidadeMedida VARCHAR(45),
-sigla VARCHAR(45)
-);
-
-INSERT INTO medida (UnidadeMedida, sigla) VALUES
-	('Porcentagem', '%'), 
-    ('Milímetro', 'mm'),
-	('Grão por metro cúbico', 'g/m3'), 
-	('Pascal', 'Pa');
-    
-CREATE TABLE alturaGramado (
-idAlturaGramado INT PRIMARY KEY AUTO_INCREMENT,
-altura INT,
-fkMedida INT,
-FOREIGN KEY (fkmedida) REFERENCES medida(idMedida)
-); 
-
-INSERT INTO alturaGramado (altura, fkMedida) VALUES
-	(10, 2),
-    (15, 2),
-    (20, 2);
-
-CREATE TABLE fornecedorGramado (
-idFornecedorGramado INT PRIMARY KEY AUTO_INCREMENT,
-nomeFornecedor VARCHAR(45),
-telefoneFornecedor VARCHAR(45),
-email VARCHAR(45)
-);
-
-INSERT INTO fornecedorGramado (nomeFornecedor, telefoneFornecedor, email) VALUES
-	('Fornecedor A', '11987654321', 'contato@fornecedora.com.br'),
-	('Fornecedor B', '21987654321', 'contato@fornecedorb.com.br'),
-	('Fornecedor C', '31987654321', 'contato@fornecedorc.com.br');
-
-CREATE TABLE modeloGramado (
-	idmodeloGramado INT PRIMARY KEY AUTO_INCREMENT,
-    minUmidade INT,
-    maxUmidade INT,
-    fkFornecedorGramado INT,
-    fkTipoGrama INT,
-    fkAlturaGramado INT,
-    FOREIGN KEY (fkFornecedorGramado) REFERENCES fornecedorGramado(idFornecedorGramado),
-    FOREIGN KEY (fkTipoGrama) REFERENCES tipoGrama(idtipoGrama),
-    FOREIGN KEY (fkalturaGramado) REFERENCES alturaGramado(idAlturaGramado)
-);
-  
- INSERT INTO modeloGramado (minUmidade, maxUmidade, fkFornecedorGramado, fkTipoGrama, fkalturaGramado) VALUES
-	(20, 55, 1, 1, 1),
-    (25, 60, 2, 2, 2),
-    (30, 65, 3, 3, 3);
-
-CREATE TABLE estadio (
-	idEstadio INT PRIMARY KEY AUTO_INCREMENT,
-	nomeEstadio VARCHAR(40),
-    cnpjEstadio VARCHAR (14),
-	fkClube INT,
-	fkEndereco INT,
-    fkModeloGramado INT, 
-    FOREIGN KEY (fkClube) REFERENCES clube(idClube),
-    FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco),
-    FOREIGN KEY (fkModeloGramado) REFERENCES modeloGramado(idmodeloGramado)
-);
-
-INSERT INTO estadio (nomeEstadio, cnpjEstadio, fkClube, fkEndereco, fkModeloGramado) VALUES 
-	('Estadio1', '12345678901234', 1, 1, 1),
-	('Estadio2', '23456789012345', 2, 2, 2),
-	('Estadio3', '34567890123456', 3, 3, 3);
+INSERT INTO endereco (cep, logradouro, numero, complemento, fkEstadio) VALUES
+	('01234567', 'Rua A', 123, NULL, 1),
+	('89012345', 'Avenida B', 456, 'Sala 1', 2),
+	('65432109', 'Rua C', 789, 'Bloco D', 3);
 
 CREATE TABLE SetorEstadio (
 	idSetor INT PRIMARY KEY AUTO_INCREMENT,
@@ -167,7 +191,8 @@ INSERT INTO statusSensor (statusSendor) VALUES
 	('Ativo'),
     ('Inativo'),
     ('Manutenção');
-
+    
+    
 CREATE TABLE modeloSensor (
 idModeloSensor INT PRIMARY KEY AUTO_INCREMENT,
 modeloSensor VARCHAR(45)
@@ -177,6 +202,33 @@ INSERT INTO modeloSensor (modeloSensor) VALUES
 	('DHT11'),
     ('DHT12'),
     ('DHT13');
+
+CREATE TABLE medida (
+idMedida INT PRIMARY KEY AUTO_INCREMENT,
+UnidadeMedida VARCHAR(45),
+sigla VARCHAR(45)
+);
+
+INSERT INTO medida (UnidadeMedida, sigla) VALUES
+	('Porcentagem', '%'), 
+    ('Milímetro', 'mm'),
+	('Grão por metro cúbico', 'g/m3'), 
+	('Pascal', 'Pa');
+    
+
+CREATE TABLE medidaSensor (
+	idMedidaSensor INT,
+    fkMedida INT,
+    fkModeloSensor INT,
+    CONSTRAINT pkCompostaAssociativa PRIMARY KEY (idMedidaSensor, fkMedida, fkModeloSensor),
+    CONSTRAINT fkMedidaSensor FOREIGN KEY (fkMedida) REFERENCES medida(idMedida),
+    CONSTRAINT fkModeloMedida FOREIGN KEY (fkModeloSensor) REFERENCES modeloSensor(idModeloSensor)
+);
+
+INSERT INTO medidaSensor VALUES 
+	(1, 1, 1),
+	(2, 2, 1),
+	(1, 1, 2);
 
 CREATE TABLE Sensor (
 	idSensor INT PRIMARY KEY AUTO_INCREMENT,
@@ -193,16 +245,19 @@ INSERT INTO Sensor (descricao, fkSetor, fkstatusSensor, fkmodeloSensor) VALUES
 	('Sensor 1', 1, 1, 1),
     ('Sensor 2', 2, 2, 1),
     ('Sensor 3', 3, 3, 2),
+    ('Sensor 4', 4, 1, 2),
     ('Sensor 1', 5, 1, 2),
     ('Sensor 2', 6, 2, 2),
     ('Sensor 3', 7, 3, 3),
-    ('Sensor 1', 9, 1, 1),
-    ('Sensor 1', 10, 2, 2),
-    ('Sensor 1', 11, 3, 3);
+    ('Sensor 4', 8, 1, 1),
+    ('Sensor 1', 9, 2, 2),
+    ('Sensor 2', 10, 1, 3),
+    ('Sensor 3', 11, 1, 3),
+    ('Sensor 4', 12, 3, 3);
 
 CREATE TABLE DadosSensor (
 	idCaptura INT AUTO_INCREMENT,
-    dtCaptura DATE,
+    dtCaptura DATETIME,
     valorCaptura FLOAT,
     fkSensor INT,
     fkMedida INT,
@@ -212,16 +267,25 @@ CREATE TABLE DadosSensor (
 );
 
 INSERT INTO DadosSensor (dtCaptura, valorCaptura, fkSensor, fkMedida) VALUES
-	('2023-04-21', 20, 1, 1),
-    ('2023-04-21', null, 2, 1),
-    ('2023-04-21', null, 3, 1),
-    ('2023-04-22', 30, 4, 1),
-    ('2023-04-22', null, 5, 1),
-    ('2023-04-22', null, 6, 1),
-    ('2023-04-21', 65, 7, 1),
-    ('2023-04-21', null, 8, 1),
-    ('2023-04-21', null, 9, 1);
+	('2023-04-21 18:40:00',20, 1, 1),
+    ('2023-04-21 18:40:00', 12, 2, 1),
+    ('2023-04-21 18:40:00', 1, 3, 1),
+    ('2023-04-22 18:40:00', 30, 4, 1),
+    ('2023-04-22 18:50:00', 30, 1, 1),
+    ('2023-04-22 18:50:00', 10, 2, 1),
+    ('2023-04-22 18:50:00', 5, 3, 1),
+    ('2023-04-22 18:50:00', 25, 4, 1),
+    ('2023-04-22 19:00:00', 35, 1, 1),
+    ('2023-04-22 19:00:00', 12, 2, 1),
+    ('2023-04-22 19:00:00', 15, 3, 1),
+    ('2023-04-22 19:00:00', 5, 4, 1);
 
+
+-- SUBQUERY
+
+INSERT INTO estadio (nomeEstadio, cnpjEstadio, fkClube)
+	VALUES ('kevin', '12345123',  (SELECT idClube FROM clube WHERE cnpjClube = '12345678901234'));
+    
 -- todos
 SELECT * FROM clube;
 SELECT * FROM tipoUsuario;
