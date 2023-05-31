@@ -99,6 +99,7 @@
 .dashboard-wrapper {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: #D9D9D9;
 }
@@ -108,7 +109,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
     }
 
 .grupo-card {
@@ -116,7 +116,7 @@
     height: 45vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     text-transform: uppercase;
 }
     .row {
@@ -190,7 +190,7 @@
 
 .graficos-container{
     width:100%;
-    height: 100vh;
+
     display: flex;
     align-items: center;
 
@@ -211,4 +211,17 @@
 
 .sul_oeste{
     display:none;    
+}
+
+.graph {
+width: 600px;
+height: 400px;
+
+}
+
+#myChartCanvas1 {
+    
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
 }

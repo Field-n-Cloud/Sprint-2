@@ -76,45 +76,41 @@
               <h2 class="dados-card" id="dados_umidade">33%</h2>
             </div>
           </div>
-          <div class="card card-jogabilidade">
-            <div>
-              <span class="card-date">24/04/2023 - 13:55</span>
-              <h3>Jogabilidade</h3>
-            </div>
-
-            <div class="row">
-              <section class="graficoJogabilidade">
-                <canvas id="jogabilidade"></canvas>
-              </section>
-              <h2 class="dados-card">97%</h2>
-            </div>
+          
           </div>
+
+          </section>
+          
         </div>
-        <br />
         <div class="graficos-container">
           <div id="grafico1" class="display-block">
-            <h3 class="tituloGraficos">
-              <span id="tituloAquario1"></span>
-            </h3>
-            <div class="graph">
-              <canvas id="myChartCanvas1"></canvas>
-            </div>
-            <div class="label-captura">
-              <p id="avisoCaptura1" style="color: white"></p>
+                <h3 class="tituloGraficos">
+                  <span id="tituloAquario1"></span>
+                </h3>
+                <div class="graph">
+                  <canvas id="myChartCanvas1"></canvas>
+                </div>
+                <div class="label-captura">
+                  <p id="avisoCaptura1" style="color: white ; position: absolute; bottom: 5%;"></p>
+                </div>
+              </div>
+    
+              <!-- <div id="grafico_geral" class="grafico">
+                            <canvas id="dht11Umidade"></canvas>
+                        </div> -->
+    
+              <!-- <div id="grafico_historico" class="grafico">
+                            <canvas id="historico"></canvas>
+                        </div> -->
             </div>
           </div>
-
-          <!-- <div id="grafico_geral" class="grafico">
-                        <canvas id="dht11Umidade"></canvas>
-                    </div> -->
-
-          <!-- <div id="grafico_historico" class="grafico">
-                        <canvas id="historico"></canvas>
-                    </div> -->
         </div>
       </div>
     </div>
+    <br />
+
   </div>
+
 </body>
 
 </html>
@@ -200,7 +196,7 @@
       });
   }
 
-  const cores = ['green', 'blue', 'red', 'yellow'];
+  const cores = ['#00ffc8', '#0099ff', '#0400ff', '#02007c'];
 
   function plotarGrafico(setores) {
     console.log("Iniciando plotagem do gráfico...");
