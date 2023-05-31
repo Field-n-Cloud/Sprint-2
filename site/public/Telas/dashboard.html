@@ -22,7 +22,7 @@
 
 <body>
   <div class="dashboard-section">
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <a href="../index.html">
           <img src="../assets/Imagens/logo_imagem.png" alt="logo safe lawn" class="logo" />
@@ -33,7 +33,7 @@
           <span class="desc-perfil">Desc Estádio</span>
         </div>
       </div>
-      <ul class="options">
+      <ul class="options" id="optionsUl">
         <li class="list-item">
           <a href="#">Dashboard</a>
         </li>
@@ -45,9 +45,6 @@
         </li>
         <li class="list-item">
           <a href="#">Sul-Leste</a>
-        </li>
-        <li class="list-item">
-          <a href="#">Sul-Oeste</a>
         </li>
       </ul>
     </div>
@@ -121,6 +118,11 @@
 
 <script>
 
+  function funcoesAdmin() {
+    sidebar.innerHTML += sessionStorage.TIPO_USUARIO == 1 ? `<li class="list-item"><a href="#">Cadastrar Funcionario</a></li>` : ``; 
+    console.log(sessionStorage.TIPO_USUARIO); 
+  }
+
   function mapeamentoSetores(resposta) {
     var mapeamentoSetores = [];
 
@@ -166,7 +168,10 @@
 
   let proximaAtualizacao;
 
-  window.onload = obterDadosGraficos();
+  window.onload = () => {
+    obterDadosGraficos();
+    funcoesAdmin();
+  };
 
   function obterDadosGraficos() {
     obterDadosGrafico();
