@@ -54,16 +54,53 @@
     <div class="dashboard-wrapper">
       <div class="container">
         <div class="grupo-card">
-          <div class="card card-sensores">
+          <div class="card card-sensores card-1">
             <div>
               <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
-              <h3>Sensores em campo</h3>
+              <h3>Setor 1</h3>
             </div>
 
             <div class="row">
-              <img src="../assets/icon/icone-sensor.png" alt="Icone Sensor" />
-              <h2 class="dados-card">4</h2>
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
             </div>
+            <p class="texto-card">23/05/2023 12:50</p>
+          </div>
+          <div class="card card-sensores card-2">
+            <div>
+              <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
+              <h3>Setor 2</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
+            </div>
+            <p class="texto-card">23/05/2023 12:50</p>
+          </div>
+          <div class="card card-sensores card-3">
+            <div>
+              <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
+              <h3>Setor 3</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
+            </div>
+            <p class="texto-card">23/05/2023 12:50</p>
+          </div>
+          <div class="card card-sensores card-4">
+            <div>
+              <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
+              <h3>Setor 4</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
+            </div>
+            <p class="texto-card">23/05/2023 12:50</p>
           </div>
         
 
@@ -204,15 +241,17 @@
     var alEstado = document.getElementById(`al_estado${idSetor}`);
     var alUmidade = document.getElementById(`al_umidade${idSetor}`);
 
+    
     console.log(alSetor);
     console.log(max * 0.9);
-
+    
     if (umidade < min) {
       console.log('muito baixo');
       al.style.transform = 'translateX(0)';
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Perigo'
       alUmidade.innerHTML = `${umidade}%`
+      al.querySelector('.al-icone').style.background = '#b80303'
 
     } else if (umidade <= min * 1.1) {
       console.log('baixo');
@@ -220,6 +259,7 @@
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Alerta'
       alUmidade.innerHTML = `${umidade}%`
+      al.querySelector('.al-icone').style.background = '#cebc18'
 
     } else if (umidade > max * 0.9
       && umidade < max) {
@@ -228,6 +268,7 @@
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Alerta'
       alUmidade.innerHTML = `${umidade}%`
+      al.querySelector('.al-icone').style.background = '#cebc18'
 
     } else if (umidade > max) {
       console.log('muito alto');
@@ -235,6 +276,7 @@
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Perigo'
       alUmidade.innerHTML = `${umidade}%`
+      al.querySelector('.al-icone').style.background = '#b80303'
 
     } else {
       // console.log('dado errado');
@@ -325,6 +367,9 @@
   }
 
   const cores = ['#00ffc8', '#0099ff', '#0400ff', '#02007c'];
+  var dates = document.querySelectorAll('.texto-card');
+  var umidades = document.querySelectorAll('.dados-card');
+  // var dates = document.querySelectorAll('texto-card');
 
   function plotarGrafico(setores) {
     console.log("Iniciando plotagem do gráfico...");
@@ -350,6 +395,10 @@
       };
 
       var ultimoRegistro = setor[setor.length - 1];
+
+      dates[posicaoSetor].innerHTML = ultimoRegistro.momento_grafico;
+      umidades[posicaoSetor].innerHTML = `${ultimoRegistro.umidade}%`
+
       alertar(ultimoRegistro.umidade, ultimoRegistro.min, ultimoRegistro.max, ultimoRegistro.idSetor);
 
       console.log(setor[setor.length - 1]);
@@ -361,6 +410,8 @@
           labels.push(registro.momento_grafico);
 
           // console.log(registro);
+          
+          
 
         }
         dataset.data.push(registro.umidade);
