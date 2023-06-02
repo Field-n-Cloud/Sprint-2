@@ -73,9 +73,7 @@
 
       </div>
       <div class="graficos-container">
-        <span id="popup-info-wrapper">
-          <p class="popup-info">i</p>
-        </span>
+          <button onclick="modal()" class="popup-info">i</button>
         <div id="grafico1" class="display-block">
           <h3 class="tituloGraficos">
             <span id="tituloAquario1"></span>
@@ -161,24 +159,28 @@
 
   </div>
 
-  <div class="popup-wrapper disable">
+  <div id="pop_up" class="popup-wrapper disable">
     <div class="popup">
       <div class="container">
-
+        
         <div class="row">
           <div class="color red"></div>
-          <p class="popup-text">Vermelho: Precisa ser resolvido imediatamente! Isso acontece quando seu sensor passa dos extremos de umidade.</p>
+          <p class="popup-text"> <b> Vermelho: </b> Precisa ser resolvido imediatamente! Isso acontece quando seu sensor passa dos extremos de umidade.</p>
         </div>
 
         <div class="row">
           <div class="color yellow"></div>
-          <p class="popup-text"></p>
+          <p class="popup-text"> <b> Amarelo: </b> É necessária uma devida atenção. Isso acontece quando seu sensor está se aproximando dos extremos de uma umidade. </p>
         </div>
 
         <div class="row">
           <div class="color green"></div>
-          <p class="popup-text"></p>
+          <p class="popup-text"> <b> Verde: </b> A situação está segura. Isso acontece quando seu sensor está com a umidade em um ponto ideal. </p>
         </div>
+
+        <button onclick="modal()" class="voltar">
+          VOLTAR
+        </button>
 
       </div>
     </div>
@@ -190,7 +192,11 @@
 
 <script>
 
+  function modal() {
+    var popUp = document.getElementById('pop_up');
 
+    popUp.classList.toggle('disable');
+  }
 
   function alertar(umidade, min, max, idSetor) {
     var al = document.getElementById(`al${idSetor}`);
