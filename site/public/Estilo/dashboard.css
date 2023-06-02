@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 
@@ -224,4 +225,47 @@ height: 400px;
     border-radius: 20px;
     background-color: white;
     padding: 20px;
+}
+
+.alertas {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.alerta {
+    display: flex;
+    width: 250px;
+    height: 100px;
+    font-family: 'K2D';
+    transition: all .4s ease-in-out;
+    transform: translateX(250px);
+}
+
+.al-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #032311;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+    width: 75px;
+}
+
+.al-icone img {
+    width: 50px;
+    height: 50px;
+}
+
+.al-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #a9a9a9;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
 }
