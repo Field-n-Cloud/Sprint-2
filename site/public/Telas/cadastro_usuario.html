@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe Lawn - Cadastro Usuário</title>
+  <!-- <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <script src="sweetalert2.all.min.js"></script> -->
+  <link rel="stylesheet" href="../Estilo/cadastro_usuario.css" />
+  <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon" />
+  <script src="../js/funcoes.js"></script>
+</head>
+
+<body>
+  <div class="cadastro-wrapper">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="background">
+      <div class="form-wrapper">
+        <div class="container">
+          <div class="form">
+            <section id="cad_clube" class="cadastro-clube">
+              <div class="cabecalho-form">
+                <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
+                <div class="cabecalho-titulos">
+                  <h1>Novo Usuário</h1>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="flex-input">
+                  <span>Nome:</span>
+                  <input class="input-nome" id="input_nome" placeholder="Digite seu nome..." />
+                </div>
+
+                <div class="flex-input">
+                  <span>Email:</span>
+                  <input class="input-email" id="input_email" placeholder="Digite seu email..." />
+                </div>
+
+                <div class="row-group">
+                  <div class="flex-input">
+                    <span>Senha:</span>
+                    <input type="password" class="input-senha" placeholder="Digite sua senha..." id="input_senha" />
+                  </div>
+                  <div class="flex-input">
+                    <span>Confirme sua Senha:</span>
+                    <input type="password" class="input-confirme-senha" placeholder="Confirme sua Senha..."
+                      id="input_confirme_senha" />
+                  </div>
+                </div>
+
+                <div class="flex-input">
+                  <span>Telefone:</span>
+                  <input class="input-telefone" id="input_telefone" placeholder="Digite seu telefone..." />
+                </div>
+                <div class="form-acao">
+                  <button class="btn-form" onclick="cadastrarFuncionario()">
+                    <a> CADASTRAR </a>
+                  </button>
+                    <a href="dashboard.html" class="btn-voltar"> Voltar </a>
+
+                  <!-- <a
+                      onclick="alternarSecao('cad_estadio', 'cad_endereco', 'voltar')"
+                      class="form-a"
+                      >VOLTAR
+                    </a> -->
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  // function cadastrarFuncionario() {
+  //   var dadosCadastro = {
+  //     usuario: {
+  //       nomeUsuario: input_nome.value,
+  //       emailUsuario: input_email.value,
+  //       senhaUsuario: input_senha.value,
+  //       confirmarSenhaUsuario: input_confirme_senha.value,
+  //       telefoneUsuario: input_telefone.value,
+  //     }
+  //   };
+
+  //   fetch("/usuarios/cadastrar", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       clubeServer: dadosCadastro.clube
+  //     }),
+  //   })
+  //     .then(function (resposta) {
+  //       console.log("resposta: ", resposta);
+
+  //       if (resposta.ok) {
+  // cardErro.style.display = "block";
+
+  // mensagem_erro.innerHTML =
+  //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+  // setTimeout(() => {
+  //   window.location = "./login.html";
+  // }, "2000");
+
+  // limparFormulario();
+  // finalizarAguardar();
+  //       } else {
+  //         throw "Houve um erro ao tentar realizar o cadastro!";
+  //       }
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //       // finalizarAguardar();
+  //     });
+
+  //   return false;
+  // }
+
+  function cadastrarFuncionario() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o mé todo fetch logo abaixo
+    var nomeVar = input_nome.value;
+    var senhaVar = input_senha.value;
+    var confirmacaoSenhaVar = input_confirme_senha.value;
+    var emailVar = input_email.value;
+    var telefoneVar = input_telefone.value;
+    var cnpjClube = sessionStorage.CNPJ_CLUBE;
+
+    console.log(cnpjClube);
+
+    if (
+      (nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == "" ||
+        telefoneVar == "")
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrarFuncionario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeUsuarioServer: nomeVar,
+        emailUsuarioServer: emailVar,
+        senhaUsuarioServer: senhaVar,
+        telefoneUsuarioServer: telefoneVar,
+        cnpjClubeServer: cnpjClube
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          alert("Deu certo! Cadastre o próximo.")
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          // setTimeout(() => {
+          //   window.location = "./cadastro_endereco.html";
+          // }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
