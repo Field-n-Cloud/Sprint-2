@@ -92,11 +92,15 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id; 
-                    sessionStorage.ID_ESTADIO = json.idEstadio; 
-                    sessionStorage.TIPO_USUARIO = json.fkTipoUsuario;
+                    sessionStorage.ID_CLUBE = json.fkClube; 
+                    sessionStorage.EMAIL_USUARIO = json.emailClube;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                    sessionStorage.NOME_CLUBE = json.nomeClube;
+                    sessionStorage.CNPJ_CLUBE = json.cnpjClube;
+                    sessionStorage.ID_ESTADIO = json.idEstadio;
+                    // sessionStorage.TIPO_USUARIO = json.fkTipoUsuario;
+                    // sessionStorage.ID_USUARIO = json.idUsuario;
+                    // console.log(json.idEstadio);
 
                     setTimeout(function () {
                         window.location = "./dashboard.html";
@@ -108,10 +112,10 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
+                // resposta.text().then(texto => {
+                //     console.error(texto);
+                //     finalizarAguardar(texto);
+                // });
             }
 
         }).catch(function (erro) {

@@ -42,14 +42,14 @@
             <img src="../assets/Imagens/logo-SafeLawn.png">
           </div>
           <div class="header-titulo">
-            <h1>Nome time</h1>
+            <h1 class="nome-perfil" id="nome_estadio">Nome clube</h1>
           </div>
         </div>
         <div class="flex-link">
           <a href="cadastro_funcionario.html">
             Cadastrar novo funcionario
           </a>
-          <a href="cadastro_funcionario.html">
+          <a href="#">
             <button class="btn_sair" onclick="">SAIR</button>
           </a>
         </div>
@@ -61,16 +61,53 @@
     <div class="dashboard-wrapper">
       <div class="container">
         <div class="grupo-card">
-          <div class="card card-sensores">
+          <div class="card card-sensores card-1">
             <div>
               <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
-              <h3>Sensores em campo</h3>
+              <h3>Setor 1</h3>
             </div>
 
             <div class="row">
-              <img src="../assets/icon/icone-sensor.png" alt="Icone Sensor" />
-              <h2 class="dados-card">4</h2>
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
             </div>
+            <p class="texto-card">23/05/2023 12:50</p>
+          </div>
+          <div class="card card-sensores card-2">
+            <div>
+              <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
+              <h3>Setor 2</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
+            </div>
+            <p class="texto-card">23/05/2023 12:50</p>
+          </div>
+          <div class="card card-sensores card-3">
+            <div>
+              <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
+              <h3>Setor 3</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
+            </div>
+            <p class="texto-card">23/05/2023 12:50</p>
+          </div>
+          <div class="card card-sensores card-4">
+            <div>
+              <!-- <span class="card-date">24/04/2023 - 13:55</span> -->
+              <h3>Setor 4</h3>
+            </div>
+
+            <div class="row">
+              <img src="../assets/icon/icone-umidade.png" alt="">
+              <h2 class="dados-card">33%</h2>
+            </div>
+            <p class="texto-card">23/05/2023 12:50</p>
           </div>
 
 
@@ -80,9 +117,7 @@
 
       </div>
       <div class="graficos-container">
-        <span id="popup-info-wrapper">
-          <p class="popup-info">i</p>
-        </span>
+          <button onclick="modal()" class="popup-info">i</button>
         <div id="grafico1" class="display-block">
           <h3 class="tituloGraficos">
             <span id="tituloAquario1"></span>
@@ -168,25 +203,28 @@
 
   </div>
 
-  <div class="popup-wrapper disable">
+  <div id="pop_up" class="popup-wrapper disable">
     <div class="popup">
       <div class="container">
-
+        
         <div class="row">
           <div class="color red"></div>
-          <p class="popup-text">Vermelho: Precisa ser resolvido imediatamente! Isso acontece quando seu sensor passa dos
-            extremos de umidade.</p>
+          <p class="popup-text">Vermelho: Precisa ser resolvido imediatamente! Isso acontece quando seu sensor passa dos extremos de umidade.</p>
         </div>
 
         <div class="row">
           <div class="color yellow"></div>
-          <p class="popup-text"></p>
+          <p class="popup-text"> <b> Amarelo: </b> É necessária uma devida atenção. Isso acontece quando seu sensor está se aproximando dos extremos de uma umidade. </p>
         </div>
 
         <div class="row">
           <div class="color green"></div>
-          <p class="popup-text"></p>
+          <p class="popup-text"> <b> Verde: </b> A situação está segura. Isso acontece quando seu sensor está com a umidade em um ponto ideal. </p>
         </div>
+
+        <button onclick="modal()" class="voltar">
+          VOLTAR
+        </button>
 
       </div>
     </div>
@@ -197,79 +235,8 @@
 </html>
 
 <script>
-
-
-
-  function alertar(umidade, min, max, idSetor) {
-    var al = document.getElementById(`al${idSetor}`);
-    var alSetor = document.getElementById(`al_setor${idSetor}`);
-    var alEstado = document.getElementById(`al_estado${idSetor}`);
-    var alUmidade = document.getElementById(`al_umidade${idSetor}`);
-
-    console.log(alSetor);
-    console.log(max * 0.9);
-
-    if (umidade < min) {
-      console.log('muito baixo');
-      al.style.transform = 'translateX(0)';
-      alSetor.innerHTML = idSetor
-      alEstado.innerHTML = 'Perigo'
-      alUmidade.innerHTML = `${umidade}%`
-
-    } else if (umidade <= min * 1.1) {
-      console.log('baixo');
-      al.style.transform = 'translateX(0)';
-      alSetor.innerHTML = idSetor
-      alEstado.innerHTML = 'Alerta'
-      alUmidade.innerHTML = `${umidade}%`
-
-    } else if (umidade > max * 0.9
-      && umidade < max) {
-      console.log('alto');
-      al.style.transform = 'translateX(0)';
-      alSetor.innerHTML = idSetor
-      alEstado.innerHTML = 'Alerta'
-      alUmidade.innerHTML = `${umidade}%`
-
-    } else if (umidade > max) {
-      console.log('muito alto');
-      al.style.transform = 'translateX(0)';
-      alSetor.innerHTML = idSetor
-      alEstado.innerHTML = 'Perigo'
-      alUmidade.innerHTML = `${umidade}%`
-
-    } else {
-      // console.log('dado errado');
-      console.log('ideal');
-      al.style.transform = 'translateX(250px)';
-
-    }
-
-  }
-
-  function mapeamentoSetores(resposta) {
-    var mapeamentoSetores = [];
-
-    for (var i = 0; i < resposta.length; i++) {
-      var registro = resposta[i];
-      var idSetor = registro.idSetor;
-
-      if (!mapeamentoSetores.includes(idSetor)) {
-        if (idSetor > mapeamentoSetores[i]) {
-          mapeamentoSetores.push(idSetor);
-        } else {
-          mapeamentoSetores.unshift(idSetor);
-        }
-      }
-    }
-
-    return filtrarSetor(mapeamentoSetores, resposta);
-
-  }
-
-
-  function filtrarSetor(mapeamentoSetores, resposta) {
-
+ function filtrarSetor(mapeamentoSetores, resposta) {
+    
     var setores = [[], [], [], []];
 
     for (var i = 0; i < resposta.length; i++) {
@@ -303,7 +270,7 @@
       clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimas/${sessionStorage.ID_ESTADIO}/setores`, {
+    fetch(`/medidas/ultimas/${sessionStorage.ID_CLUBE}/setores`, {
       cache: "no-store",
     })
       .then(function (response) {
@@ -326,7 +293,7 @@
       });
   }
 
-  const cores = ['#00ffc8', '#0099ff', '#0400ff', '#02007c'];
+  const cores = ['green', 'blue', 'red', 'yellow'];
 
   function plotarGrafico(setores) {
     console.log("Iniciando plotagem do gráfico...");
@@ -351,19 +318,11 @@
         tension: 0.1,
       };
 
-      var ultimoRegistro = setor[setor.length - 1];
-      alertar(ultimoRegistro.umidade, ultimoRegistro.min, ultimoRegistro.max, ultimoRegistro.idSetor);
-
-      console.log(setor[setor.length - 1]);
-
       for (var j = 0; j < setor.length; j++) {
         var registro = setor[j];
         if (!horario.includes(registro.momento_grafico)) {
           horario.push(registro.momento_grafico);
           labels.push(registro.momento_grafico);
-
-          // console.log(registro);
-
         }
         dataset.data.push(registro.umidade);
       }
@@ -428,53 +387,10 @@
                 var setor = setores[i];
                 dataset.data.shift();
 
-                console.log('no else');
-
 
                 if (setor.length > 0) {
                   var ultimoRegistroSetor = setor[setor.length - 1];
                   dataset.data.push(ultimoRegistroSetor.umidade);
-
-                  // console.log(ultimoRegistroSetor.umidade, ultimoRegistroSetor.min, ultimoRegistroSetor.max, ultimoRegistroSetor);
-
-                  alertar(ultimoRegistroSetor.umidade, ultimoRegistroSetor.min, ultimoRegistroSetor.max, ultimoRegistroSetor.idSetor)
-
-                  // if (ultimoRegistroSetor.umidade < ultimoRegistroSetor.min) {
-                  //   console.log('muito baixo');
-                  //   al.style.transform = 'translateX(0)';
-                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
-                  //   al_estado.innerHTML = 'Perigo'
-                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
-
-                  // } else if (ultimoRegistroSetor.umidade <= ultimoRegistroSetor.min * 1.25) {
-                  //   console.log('baixo');
-                  //   al.style.transform = 'translateX(0)';
-                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
-                  //   al_estado.innerHTML = 'Alerta'
-                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
-
-                  // } else if (ultimoRegistroSetor.umidade > ultimoRegistroSetor.max * 0.75
-                  //   && ultimoRegistroSetor.umidade < ultimoRegistroSetor.max) {
-                  //   console.log('alto');
-                  //   al.style.transform = 'translateX(0)';
-                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
-                  //   al_estado.innerHTML = 'Alerta'
-                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
-
-                  // } else if (ultimoRegistroSetor.umidade > ultimoRegistroSetor.max) {
-                  //   console.log('muito alto');
-                  //   al.style.transform = 'translateX(0)';
-                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
-                  //   al_estado.innerHTML = 'Perigo'
-                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
-
-                  // } else {
-                  //   // console.log('dado errado');
-                  //   console.log('ideal');
-                  //   al.style.transform = 'translateX(250px)';
-
-                  // }
-
                 } else {
                   dataset.data.push(null);
                 }

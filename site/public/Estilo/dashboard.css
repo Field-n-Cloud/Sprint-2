@@ -120,6 +120,7 @@
     align-items: center;
     justify-content: space-around;
     text-transform: uppercase;
+    gap: 10px;
 }
     .row {
         display: flex;
@@ -135,13 +136,13 @@
     }
 
     .grupo-card .card {
-        width: 30%;
+        width: 20%;
         height: 28vh;
         border-radius: 15px;
 
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
 
         font-family: 'K2D';
@@ -154,21 +155,30 @@
         color: #FFFFFF;
     }
 
+    .texto-card {
+        font-family: 'Lexend';
+        font-weight: 400;
+        font-size: 16px;
+    }
+
     .card .dados-card {
         font-size: 30px;
     }
 
-    .card-sensores {
-        background-color: #2E793D;
+    .card-1 {
+        background-color: #0fb692;
     }
 
-    .card-umidade {
-        background-color: #28AD44;
+    .card-2 {
+        background-color: #098ae0;
     }
 
-    .card.card-jogabilidade {
-        width: 35%;
-        background-color: #1ECE43;
+    .card-3 {
+        background-color: #0400ff;
+    } 
+
+    .card-4 {
+        background-color: #02007c;
     }
 
     .card-date {
@@ -257,8 +267,8 @@ height: 400px;
 }
 
 .al-icone img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
 .al-info {
@@ -271,9 +281,22 @@ height: 400px;
     padding: 10px;
 }
 
-/* .popup-wrapper.disable {
+.popup-info {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #666666;
+    border-radius: 100%;
+    color: #666666;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+
+.popup-wrapper.disable {
     display: none;
-} */
+}
 
 .popup-wrapper {
     width: 100%;
@@ -286,14 +309,14 @@ height: 400px;
     align-items: center;
     z-index: 4;
     background-color: rgba(0, 0, 0, 0.8);
-    display: none;
 }
 
     .popup {
-        width: 500px;
-        height: 300px;
+        width: 600px;
+        height: 400px;
         background-color: #D9D9D9;
         border-radius: 20px;
+        padding: 15px;
     }
 
     .popup .container {
@@ -331,6 +354,22 @@ height: 400px;
 
     .popup-text {
         width: 100%;
+        font-family: 'K2D';
+    }
+
+    .voltar {
+        border: none;
+        background: none;
+        color: #666666;
+        cursor: pointer;
+        font-weight: 800;
+        font-family: 'Lexend';
+        text-decoration: underline;
+        transition: all .25s ease-in-out;
+    }
+    
+    .voltar:hover {
+        color: #1ECE43;
     }
 
     /* SIDEBAR */

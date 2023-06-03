@@ -1,4 +1,5 @@
-var database = require("../database/config")
+var database = require("../database/config");
+const { search } = require("../routes/usuarios");
 
 function listar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
@@ -12,15 +13,13 @@ function listar() {
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT emailUsuario, senhaUsuario, idEstadio FROM usuario JOIN 
-        clube ON usuario.fkClube = idClube JOIN estadio ON idClube = estadio.fkClube  WHERE emailUsuario = '${email}' AND senhaUsuario = '${senha}';
-    `;
+    SELECT idClube, emailClube, senhaClube, nomeClube, cnpjClube, idEstadio FROM clube JOIN estadio ON fkClube = idlube WHERE emailClube = '${email}' AND senhaClube = '${senha}';`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     
     
     // VERIFICAÇÃO DE LOGIN CASO FOR DE CLUBES
     // if(database.executar(instrucao).length == 0) {
-    //     instrucao = `
+    //     instrucao = `npm 
     //         SELECT * FROM clube WHERE email = '${email}' AND senha = '${senha}';
     //     `;
     // }
@@ -78,6 +77,22 @@ function cadastrar(clube, endereco, estadio, gramado) {
     
 }
 
+function cadastrarFuncionario(usuario) {
+    // console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao1 = `
+        INSERT INTO usuario 
+        (nomeUsuario, emailUsuario, senhaUsuario, telefoneUsuario, fkClube, fkTipoUsuario)
+        VALUES 
+        ('${usuario.nome}', '${usuario.email}', '${usuario.senha}', '${usuario.telefone}', (SELECT idClube FROM clube WHERE cnpjClube = '${usuario.cnpjClube}'), 2);
+    `;
+    
+    // console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao1)
+    
+}
 // function cadastrarClube(nome, email, senha, cnpj, telefone, uf) {
 //     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarClube():", nome, email, senha);
     
@@ -105,6 +120,7 @@ function cadastrar(clube, endereco, estadio, gramado) {
 module.exports = {
     entrar,
     cadastrar,
+    cadastrarFuncionario,
     // cadastrarClube,
     // cadastrarEndereco,
     listar,
