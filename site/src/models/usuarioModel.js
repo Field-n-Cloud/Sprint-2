@@ -12,19 +12,40 @@ function listar() {
 
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+
     var instrucao = `
-    SELECT idClube, emailClube, senhaClube, nomeClube, cnpjClube, idEstadio FROM clube JOIN estadio ON fkClube = idClube WHERE emailClube = '${email}' AND senhaClube = '${senha}';`;
+    SELECT idClube, emailClube, senhaClube, nomeClube, cnpjClube, clube.fkTipoUsuario as tipoUsuario, idEstadio FROM clube JOIN estadio ON fkClube = idClube WHERE emailClube = '${email}' AND senhaClube = '${senha}';`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     
-    
-    // VERIFICAÇÃO DE LOGIN CASO FOR DE CLUBES
-    // if(database.executar(instrucao).length == 0) {
-    //     instrucao = `npm 
-    //         SELECT * FROM clube WHERE email = '${email}' AND senha = '${senha}';
-    //     `;
-    // }
-        
-    return database.executar(instrucao);
+    var resultado = database.executar(instrucao);
+    return resultado
+        .then(
+            function(resultados) {
+                if(resultados == 0) {
+                    instrucao = ` 
+                        SELECT
+                            idClube,
+                            emailUsuario,
+                            senhaUsuario,
+                            nomeUsuario,
+                            cnpjClube,
+                            usuario.fkTipoUsuario as tipoUsuario,
+                            idEstadio
+                        FROM
+                            usuario
+                        JOIN clube ON usuario.fkClube = clube.idClube
+                        JOIN estadio ON idClube = estadio.fkClube
+                        WHERE
+                            usuario.emailUsuario = '${email}'
+                            AND usuario.senhaUsuario = '${senha}';
+                    `;
+                    
+                    resultado = database.executar(instrucao);
+                }
+
+                return resultado;
+            }
+        );
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao

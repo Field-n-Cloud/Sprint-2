@@ -45,11 +45,9 @@
             <h1 class="nome-perfil" id="nome_estadio">Nome clube</h1>
           </div>
         </div>
-        <div class="flex-link">
-          <a href="cadastro_funcionario.html">
-            Cadastrar novo funcionario
-          </a>
-          <a href="#">
+        <div class="flex-link" id="flexLink">
+          
+          <a href="#" id="btnSairLink">
             <button class="btn_sair" onclick="">SAIR</button>
           </a>
         </div>
@@ -244,6 +242,13 @@
 
 <script>
 
+function funcoesAdmin() {
+    if (sessionStorage.TIPO_USUARIO == 1) {
+        var novoLink = `<a href="./cadastro_funcionario.html">Cadastrar novo funcionário</a>`;
+        btnSairLink.insertAdjacentHTML('beforebegin', novoLink);
+    }
+  }
+
   function modal () {
     pop_up.classList.toggle('disable');
   }
@@ -345,7 +350,10 @@
 
   let proximaAtualizacao;
 
-  window.onload = obterDadosGraficos();
+  window.onload = () => {
+    obterDadosGraficos();
+    funcoesAdmin();
+  };
 
   function obterDadosGraficos() {
     obterDadosGrafico();
