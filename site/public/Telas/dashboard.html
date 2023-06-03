@@ -248,6 +248,8 @@
     var alEstado = document.getElementById(`al_estado${idSetor}`);
     var alUmidade = document.getElementById(`al_umidade${idSetor}`);
 
+    var alBadge = al.querySelector('.al-icone');
+
     console.log(alSetor);
     console.log(max * 0.9);
 
@@ -257,6 +259,7 @@
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Perigo'
       alUmidade.innerHTML = `${umidade}%`
+      alBadge.style.backgroundColor = 'red'
 
     } else if (umidade <= min * 1.1) {
       console.log('baixo');
@@ -264,6 +267,7 @@
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Alerta'
       alUmidade.innerHTML = `${umidade}%`
+      alBadge.style.backgroundColor = 'yellow'
 
     } else if (umidade > max * 0.9
       && umidade < max) {
@@ -272,6 +276,7 @@
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Alerta'
       alUmidade.innerHTML = `${umidade}%`
+      alBadge.style.backgroundColor = 'yellow'
 
     } else if (umidade > max) {
       console.log('muito alto');
@@ -279,6 +284,7 @@
       alSetor.innerHTML = idSetor
       alEstado.innerHTML = 'Perigo'
       alUmidade.innerHTML = `${umidade}%`
+      alBadge.style.backgroundColor = 'red'
 
     } else {
       // console.log('dado errado');
