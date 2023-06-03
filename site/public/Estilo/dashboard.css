@@ -204,10 +204,18 @@
     width:100%;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
 
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
 }
+
+    .graficos-container .row {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
 
 .norte_leste{
     display:none;
@@ -231,8 +239,7 @@ height: 400px;
 
 }
 
-#myChartCanvas1 {
-    
+.chart {
     border-radius: 20px;
     background-color: white;
     padding: 20px;

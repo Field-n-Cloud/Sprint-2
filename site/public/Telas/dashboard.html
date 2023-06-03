@@ -54,7 +54,7 @@
           </a>
         </div>
       </div>
-      
+
     </div>
   </div>
   <div class="dashboard-section">
@@ -116,86 +116,89 @@
         </section>
 
       </div>
+
       <div class="graficos-container">
-          <button onclick="modal()" class="popup-info">i</button>
-        <div id="grafico1" class="display-block">
-          <h3 class="tituloGraficos">
-            <span id="tituloAquario1"></span>
-          </h3>
+        <div class="row">
           <div class="graph">
-            <canvas id="myChartCanvas1"></canvas>
+            <canvas id="lineChart" class="chart"></canvas>
           </div>
-          <div class="label-captura">
-            <p id="avisoCaptura1" style="color: white ; position: absolute; bottom: 5%;"></p>
+
+          <div class="graph">
+            <canvas id="barChart" class="chart"></canvas>
           </div>
         </div>
 
-        <!-- <div id="grafico_geral" class="grafico">
+        <div class="label-captura">
+          <p id="avisoCaptura1"></p>
+        </div>
+      </div>
+
+      <!-- <div id="grafico_geral" class="grafico">
                             <canvas id="dht11Umidade"></canvas>
                         </div> -->
 
-        <!-- <div id="grafico_historico" class="grafico">
+      <!-- <div id="grafico_historico" class="grafico">
                             <canvas id="historico"></canvas>
                         </div> -->
 
-        <div class="alertas" id="alertas">
-          <div id="al1" class="alerta">
-            <div class="al-icone">
-              <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-            </div>
-            <div class="al-info">
-              <p>Setor <span id="al_setor1" class="al-setor"> X </span></p>
-              <div>
-                <h3>Estado de <span id="al_estado1" class="al-estado"> Perigo </span></h3>
-                <p>Umidade em <b id="al_umidade1" class="al-umidade"> Y% </b></p>
-              </div>
+      <div class="alertas" id="alertas">
+        <div id="al1" class="alerta">
+          <div class="al-icone">
+            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+          </div>
+          <div class="al-info">
+            <p>Setor <span id="al_setor1" class="al-setor"> X </span></p>
+            <div>
+              <h3>Estado de <span id="al_estado1" class="al-estado"> Perigo </span></h3>
+              <p>Umidade em <b id="al_umidade1" class="al-umidade"> Y% </b></p>
             </div>
           </div>
-
-          <div id="al2" class="alerta">
-            <div class="al-icone">
-              <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-            </div>
-            <div class="al-info">
-              <p>Setor <span id="al_setor2" class="al-setor"> X </span></p>
-              <div>
-                <h3>Estado de <span id="al_estado2" class="al-estado"> Perigo </span></h3>
-                <p>Umidade em <b id="al_umidade2" class="al-umidade"> Y% </b></p>
-              </div>
-            </div>
-          </div>
-
-          <div id="al3" class="alerta">
-            <div class="al-icone">
-              <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-            </div>
-            <div class="al-info">
-              <p>Setor <span id="al_setor3" class="al-setor"> X </span></p>
-              <div>
-                <h3>Estado de <span id="al_estado3" class="al-estado"> Perigo </span></h3>
-                <p>Umidade em <b id="al_umidade3" class="al-umidade"> Y% </b></p>
-              </div>
-            </div>
-          </div>
-
-          <div id="al4" class="alerta">
-            <div class="al-icone">
-              <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-            </div>
-            <div class="al-info">
-              <p>Setor <span id="al_setor4" class="al-setor"> X </span></p>
-              <div>
-                <h3>Estado de <span id="al_estado4" class="al-estado"> Perigo </span></h3>
-                <p>Umidade em <b id="al_umidade4" class="al-umidade"> Y% </b></p>
-              </div>
-            </div>
-          </div>
-
         </div>
 
+        <div id="al2" class="alerta">
+          <div class="al-icone">
+            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+          </div>
+          <div class="al-info">
+            <p>Setor <span id="al_setor2" class="al-setor"> X </span></p>
+            <div>
+              <h3>Estado de <span id="al_estado2" class="al-estado"> Perigo </span></h3>
+              <p>Umidade em <b id="al_umidade2" class="al-umidade"> Y% </b></p>
+            </div>
+          </div>
+        </div>
+
+        <div id="al3" class="alerta">
+          <div class="al-icone">
+            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+          </div>
+          <div class="al-info">
+            <p>Setor <span id="al_setor3" class="al-setor"> X </span></p>
+            <div>
+              <h3>Estado de <span id="al_estado3" class="al-estado"> Perigo </span></h3>
+              <p>Umidade em <b id="al_umidade3" class="al-umidade"> Y% </b></p>
+            </div>
+          </div>
+        </div>
+
+        <div id="al4" class="alerta">
+          <div class="al-icone">
+            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+          </div>
+          <div class="al-info">
+            <p>Setor <span id="al_setor4" class="al-setor"> X </span></p>
+            <div>
+              <h3>Estado de <span id="al_estado4" class="al-estado"> Perigo </span></h3>
+              <p>Umidade em <b id="al_umidade4" class="al-umidade"> Y% </b></p>
+            </div>
+          </div>
+        </div>
 
       </div>
+
+
     </div>
+  </div>
   </div>
   </div>
   </div>
@@ -206,20 +209,23 @@
   <div id="pop_up" class="popup-wrapper disable">
     <div class="popup">
       <div class="container">
-        
+
         <div class="row">
           <div class="color red"></div>
-          <p class="popup-text">Vermelho: Precisa ser resolvido imediatamente! Isso acontece quando seu sensor passa dos extremos de umidade.</p>
+          <p class="popup-text">Vermelho: Precisa ser resolvido imediatamente! Isso acontece quando seu sensor passa dos
+            extremos de umidade.</p>
         </div>
 
         <div class="row">
           <div class="color yellow"></div>
-          <p class="popup-text"> <b> Amarelo: </b> É necessária uma devida atenção. Isso acontece quando seu sensor está se aproximando dos extremos de uma umidade. </p>
+          <p class="popup-text"> <b> Amarelo: </b> É necessária uma devida atenção. Isso acontece quando seu sensor está
+            se aproximando dos extremos de uma umidade. </p>
         </div>
 
         <div class="row">
           <div class="color green"></div>
-          <p class="popup-text"> <b> Verde: </b> A situação está segura. Isso acontece quando seu sensor está com a umidade em um ponto ideal. </p>
+          <p class="popup-text"> <b> Verde: </b> A situação está segura. Isso acontece quando seu sensor está com a
+            umidade em um ponto ideal. </p>
         </div>
 
         <button onclick="modal()" class="voltar">
@@ -235,8 +241,76 @@
 </html>
 
 <script>
- function filtrarSetor(mapeamentoSetores, resposta) {
-    
+
+  function alertar(umidade, min, max, idSetor) {
+    var al = document.getElementById(`al${idSetor}`);
+    var alSetor = document.getElementById(`al_setor${idSetor}`);
+    var alEstado = document.getElementById(`al_estado${idSetor}`);
+    var alUmidade = document.getElementById(`al_umidade${idSetor}`);
+
+    console.log(alSetor);
+    console.log(max * 0.9);
+
+    if (umidade < min) {
+      console.log('muito baixo');
+      al.style.transform = 'translateX(0)';
+      alSetor.innerHTML = idSetor
+      alEstado.innerHTML = 'Perigo'
+      alUmidade.innerHTML = `${umidade}%`
+
+    } else if (umidade <= min * 1.1) {
+      console.log('baixo');
+      al.style.transform = 'translateX(0)';
+      alSetor.innerHTML = idSetor
+      alEstado.innerHTML = 'Alerta'
+      alUmidade.innerHTML = `${umidade}%`
+
+    } else if (umidade > max * 0.9
+      && umidade < max) {
+      console.log('alto');
+      al.style.transform = 'translateX(0)';
+      alSetor.innerHTML = idSetor
+      alEstado.innerHTML = 'Alerta'
+      alUmidade.innerHTML = `${umidade}%`
+
+    } else if (umidade > max) {
+      console.log('muito alto');
+      al.style.transform = 'translateX(0)';
+      alSetor.innerHTML = idSetor
+      alEstado.innerHTML = 'Perigo'
+      alUmidade.innerHTML = `${umidade}%`
+
+    } else {
+      // console.log('dado errado');
+      console.log('ideal');
+      al.style.transform = 'translateX(250px)';
+
+    }
+
+  }
+
+  function mapeamentoSetores(resposta) {
+    var mapeamentoSetores = [];
+
+    for (var i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      var idSetor = registro.idSetor;
+
+      if (!mapeamentoSetores.includes(idSetor)) {
+        if (idSetor > mapeamentoSetores[i]) {
+          mapeamentoSetores.push(idSetor);
+        } else {
+          mapeamentoSetores.unshift(idSetor);
+        }
+      }
+    }
+
+    return filtrarSetor(mapeamentoSetores, resposta);
+
+  }
+
+  function filtrarSetor(mapeamentoSetores, resposta) {
+
     var setores = [[], [], [], []];
 
     for (var i = 0; i < resposta.length; i++) {
@@ -270,7 +344,7 @@
       clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimas/${sessionStorage.ID_CLUBE}/setores`, {
+    fetch(`/medidas/ultimas/${sessionStorage.ID_ESTADIO}/setores`, {
       cache: "no-store",
     })
       .then(function (response) {
@@ -280,7 +354,8 @@
             resposta.reverse();
 
             var setores = mapeamentoSetores(resposta);
-            plotarGrafico(setores);
+            plotarGraficoLinha(setores);
+            plotarGraficoBarra(setores);
           });
         } else {
           console.error("Nenhum dado encontrado ou erro na API");
@@ -293,9 +368,11 @@
       });
   }
 
-  const cores = ['green', 'blue', 'red', 'yellow'];
+  const cores = ['#00ffc8', '#0099ff', '#0400ff', '#02007c'];
+  var dates = document.querySelectorAll('.texto-card');
+  var umidades = document.querySelectorAll('.dados-card');
 
-  function plotarGrafico(setores) {
+  function plotarGraficoLinha(setores) {
     console.log("Iniciando plotagem do gráfico...");
 
     var labels = [];
@@ -318,11 +395,23 @@
         tension: 0.1,
       };
 
+      var ultimoRegistro = setor[setor.length - 1];
+
+      dates[posicaoSetor].innerHTML = ultimoRegistro.momento_grafico;
+      umidades[posicaoSetor].innerHTML = `${ultimoRegistro.umidade}%`
+
+      alertar(ultimoRegistro.umidade, ultimoRegistro.min, ultimoRegistro.max, ultimoRegistro.idSetor);
+
+      console.log(setor[setor.length - 1]);
+
       for (var j = 0; j < setor.length; j++) {
         var registro = setor[j];
         if (!horario.includes(registro.momento_grafico)) {
           horario.push(registro.momento_grafico);
           labels.push(registro.momento_grafico);
+
+          // console.log(registro);
+
         }
         dataset.data.push(registro.umidade);
       }
@@ -340,12 +429,68 @@
       data: dados,
     };
 
-    var myChart = new Chart(document.getElementById("myChartCanvas1"), config);
+    var myChart = new Chart(document.getElementById("lineChart"), config);
 
-    setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+    setTimeout(() => atualizarGraficoLinha(dados, myChart), 2000);
   }
 
-  function atualizarGrafico(dados, myChart) {
+  function plotarGraficoBarra(setores) {
+    console.log("Iniciando plotagem do gráfico...");
+
+    var labels = [];
+    var dados = {
+      labels: labels,
+      datasets: [],
+    };
+
+    for (var posicaoSetor = 0; posicaoSetor < setores.length; posicaoSetor++) {
+      var setor = setores[posicaoSetor];
+
+      var dataset = {
+        label: "Setor " + (posicaoSetor + 1),
+        labels: "Setor " + (posicaoSetor + 1),
+        data: [],
+        borderColor: cores[posicaoSetor],
+        backgroundColor: cores[posicaoSetor],
+        tension: 0.1,
+      };
+
+      var ultimoRegistro = setor[setor.length - 1];
+
+      console.log(setor[setor.length - 1]);
+
+      for (var j = 0; j < setor.length; j++) {
+        var registro = setor[j];
+        dataset.data.push(registro.umidade);
+      }
+
+      dados.datasets.push(dataset);
+    }
+
+    console.log("Labels:");
+    console.log(labels);
+    console.log("Dados:");
+    console.log(dados.datasets);
+
+    const config = {
+      type: "bar",
+      data: dados,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    };
+
+    var myChart = new Chart(document.getElementById("barChart"), config);
+
+    setTimeout(() => atualizarGraficoBarra(dados, myChart), 2000);
+  }
+
+
+  function atualizarGraficoLinha(dados, myChart) {
     fetch(`/medidas/tempo-real/${sessionStorage.ID_ESTADIO}/setores`, {
       cache: "no-store",
     })
@@ -387,10 +532,53 @@
                 var setor = setores[i];
                 dataset.data.shift();
 
+                console.log('no else');
+
 
                 if (setor.length > 0) {
                   var ultimoRegistroSetor = setor[setor.length - 1];
                   dataset.data.push(ultimoRegistroSetor.umidade);
+
+                  // console.log(ultimoRegistroSetor.umidade, ultimoRegistroSetor.min, ultimoRegistroSetor.max, ultimoRegistroSetor);
+
+                  alertar(ultimoRegistroSetor.umidade, ultimoRegistroSetor.min, ultimoRegistroSetor.max, ultimoRegistroSetor.idSetor)
+
+                  // if (ultimoRegistroSetor.umidade < ultimoRegistroSetor.min) {
+                  //   console.log('muito baixo');
+                  //   al.style.transform = 'translateX(0)';
+                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
+                  //   al_estado.innerHTML = 'Perigo'
+                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
+
+                  // } else if (ultimoRegistroSetor.umidade <= ultimoRegistroSetor.min * 1.25) {
+                  //   console.log('baixo');
+                  //   al.style.transform = 'translateX(0)';
+                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
+                  //   al_estado.innerHTML = 'Alerta'
+                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
+
+                  // } else if (ultimoRegistroSetor.umidade > ultimoRegistroSetor.max * 0.75
+                  //   && ultimoRegistroSetor.umidade < ultimoRegistroSetor.max) {
+                  //   console.log('alto');
+                  //   al.style.transform = 'translateX(0)';
+                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
+                  //   al_estado.innerHTML = 'Alerta'
+                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
+
+                  // } else if (ultimoRegistroSetor.umidade > ultimoRegistroSetor.max) {
+                  //   console.log('muito alto');
+                  //   al.style.transform = 'translateX(0)';
+                  //   al_setor.innerHTML = ultimoRegistroSetor.idSetor
+                  //   al_estado.innerHTML = 'Perigo'
+                  //   al_umidade.innerHTML = `${ultimoRegistroSetor.umidade}%`
+
+                  // } else {
+                  //   // console.log('dado errado');
+                  //   console.log('ideal');
+                  //   al.style.transform = 'translateX(250px)';
+
+                  // }
+
                 } else {
                   dataset.data.push(null);
                 }
@@ -400,14 +588,98 @@
             }
 
             proximaAtualizacao = setTimeout(
-              () => atualizarGrafico(dados, myChart),
+              () => atualizarGraficoLinha(dados, myChart),
               2000
             );
           });
         } else {
           console.error("Nenhum dado encontrado ou erro na API");
           proximaAtualizacao = setTimeout(
-            () => atualizarGrafico(dados, myChart),
+            () => atualizarGraficoLinha(dados, myChart),
+            2000
+          );
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
+
+
+  function atualizarGraficoBarra(dados, myChart) {
+    fetch(`/medidas/tempo-real/${sessionStorage.ID_ESTADIO}/setores`, {
+      cache: "no-store",
+    })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (novoRegistro) {
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            var setores = mapeamentoSetores(novoRegistro).reverse();
+            console.log("Dados atuais do gráfico:");
+            console.log(dados);
+
+            // var avisoCaptura = document.getElementById("avisoCaptura1");
+            // avisoCaptura.innerHTML = "";
+
+            if (
+              novoRegistro[0].momento_grafico ==
+              dados.labels[dados.labels.length - 1]
+            ) {
+              console.log(
+                "---------------------------------------------------------------"
+              );
+              console.log(
+                "Como não há dados novos para captura, o gráfico não atualizará."
+              );
+              // avisoCaptura.innerHTML =
+              //   "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.";
+              console.log("Horário do novo dado capturado:");
+              console.log(novoRegistro[0].momento_grafico);
+              console.log("Horário do último dado capturado:");
+              console.log(dados.labels[dados.labels.length - 1]);
+              console.log(
+                "---------------------------------------------------------------"
+              );
+            } else {
+              dados.labels.shift();
+              dados.labels.push(novoRegistro[0].momento_grafico);
+              for (var i = 0; i < setores.length; i++) {
+
+                for (var i = 0; i < setores.length; i++) {
+                  var dataset = dados.datasets[i];
+                  var setor = setores[i];
+
+                  if (setor.length > 0) {
+                    var ultimoRegistroSetor = setor[setor.length - 1];
+
+                    dataset.data.splice(
+                      0,
+                      dataset.data.length,
+                      ultimoRegistroSetor.umidade
+                    );
+                  } else {
+                    dataset.data.splice(0, dataset.data.length, null);
+                  }
+                }
+
+                myChart.update();
+
+              }
+
+              myChart.update();
+            }
+
+            proximaAtualizacao = setTimeout(
+              () => atualizarGraficoBarra(dados, myChart),
+              2000
+            );
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoBarra(dados, myChart),
             2000
           );
         }
