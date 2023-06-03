@@ -196,6 +196,8 @@
 
       </div>
 
+      <button class="btn-info" onclick="modal()">i</button>
+
 
     </div>
   </div>
@@ -241,6 +243,10 @@
 </html>
 
 <script>
+
+  function modal () {
+    pop_up.classList.toggle('disable');
+  }
 
   function alertar(umidade, min, max, idSetor) {
     var al = document.getElementById(`al${idSetor}`);

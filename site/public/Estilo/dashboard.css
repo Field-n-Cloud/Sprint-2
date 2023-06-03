@@ -510,6 +510,23 @@ height: 400px;
         background-color: white;
         border-radius: 10px;
     }
+
+    .btn-info {
+        border: 2px solid #666666;
+        color: #666666;
+        background-color: none;
+        font-size: 24px;
+        border-radius: 100%;
+        position: absolute;
+        right: 25px;
+        bottom: 25px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     
     @keyframes expansao {
     
