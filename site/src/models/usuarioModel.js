@@ -77,9 +77,9 @@ function cadastrar(clube, endereco, estadio, gramado) {
 
     var instrucao4 = `
         INSERT INTO estadio 
-        (nomeEstadio, cnpjEstadio, fkClube) 
+        (nomeEstadio, cnpjEstadio, fkClube, fkModeloGramado) 
         VALUES 
-        ('${estadio.nomeEstadio}', '${estadio.cnpjEstadio}', (SELECT idClube FROM clube WHERE cnpjClube = '${clube.cnpjClube}'));
+        ('${estadio.nomeEstadio}', '${estadio.cnpjEstadio}', (SELECT idClube FROM clube WHERE cnpjClube = '${clube.cnpjClube}'), (SELECT idModeloGramado FROM modeloGramado WHERE nomeModelo = '${gramado.modeloGramado}') );
     `;
     
     var instrucao5 = `

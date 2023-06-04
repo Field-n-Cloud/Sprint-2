@@ -20,7 +20,7 @@ function buscarUltimasMedidasSetores(idEstadio) {
             JOIN Estadio ON fkEstadio = idEstadio
             JOIN modeloGramado ON idModeloGramado = fkModeloGramado
             JOIN parametro ON idParametro = fkParametro
-                WHERE idEstadio = ${idEstadio} ORDER BY dtCaptura DESC LIMIT 12;
+                WHERE idEstadio = ${idEstadio} ORDER BY dtCaptura DESC LIMIT 16;
         `; 
         
 

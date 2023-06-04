@@ -11,9 +11,7 @@
   <!-- <script src="http://www.chartjs.org/samples/latest/utils.js"></script> -->
   <script src="../js/dashboard.js"></script>
   <script src="../js/animacao.js"></script>
-
-  <script
-    src="https://desk.zoho.com/portal/api/feedbackwidget/861047000000250005?orgId=811102377&displayType=popout"></script>
+  <!-- <script src="https://desk.zoho.com/portal/api/feedbackwidget/866030000000227272?orgId=812752501&displayType=popout"></script> -->
 
   <script src="../js/funcoes.js"></script>
   <link rel="stylesheet" href="../Estilo/dashboard.css" />
@@ -46,7 +44,9 @@
           </div>
         </div>
         <div class="flex-link" id="flexLink">
-          
+          <a href="suporte.html">
+            Suporte
+        </a>
           <a href="#" id="btnSairLink">
             <button class="btn_sair" onclick="">SAIR</button>
           </a>
@@ -117,87 +117,127 @@
 
       <div class="graficos-container">
         <div class="row">
-          <div class="graph">
+          <div id="graph1" class="graph ativo">
             <canvas id="lineChart" class="chart"></canvas>
           </div>
 
-          <div class="graph">
+          <div id="graph2" class="graph inativo" id="graph2">
             <canvas id="barChart" class="chart"></canvas>
           </div>
-        </div>
 
-        <div class="label-captura">
           <p id="avisoCaptura1"></p>
+          <div class="selecao">
+            <button onclick="alternarGrafico()">Linhas</button>
+            <button onclick="alternarGrafico()">Barras</button>
+          </div>
+
+          <script>
+            function alternarGrafico(){
+              var graficoLinha = document.getElementById('graph1');
+              var graficoColuna = document.getElementById('graph2');
+
+              console.log(graficoColuna.classList)
+              if(graficoColuna.classList[1] == 'inativo' && graficoLinha.classList[1] == 'ativo'){
+                  alternarGraficoColuna();
+              }
+              
+              if (graficoLinha.classList[1]== 'inativo' && graficoColuna.classList[1] == 'ativo'){
+                alternarGraficoLinha();
+              }
+            }
+
+            function alternarGraficoColuna(){
+              var graficoLinha = document.getElementById('graph1');
+              var graficoColuna = document.getElementById('graph2');
+
+              graficoColuna.classList.replace('inativo', 'ativo');
+              graficoLinha.classList.replace('ativo', 'inativo');
+            }
+
+            function alternarGraficoLinha(){
+              var graficoLinha = document.getElementById('graph1');
+              var graficoColuna = document.getElementById('graph2');
+
+              graficoColuna.classList.replace('ativo', 'inativo');
+              graficoLinha.classList.replace('inativo', 'ativo');
+            }
+          </script>
+        </div>
+        <div class="container-alertas">
+          <h3>Alertas</h3>
+          <div class="alertas" id="alertas">
+            <div id="al1" class="alerta">
+              <div class="al-icone">
+                <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+              </div>
+              <div class="al-info">
+                <p>Setor <span id="al_setor1" class="al-setor"> X </span></p>
+                <div>
+                  <h3>Estado de <span id="al_estado1" class="al-estado"> Perigo </span></h3>
+                  <p>Umidade em <b id="al_umidade1" class="al-umidade"> Y% </b></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="al2" class="alerta">
+              <div class="al-icone">
+                <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+              </div>
+              <div class="al-info">
+                <p>Setor <span id="al_setor2" class="al-setor"> X </span></p>
+                <div>
+                  <h3>Estado de <span id="al_estado2" class="al-estado"> Perigo </span></h3>
+                  <p>Umidade em <b id="al_umidade2" class="al-umidade"> Y% </b></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="al3" class="alerta">
+              <div class="al-icone">
+                <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+              </div>
+              <div class="al-info">
+                <p>Setor <span id="al_setor3" class="al-setor"> X </span></p>
+                <div>
+                  <h3>Estado de <span id="al_estado3" class="al-estado"> Perigo </span></h3>
+                  <p>Umidade em <b id="al_umidade3" class="al-umidade"> Y% </b></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="al4" class="alerta">
+              <div class="al-icone">
+                <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
+              </div>
+              <div class="al-info">
+                <p>Setor <span id="al_setor4" class="al-setor"> X </span></p>
+                <div>
+                  <h3>Estado de <span id="al_estado4" class="al-estado"> Perigo </span></h3>
+                  <p>Umidade em <b id="al_umidade4" class="al-umidade"> Y% </b></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- <div id="grafico_geral" class="grafico">
+
+
+    <!-- <div id="grafico_geral" class="grafico">
                             <canvas id="dht11Umidade"></canvas>
                         </div> -->
 
-      <!-- <div id="grafico_historico" class="grafico">
+    <!-- <div id="grafico_historico" class="grafico">
                             <canvas id="historico"></canvas>
                         </div> -->
 
-      <div class="alertas" id="alertas">
-        <div id="al1" class="alerta">
-          <div class="al-icone">
-            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-          </div>
-          <div class="al-info">
-            <p>Setor <span id="al_setor1" class="al-setor"> X </span></p>
-            <div>
-              <h3>Estado de <span id="al_estado1" class="al-estado"> Perigo </span></h3>
-              <p>Umidade em <b id="al_umidade1" class="al-umidade"> Y% </b></p>
-            </div>
-          </div>
-        </div>
-
-        <div id="al2" class="alerta">
-          <div class="al-icone">
-            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-          </div>
-          <div class="al-info">
-            <p>Setor <span id="al_setor2" class="al-setor"> X </span></p>
-            <div>
-              <h3>Estado de <span id="al_estado2" class="al-estado"> Perigo </span></h3>
-              <p>Umidade em <b id="al_umidade2" class="al-umidade"> Y% </b></p>
-            </div>
-          </div>
-        </div>
-
-        <div id="al3" class="alerta">
-          <div class="al-icone">
-            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-          </div>
-          <div class="al-info">
-            <p>Setor <span id="al_setor3" class="al-setor"> X </span></p>
-            <div>
-              <h3>Estado de <span id="al_estado3" class="al-estado"> Perigo </span></h3>
-              <p>Umidade em <b id="al_umidade3" class="al-umidade"> Y% </b></p>
-            </div>
-          </div>
-        </div>
-
-        <div id="al4" class="alerta">
-          <div class="al-icone">
-            <img src="../assets/Imagens/alerta-icon.png" alt="ALERTA" class="al-icone-img">
-          </div>
-          <div class="al-info">
-            <p>Setor <span id="al_setor4" class="al-setor"> X </span></p>
-            <div>
-              <h3>Estado de <span id="al_estado4" class="al-estado"> Perigo </span></h3>
-              <p>Umidade em <b id="al_umidade4" class="al-umidade"> Y% </b></p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <button class="btn-info" onclick="modal()">i</button>
 
 
-    </div>
+    <button class="btn-info" onclick="modal()">i</button>
+
+
+  </div>
   </div>
   </div>
   </div>
@@ -223,9 +263,7 @@
         </div>
 
         <div class="row">
-          <div class="color green"></div>
-          <p class="popup-text"> <b> Verde: </b> A situação está segura. Isso acontece quando seu sensor está com a
-            umidade em um ponto ideal. </p>
+          <p class="popup-text"> Caso não haja alertas, a situação está segura. Isso acontece quando seu sensor está com a umidade em um ponto ideal. </p>
         </div>
 
         <button onclick="modal()" class="voltar">
@@ -242,14 +280,17 @@
 
 <script>
 
-function funcoesAdmin() {
+  var nome = document.getElementById('nome_estadio');
+
+  nome.innerHTML = sessionStorage.NOME_CLUBE;
+  function funcoesAdmin() {
     if (sessionStorage.TIPO_USUARIO == 1) {
-        var novoLink = `<a href="./cadastro_funcionario.html">Cadastrar novo funcionário</a>`;
-        btnSairLink.insertAdjacentHTML('beforebegin', novoLink);
+      var novoLink = `<a href="./cadastro_funcionario.html">Cadastrar novo funcionário</a>`;
+      btnSairLink.insertAdjacentHTML('beforebegin', novoLink);
     }
   }
 
-  function modal () {
+  function modal() {
     pop_up.classList.toggle('disable');
   }
 
@@ -258,6 +299,7 @@ function funcoesAdmin() {
     var alSetor = document.getElementById(`al_setor${idSetor}`);
     var alEstado = document.getElementById(`al_estado${idSetor}`);
     var alUmidade = document.getElementById(`al_umidade${idSetor}`);
+    var alInfo = al.querySelector('.al-info');
 
     var alBadge = al.querySelector('.al-icone');
 
@@ -267,11 +309,12 @@ function funcoesAdmin() {
     if (umidade < min) {
       console.log('muito baixo');
       al.style.transform = 'translateX(0)';
-      alSetor.innerHTML = idSetor
-      alEstado.innerHTML = 'Perigo'
-      alUmidade.innerHTML = `${umidade}%`
-      alBadge.style.backgroundColor = 'red'
-
+      alSetor.innerHTML = idSetor;
+      alEstado.innerHTML = 'Perigo';
+      alUmidade.innerHTML = `${umidade}%`;
+      alBadge.style.backgroundColor = 'red';
+      alInfo.style.backgroundColor = 'red';
+      al.style.display = 'flex';
     } else if (umidade <= min * 1.1) {
       console.log('baixo');
       al.style.transform = 'translateX(0)';
@@ -279,7 +322,8 @@ function funcoesAdmin() {
       alEstado.innerHTML = 'Alerta'
       alUmidade.innerHTML = `${umidade}%`
       alBadge.style.backgroundColor = 'yellow'
-
+      alInfo.style.backgroundColor = 'yellow';
+      al.style.display = 'flex';
     } else if (umidade > max * 0.9
       && umidade < max) {
       console.log('alto');
@@ -288,7 +332,8 @@ function funcoesAdmin() {
       alEstado.innerHTML = 'Alerta'
       alUmidade.innerHTML = `${umidade}%`
       alBadge.style.backgroundColor = 'yellow'
-
+      alInfo.style.backgroundColor = 'yellow';
+      al.style.display = 'flex';
     } else if (umidade > max) {
       console.log('muito alto');
       al.style.transform = 'translateX(0)';
@@ -296,11 +341,13 @@ function funcoesAdmin() {
       alEstado.innerHTML = 'Perigo'
       alUmidade.innerHTML = `${umidade}%`
       alBadge.style.backgroundColor = 'red'
-
+      alInfo.style.backgroundColor = 'red';
+      al.style.display = 'flex';
     } else {
       // console.log('dado errado');
       console.log('ideal');
-      al.style.transform = 'translateX(250px)';
+      al.style.transform = 'translateX(500px)';
+      al.style.display = 'none';
 
     }
 
@@ -472,7 +519,7 @@ function funcoesAdmin() {
         data: [],
         borderColor: cores[posicaoSetor],
         backgroundColor: cores[posicaoSetor],
-        tension: 0.1,
+        tension: 2,
       };
 
       var ultimoRegistro = setor[setor.length - 1];

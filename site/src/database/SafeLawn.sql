@@ -59,10 +59,10 @@ CREATE TABLE clube (
     CONSTRAINT fkEstadoClube FOREIGN KEY (fkEstado) REFERENCES estado(idEstado)
 );
 
-INSERT INTO clube (nomeClube, cnpjClube, senhaClube, emailClube, telefoneClube, fkTipoUsuario, fkEstado) VALUES
+/*INSERT INTO clube (nomeClube, cnpjClube, senhaClube, emailClube, telefoneClube, fkTipoUsuario, fkEstado) VALUES
 	('São Paulo ', '12345678901234', 'spfc123', 'saopaulo@spfc1.com.br', '11999999999', 1, 1),
 	('Flamengo', '23456789012345', 'mengo456', 'flamengo@crf2.com.br', '21999999999', 1, 2),
-	('Atlético Mineiro', '34567890123456', 'galo789', 'atletico@galo3.com.br', '31999999998', 1, 3);
+	('Atlético Mineiro', '34567890123456', 'galo789', 'atletico@galo3.com.br', '31999999998', 1, 3);*/
     
 CREATE TABLE usuario (
 	idUsuario INT AUTO_INCREMENT,
@@ -77,10 +77,10 @@ CREATE TABLE usuario (
     FOREIGN KEY (fkTipoUsuario) REFERENCES tipoUsuario(idTipoUsuario)
 );
 
-INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario, telefoneUsuario, fkClube, fkTipoUsuario) VALUES
+/*INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario, telefoneUsuario, fkClube, fkTipoUsuario) VALUES
 	('João Alvares', 'joao.alvares@spfc1.com.br', '123456', '11988888888', 1, 1),
 	('Pedro Roberto', 'pedro.roberto@crf2.com.br', '123456', '21977777777', 2, 2),
-	('Felipe Silve', 'felipe.silva@galo3.com.br', '123456', '31966666666', 3, 2);
+	('Felipe Silve', 'felipe.silva@galo3.com.br', '123456', '31966666666', 3, 2);*/
 
 CREATE TABLE fornecedorGramado (
 idFornecedorGramado INT PRIMARY KEY AUTO_INCREMENT,
@@ -89,10 +89,10 @@ telefoneFornecedor VARCHAR(45),
 emailFornecedor VARCHAR(45)
 );
 
-INSERT INTO fornecedorGramado (nomeFornecedor, telefoneFornecedor, emailFornecedor) VALUES
+/*INSERT INTO fornecedorGramado (nomeFornecedor, telefoneFornecedor, emailFornecedor) VALUES
 	('Fornecedor A', '11987654321', 'contato@fornecedora.com.br'),
 	('Fornecedor B', '21987654321', 'contato@fornecedorb.com.br'),
-	('Fornecedor C', '31987654321', 'contato@fornecedorc.com.br');
+	('Fornecedor C', '31987654321', 'contato@fornecedorc.com.br');*/
 
 CREATE TABLE parametro (
 	idParametro INT PRIMARY KEY AUTO_INCREMENT,
@@ -101,9 +101,7 @@ CREATE TABLE parametro (
 );
 
 INSERT INTO parametro VALUES 
-	(NULL, 20.90, 35.40),
-	(NULL, 25.90, 45.40),
-	(NULL, 10.00, 12.20);
+	(NULL, 20.90, 35.40);
 
 CREATE TABLE pisoGramado (
 	idPiso INT PRIMARY KEY AUTO_INCREMENT,
@@ -168,20 +166,6 @@ CREATE TABLE SetorEstadio (
     FOREIGN KEY (fkEstadio) REFERENCES estadio(idEstadio)
 );
 
-INSERT INTO SetorEstadio (nomeSetor, fkEstadio) VALUES
-	('Norte-Leste', 1),
-    ('Norte-Oeste', 1),
-    ('Sul-Leste', 1),
-    ('Sul-Oeste', 1),
-    ('Norte-Leste', 2),
-    ('Norte-Oeste', 2),
-    ('Sul-Leste', 2),
-    ('Sul-Oeste', 2),
-    ('Norte-Leste', 3),
-    ('Norte-Oeste', 3),
-    ('Sul-Leste', 3),
-    ('Sul-Oeste', 3);
-
 CREATE TABLE statusSensor (
 idStatusSensor INT PRIMARY KEY AUTO_INCREMENT,
 statusSendor VARCHAR(45)
@@ -191,8 +175,7 @@ INSERT INTO statusSensor (statusSendor) VALUES
 	('Ativo'),
     ('Inativo'),
     ('Manutenção');
-    
-    
+        
 CREATE TABLE modeloSensor (
 idModeloSensor INT PRIMARY KEY AUTO_INCREMENT,
 modeloSensor VARCHAR(45)
@@ -240,20 +223,7 @@ CREATE TABLE Sensor (
     FOREIGN KEY (fkstatusSensor) REFERENCES statusSensor(idStatusSensor),
     FOREIGN KEY (fkmodeloSensor) REFERENCES modeloSensor(idModeloSensor)
 );
-
-INSERT INTO Sensor (descricao, fkSetor, fkstatusSensor, fkmodeloSensor) VALUES
-	('Sensor 1', 1, 1, 1),
-    ('Sensor 2', 2, 2, 1),
-    ('Sensor 3', 3, 3, 2),
-    ('Sensor 4', 4, 1, 2),
-    ('Sensor 1', 5, 1, 2),
-    ('Sensor 2', 6, 2, 2),
-    ('Sensor 3', 7, 3, 3),
-    ('Sensor 4', 8, 1, 1),
-    ('Sensor 1', 9, 2, 2),
-    ('Sensor 2', 10, 1, 3),
-    ('Sensor 3', 11, 1, 3),
-    ('Sensor 4', 12, 3, 3);
+    
 
 CREATE TABLE DadosSensor (
 	idCaptura INT AUTO_INCREMENT,
@@ -267,24 +237,62 @@ CREATE TABLE DadosSensor (
 );
 
 INSERT INTO DadosSensor (dtCaptura, valorCaptura, fkSensor, fkMedida) VALUES
-	/* ('2023-04-21 18:40:00',20, 1, 1),
-    ('2023-04-21 18:40:00', 12, 2, 1),
-    ('2023-04-21 18:40:00', 1, 3, 1),
-    ('2023-04-22 18:40:00', 30, 4, 1),
-    ('2023-04-22 18:50:00', 30, 1, 1),
-    ('2023-04-22 18:50:00', 10, 2, 1),
-    ('2023-04-22 18:50:00', 5, 3, 1),
-    ('2023-04-22 18:50:00', 25, 4, 1), */
-    ('2023-04-22 20:02:00', 70, 1, 1),
-    ('2023-04-22 20:02:00', 45, 2, 1),
-    ('2023-04-22 20:02:00', 30, 3, 1),
-    ('2023-04-22 20:02:00', 80, 4, 1);
+    (NOW(), 23, 1, 1),
+    (NOW(), 23, 2, 1),
+    (NOW(), 23, 3, 1),
+    (NOW(), 28, 4, 1);
 
 
+-- BLOCO DE EXECUÇÕES 
+UPDATE modeloGramado SET fkParametro = 1 WHERE idModeloGramado = 1;
+INSERT INTO Sensor (descricao, fkSetor, fkstatusSensor, fkmodeloSensor) VALUES
+	('Sensor 1', 1, 1, 1),
+    ('Sensor 2', 2, 2, 1),
+    ('Sensor 3', 3, 3, 2),
+    ('Sensor 4', 4, 1, 2);
+
+-- ATIVAR DADOS DO ARDUINO
+        
+        
+        
+-- SELECTS
+SELECT * FROM estadio;
+SELECT * FROM clube;
+SELECT * FROM parametro;
+SELECT * FROM modeloGramado;
+
+DELIMITER $$
+CREATE TRIGGER insercao_Setores_Estadio
+	AFTER INSERT ON estadio
+    FOR EACH ROW
+
+/*INSERT INTO setorEstadio SET 
+     nomeSetor = 'Norte-Leste',
+     fkEstadio = NEW.idEstadio;*/
+BEGIN
+     call insere_all_setores(new.idEstadio);
+END$$
+
+DELIMITER ;
+
+
+DROP TRIGGER insercao_Setores_Estadio;
+     
+
+SELECT * FROM estadio;
+SELECT * FROM setorEstadio WHERE fkEstadio = 34;
+INSERT INTO estadio (nomeEstadio, cnpjEstadio, fkClube, fkModeloGramado) VALUES 
+	('san', '13098172346', 3, 1);
 -- SUBQUERY
 
+	INSERT INTO setorEstadio (nomeSetor, fkEstadio)VALUES 
+		('Norte-Leste', NEW.idEstadio),
+		('Norte-Oeste', NEW.idEstadio),
+		('Sul-Leste', NEW.idEstadio),
+		('Sul-Oeste', NEW.idEstadio);
+
 INSERT INTO estadio (nomeEstadio, cnpjEstadio, fkClube)
-	VALUES ('kevin', '12345123',  (SELECT idClube FROM clube WHERE cnpjClube = '12345678901234'));
+	VALUES ('san pablo', '12345123',  (SELECT idClube FROM clube WHERE cnpjClube = '12345678901234'));
     
 -- todos
 SELECT * FROM clube;
@@ -328,3 +336,16 @@ SELECT * FROM estadio JOIN SetorEstadio ON fkEstadio=idEstadio JOIN Sensor ON fk
 -- estadio
 SELECT * FROM estadio JOIN clube ON fkClube=IdClube JOIN endereco ON fkEndereco=idEndereco
 JOIN modeloGramado ON fkModeloGramado=idModeloGramado;
+
+DELIMITER $$
+	CREATE PROCEDURE insere_all_setores(idEstadio INT)
+	BEGIN
+	INSERT INTO setorEstadio (nomeSetor, fkEstadio)VALUES 
+		('Norte-Leste', idEstadio),
+		('Norte-Oeste', idEstadio),
+		('Sul-Leste', idEstadio),
+		('Sul-Oeste', idEstadio);
+    
+END$$
+
+DROP PROCEDURE insere_all_setores;
