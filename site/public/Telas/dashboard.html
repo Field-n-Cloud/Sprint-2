@@ -127,25 +127,11 @@
 
           <p id="avisoCaptura1"></p>
           <div class="selecao">
-            <button onclick="alternarGrafico()">Linhas</button>
-            <button onclick="alternarGrafico()">Barras</button>
+            <button onclick="alternarGraficoLinha()">Linhas</button>
+            <button onclick="alternarGraficoColuna()">Barras</button>
           </div>
 
           <script>
-            function alternarGrafico(){
-              var graficoLinha = document.getElementById('graph1');
-              var graficoColuna = document.getElementById('graph2');
-
-              console.log(graficoColuna.classList)
-              if(graficoColuna.classList[1] == 'inativo' && graficoLinha.classList[1] == 'ativo'){
-                  alternarGraficoColuna();
-              }
-              
-              if (graficoLinha.classList[1]== 'inativo' && graficoColuna.classList[1] == 'ativo'){
-                alternarGraficoLinha();
-              }
-            }
-
             function alternarGraficoColuna(){
               var graficoLinha = document.getElementById('graph1');
               var graficoColuna = document.getElementById('graph2');
@@ -494,6 +480,14 @@
     const config = {
       type: "line",
       data: dados,
+      options: {
+        scales: {
+          y: {
+            min: 0,
+            max: 100
+          },
+        },
+      },
     };
 
     var myChart = new Chart(document.getElementById("lineChart"), config);
@@ -545,7 +539,8 @@
       options: {
         scales: {
           y: {
-            beginAtZero: true,
+            min: 0,
+            max: 100
           },
         },
       },
@@ -583,7 +578,7 @@
                 "Como não há dados novos para captura, o gráfico não atualizará."
               );
               avisoCaptura.innerHTML =
-                "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.";
+                "<i class='fa-solid fa-triangle-exclamation'></i> Gráfico atualizado com os últimos dados capturados pelo sensor!!";
               console.log("Horário do novo dado capturado:");
               console.log(novoRegistro[0].momento_grafico);
               console.log("Horário do último dado capturado:");

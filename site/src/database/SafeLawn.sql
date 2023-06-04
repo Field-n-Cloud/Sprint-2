@@ -237,10 +237,10 @@ CREATE TABLE DadosSensor (
 );
 
 INSERT INTO DadosSensor (dtCaptura, valorCaptura, fkSensor, fkMedida) VALUES
-    (NOW(), 23, 1, 1),
-    (NOW(), 23, 2, 1),
-    (NOW(), 23, 3, 1),
-    (NOW(), 28, 4, 1);
+    (NOW(), 40, 1, 1),
+    (NOW(), 40, 2, 1),
+    (NOW(), 4, 3, 1),
+    (NOW(), 4, 4, 1);
 
 
 -- BLOCO DE EXECUÇÕES 
