@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/animacao.js"></script>
+
+    <script
+        src="https://desk.zoho.com/portal/api/feedbackwidget/866030000000227272?orgId=812752501&displayType=embeded"></script>
+
+    <script src="../js/funcoes.js"></script>
+    <link rel="stylesheet" href="../Estilo/suporte.css" />
+    <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon" />
+    <title>Safe Lawn - Suporte</title>
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="menu">
+            <div class="menu-button ativada" id="menu" onclick="movimentar()">
+                <div class="menu-traco"></div>
+                <div class="menu-traco"></div>
+                <div class="menu-traco"></div>
+            </div>
+            <div class="menu-button desativada" id="menu-desativado" onclick="movimentar()">
+                <div class="menu-traco"></div>
+                <div class="menu-traco"></div>
+                <div class="menu-traco"></div>
+            </div>
+        </div>
+        <div class="container-sidebar">
+            <div class="conteudo">
+                <div class="header-sidebar">
+                    <div class="header-logo">
+                        <a href="./dashboard.html">
+                            <img src="../assets/Imagens/logo-SafeLawn.png">
+                        </a>
+                    </div>
+                    <div class="header-titulo">
+                        <h1 class="nome-perfil" id="nome_estadio">Nome clube</h1>
+                    </div>
+                </div>
+                <div class="flex-link">
+                    <a href="cadastro_funcionario.html">
+                        Cadastrar novo funcionario
+                    </a>
+                    <a href="suporte.html">
+                        Suporte
+                    </a>
+                    <a href="#">
+                        <button class="btn_sair" onclick="">SAIR</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="titulo" class="titulo">
+        <img src="../assets/Imagens/suporte.png" width="60px" height="55px">
+        <h1> Bem vindo ao suporte SafeLawn</h1>
+
+    </div>
+    <br>
+    <div id="zsfeedbackwidgetdiv"></div>
+</body>
+
+</html>
+
+<script></script>
