@@ -5,13 +5,16 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Safe Lawn - Cadastro Usuário</title>
-  <!-- <script src="sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="sweetalert2.min.css">
-  <script src="sweetalert2.all.min.js"></script> -->
-  <link rel="stylesheet" href="../Estilo/cadastro_usuario.css" />
   <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon" />
+
   <script src="../js/funcoes.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../Estilo/cadastro_usuario.css" />
 </head>
 
 <body>
@@ -63,7 +66,7 @@
                   <button class="btn-form" onclick="cadastrarFuncionario()">
                     <a> CADASTRAR </a>
                   </button>
-                    <a href="dashboard.html" class="btn-voltar"> Voltar </a>
+                  <a href="dashboard.html" class="btn-voltar"> Voltar </a>
 
                   <!-- <a
                       onclick="alternarSecao('cad_estadio', 'cad_endereco', 'voltar')"
@@ -152,14 +155,16 @@
         confirmacaoSenhaVar == "" ||
         telefoneVar == "")
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro ao cadastrar funcionário!',
+        text: 'Preencha os campos e tente novamente...',
+        confirmButtonText: 'Ok',
+      })
 
-      finalizarAguardar();
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
+      // setInterval(sumirMensagem, 5000);
     }
 
     // Enviando o valor da nova input
@@ -182,26 +187,36 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          // cardErro.style.display = "block";
 
-          alert("Deu certo! Cadastre o próximo.")
+          // alert("Deu certo! Cadastre o próximo.")
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          // mensagem_erro.innerHTML =
+          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          // setTimeout(() => {
-          //   window.location = "./cadastro_endereco.html";
-          // }, "2000");
+          Swal.fire({
+            icon: 'success',
+            title: 'Funcionário cadastrado!',
+            text: 'Cadastre outro em seguida ou volte para a Dashboard...',
+            confirmButtonText: 'Ok',
+          })
 
-          limparFormulario();
-          finalizarAguardar();
+          // limparFormulario();
+          // finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        // finalizarAguardar();
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro ao cadasrar funcionário!',
+            text: 'Verifique os campos e tente novamente...',
+            confirmButtonText: 'Ok',
+          })
+
       });
 
     return false;

@@ -8,10 +8,13 @@
 
     <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon">
     <title>Safe Lawn - Login</title>
+    
+    <script src="../js/funcoes.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../Estilo/login_estilo.css">
-
-    <script src="../js/funcoes.js"></script>
 
 
 </head>
@@ -61,9 +64,13 @@
         var senhaVar = input_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro ao realizar o login!',
+                text: 'Preencha os campos...',
+                confirmButtonText: 'Ok',
+            })
+
             return false;
         }
         else {
@@ -102,9 +109,18 @@
                     // sessionStorage.ID_USUARIO = json.idUsuario;
                     // console.log(json.idEstadio);
 
-                    setTimeout(function () {
-                        window.location = "./dashboard.html";
-                    }, 1000); // apenas para exibir o loading
+                    Swal.fire({
+                            icon: 'success',
+                            title: 'Login realizado!',
+                            text: 'Entrando no sistema...',
+                            confirmButtonText: 'Ok',
+                        }).then((result) => {
+                            setTimeout(function () {
+                                window.location = "./dashboard.html";
+                            }, 1000); 
+                        });
+
+                    
 
                 });
 
@@ -112,10 +128,17 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
-                // resposta.text().then(texto => {
-                //     console.error(texto);
-                //     finalizarAguardar(texto);
-                // });
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro ao realizar o login!',
+                    text: 'Verifique os campos e tente novamente...',
+                    confirmButtonText: 'Ok',
+                })
             }
 
         }).catch(function (erro) {

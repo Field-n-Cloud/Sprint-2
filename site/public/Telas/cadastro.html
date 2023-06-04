@@ -1,288 +1,215 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Safe Lawn - Cadastro</title>
 
-    <link rel="stylesheet" href="../Estilo/cadastro_estilo.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe Lawn - Cadastro</title>
+  
+  <link rel="shortcut icon" href="../assets/Imagens/logo_imagem.png" type="image/x-icon" />
+  <script src="../js/funcoes.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
 
-    <link
-      rel="shortcut icon"
-      href="../assets/Imagens/logo_imagem.png"
-      type="image/x-icon"
-    />
-    <script src="../js/funcoes.js"></script>
-  </head>
+  <link rel="stylesheet" href="../Estilo/cadastro_estilo.css" />
+</head>
 
-  <body>
-    <div class="cadastro-wrapper">
-      <div class="alerta_erro">
-        <div class="card_erro" id="cardErro">
-          <span id="mensagem_erro"></span>
-        </div>
+<body>
+  <div class="cadastro-wrapper">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
       </div>
-      <div class="background">
-        <div class="form-wrapper">
-          <div class="container">
-            <div class="form">
-              <div class="progresso">
-                <div id="ponto_prog_1" class="ponto-progresso feito"></div>
-                <hr id="barra_prog_1" class="barra-progresso" />
-                <div id="ponto_prog_2" class="ponto-progresso"></div>
-                <hr id="barra_prog_2" class="barra-progresso" />
-                <div id="ponto_prog_3" class="ponto-progresso"></div>
+    </div>
+    <div class="background">
+      <div class="form-wrapper">
+        <div class="container">
+          <div class="form">
+            <div class="progresso">
+              <div id="ponto_prog_1" class="ponto-progresso feito"></div>
+              <hr id="barra_prog_1" class="barra-progresso" />
+              <div id="ponto_prog_2" class="ponto-progresso"></div>
+              <hr id="barra_prog_2" class="barra-progresso" />
+              <div id="ponto_prog_3" class="ponto-progresso"></div>
+            </div>
+            <section id="cad_clube" class="cadastro-clube">
+              <div class="cabecalho-form">
+                <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
+                <div class="cabecalho-titulos">
+                  <h1>Cadastro</h1>
+                  <h3>(dados do clube)</h3>
+                </div>
               </div>
-              <section id="cad_clube" class="cadastro-clube">
-                <div class="cabecalho-form">
-                  <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
-                  <div class="cabecalho-titulos">
-                    <h1>Cadastro</h1>
-                    <h3>(dados do clube)</h3>
-                  </div>
+              <div class="form-group">
+                <div class="flex-input">
+                  <span>Nome:</span>
+                  <input class="input-nome" id="input_nome" placeholder="Digite seu nome..." />
                 </div>
-                <div class="form-group">
+
+                <div class="flex-input">
+                  <span>Email:</span>
+                  <input class="input-email" id="input_email" placeholder="Digite seu email..." />
+                </div>
+
+                <div class="row-group">
                   <div class="flex-input">
-                    <span>Nome:</span>
-                    <input
-                      class="input-nome"
-                      id="input_nome"
-                      placeholder="Digite seu nome..."
-                    />
+                    <span>Senha:</span>
+                    <input type="password" class="input-senha" placeholder="Digite sua senha..." id="input_senha" />
                   </div>
-
                   <div class="flex-input">
-                    <span>Email:</span>
-                    <input
-                      class="input-email"
-                      id="input_email"
-                      placeholder="Digite seu email..."
-                    />
-                  </div>
-
-                  <div class="row-group">
-                    <div class="flex-input">
-                      <span>Senha:</span>
-                      <input
-                        type="password"
-                        class="input-senha"
-                        placeholder="Digite sua senha..."
-                        id="input_senha"
-                      />
-                    </div>
-                    <div class="flex-input">
-                      <span>Confirme sua Senha:</span>
-                      <input
-                        type="password"
-                        class="input-confirme-senha"
-                        placeholder="Confirme sua Senha..."
-                        id="input_confirme_senha"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="flex-input">
-                    <span>Telefone:</span>
-                    <input
-                      class="input-telefone"
-                      id="input_telefone"
-                      placeholder="Digite seu email..."
-                    />
-                  </div>
-
-                  <div class="row-group">
-                    <div class="flex-input">
-                      <span>CNPJ:</span>
-                      <input
-                        class="input-cnpj"
-                        id="input_cnpj"
-                        placeholder="Digite seu CNPJ..."
-                      />
-                    </div>
-                    <div class="flex-input">
-                      <span>Estado:</span>
-                      <select class="form-select" id="select_uf">
-                        <option class="sel-option" value="1">AC</option>
-                        <option class="sel-option" value="2">AL</option>
-                        <option class="sel-option" value="3">AM</option>
-                        <option class="sel-option" value="4">AP</option>
-                        <option class="sel-option" value="5">BA</option>
-                        <option class="sel-option" value="6">CE</option>
-                        <option class="sel-option" value="7">DF</option>
-                        <option class="sel-option" value="8">ES</option>
-                        <option class="sel-option" value="9">GO</option>
-                        <option class="sel-option" value="10">MA</option>
-                        <option class="sel-option" value="11">MT</option>
-                        <option class="sel-option" value="12">MS</option>
-                        <option class="sel-option" value="13">MG</option>
-                        <option class="sel-option" value="14">PA</option>
-                        <option class="sel-option" value="15">PB</option>
-                        <option class="sel-option" value="16">PR</option>
-                        <option class="sel-option" value="17">PE</option>
-                        <option class="sel-option" value="18">PI</option>
-                        <option class="sel-option" value="19">RJ</option>
-                        <option class="sel-option" value="20">RN</option>
-                        <option class="sel-option" value="21">RS</option>
-                        <option class="sel-option" value="22">RO</option>
-                        <option class="sel-option" value="23">RR</option>
-                        <option class="sel-option" value="24">SC</option>
-                        <option class="sel-option" value="25">SP</option>
-                        <option class="sel-option" value="26">SE</option>
-                        <option class="sel-option" value="27">TO</option>
-                      </select>
-                    </div>
+                    <span>Confirme sua Senha:</span>
+                    <input type="password" class="input-confirme-senha" placeholder="Confirme sua Senha..."
+                      id="input_confirme_senha" />
                   </div>
                 </div>
 
-                <span class="frase"
-                  >Já possui cadastro?
-                  <a href="../Telas/login.html" class="link-cadastro"
-                    >FAÇA O LOGIN!</a
-                  >
-                </span>
-
-                <div class="form-acao">
-                  <button
-                    onclick="alternarSecao('cad_clube', 'cad_endereco', 'proximo')"
-                    class="btn-form"
-                  >
-                    <!-- onclick="cadastrarClube()" -->
-                    <a> PRÓXIMO </a>
-                  </button>
-                  <a href="../index.html" class="form-a cancelar">CANCELAR</a>
+                <div class="flex-input">
+                  <span>Telefone:</span>
+                  <input class="input-telefone" id="input_telefone" placeholder="Digite seu email..." />
                 </div>
-              </section>
 
-              <section class="cadastro-endereco" id="cad_endereco">
-                <div class="cabecalho-form">
-                  <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
-                  <div class="cabecalho-titulos">
-                    <h1>Cadastro</h1>
-                    <h3>(dados do endereço)</h3>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="flex-input">
-                    <span>CEP:</span>
-                    <input
-                      class="input-nome"
-                      id="input_cep"
-                      placeholder="Digite seu CEP..."
-                    />
-                  </div>
-
-                  <div class="flex-input">
-                    <span>Logradouro:</span>
-                    <input
-                      class="input-email"
-                      id="input_logradouro"
-                      placeholder="Digite sua rua ou avenida..."
-                    />
-                  </div>
-
-                  <div class="flex-input">
-                    <span>Número:</span>
-                    <input
-                      type="text"
-                      class="input_numero"
-                      placeholder="Digite o nº do endereço..."
-                      id="input_numero"
-                    />
-                  </div>
-
-                  <div class="flex-input">
-                    <span>Complemento:</span>
-                    <input
-                      class="input-telefone"
-                      id="input_complemento"
-                      placeholder="Digite o complemento do endereço..."
-                    />
-                  </div>
-
-                  <div class="form-acao">
-                    <button
-                      onclick="alternarSecao('cad_endereco', 'cad_estadio', 'proximo')"
-                      class="btn-form"
-                    >
-                      <!-- onclick="cadastrarEndereco()" -->
-                      <a> PRÓXIMO </a>
-                    </button>
-
-                    <a
-                      onclick="alternarSecao('cad_endereco', 'cad_clube', 'voltar')"
-                      class="form-a"
-                      >VOLTAR</a
-                    >
-                  </div>
-                </div>
-              </section>
-
-              <section class="cadastro-estadio" id="cad_estadio">
-                <div class="cabecalho-form">
-                  <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
-                  <div class="cabecalho-titulos">
-                    <h1>Cadastro</h1>
-                    <h3>(dados do estádio)</h3>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="flex-input">
-                    <span>Estádio:</span>
-                    <input
-                      class="input-estadio"
-                      id="input_estadio"
-                      placeholder="Digite o nome do estádio..."
-                    />
-                  </div>
-
+                <div class="row-group">
                   <div class="flex-input">
                     <span>CNPJ:</span>
-                    <input
-                      class="input-cnpj-estadio"
-                      id="input_cnpj_estadio"
-                      placeholder="Digite o CNPJ do estádio..."
-                    />
+                    <input class="input-cnpj" id="input_cnpj" placeholder="Digite seu CNPJ..." />
                   </div>
-
                   <div class="flex-input">
-                    <span>Fornecedor:</span>
-                    <input
-                      type="text"
-                      class="input-fornecedor"
-                      placeholder="Digite seu fornecedor de gramado..."
-                      id="input_fornecedor"
-                    />
-                  </div>
-
-                  <div class="flex-input">
-                    <span>Modelo:</span>
-                    <input
-                      class="input-modelo"
-                      id="input_modelo"
-                      placeholder="Digite seu modelo de gramado..."
-                    />
-                  </div>
-
-                  <div class="form-acao">
-                    <button class="btn-form" onclick="cadastrar()">
-                      <a> CADASTRAR </a>
-                    </button>
-
-                    <a
-                      onclick="alternarSecao('cad_estadio', 'cad_endereco', 'voltar')"
-                      class="form-a"
-                      >VOLTAR</a
-                    >
+                    <span>Estado:</span>
+                    <select class="form-select" id="select_uf">
+                      <option class="sel-option" value="1">AC</option>
+                      <option class="sel-option" value="2">AL</option>
+                      <option class="sel-option" value="3">AM</option>
+                      <option class="sel-option" value="4">AP</option>
+                      <option class="sel-option" value="5">BA</option>
+                      <option class="sel-option" value="6">CE</option>
+                      <option class="sel-option" value="7">DF</option>
+                      <option class="sel-option" value="8">ES</option>
+                      <option class="sel-option" value="9">GO</option>
+                      <option class="sel-option" value="10">MA</option>
+                      <option class="sel-option" value="11">MT</option>
+                      <option class="sel-option" value="12">MS</option>
+                      <option class="sel-option" value="13">MG</option>
+                      <option class="sel-option" value="14">PA</option>
+                      <option class="sel-option" value="15">PB</option>
+                      <option class="sel-option" value="16">PR</option>
+                      <option class="sel-option" value="17">PE</option>
+                      <option class="sel-option" value="18">PI</option>
+                      <option class="sel-option" value="19">RJ</option>
+                      <option class="sel-option" value="20">RN</option>
+                      <option class="sel-option" value="21">RS</option>
+                      <option class="sel-option" value="22">RO</option>
+                      <option class="sel-option" value="23">RR</option>
+                      <option class="sel-option" value="24">SC</option>
+                      <option class="sel-option" value="25">SP</option>
+                      <option class="sel-option" value="26">SE</option>
+                      <option class="sel-option" value="27">TO</option>
+                    </select>
                   </div>
                 </div>
-              </section>
-            </div>
+              </div>
+
+              <span class="frase">Já possui cadastro?
+                <a href="../Telas/login.html" class="link-cadastro">FAÇA O LOGIN!</a>
+              </span>
+
+              <div class="form-acao">
+                <button onclick="alternarSecao('cad_clube', 'cad_endereco', 'proximo')" class="btn-form">
+                  <!-- onclick="cadastrarClube()" -->
+                  <a> PRÓXIMO </a>
+                </button>
+                <a href="../index.html" class="form-a cancelar">CANCELAR</a>
+              </div>
+            </section>
+
+            <section class="cadastro-endereco" id="cad_endereco">
+              <div class="cabecalho-form">
+                <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
+                <div class="cabecalho-titulos">
+                  <h1>Cadastro</h1>
+                  <h3>(dados do endereço)</h3>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="flex-input">
+                  <span>CEP:</span>
+                  <input class="input-nome" id="input_cep" placeholder="Digite seu CEP..." />
+                </div>
+
+                <div class="flex-input">
+                  <span>Logradouro:</span>
+                  <input class="input-email" id="input_logradouro" placeholder="Digite sua rua ou avenida..." />
+                </div>
+
+                <div class="flex-input">
+                  <span>Número:</span>
+                  <input type="text" class="input_numero" placeholder="Digite o nº do endereço..." id="input_numero" />
+                </div>
+
+                <div class="flex-input">
+                  <span>Complemento:</span>
+                  <input class="input-telefone" id="input_complemento"
+                    placeholder="Digite o complemento do endereço..." />
+                </div>
+
+                <div class="form-acao">
+                  <button onclick="alternarSecao('cad_endereco', 'cad_estadio', 'proximo')" class="btn-form">
+                    <!-- onclick="cadastrarEndereco()" -->
+                    <a> PRÓXIMO </a>
+                  </button>
+
+                  <a onclick="alternarSecao('cad_endereco', 'cad_clube', 'voltar')" class="form-a">VOLTAR</a>
+                </div>
+              </div>
+            </section>
+
+            <section class="cadastro-estadio" id="cad_estadio">
+              <div class="cabecalho-form">
+                <img src="../assets/Imagens/logo_imagem.png" alt="SafeLawn" />
+                <div class="cabecalho-titulos">
+                  <h1>Cadastro</h1>
+                  <h3>(dados do estádio)</h3>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="flex-input">
+                  <span>Estádio:</span>
+                  <input class="input-estadio" id="input_estadio" placeholder="Digite o nome do estádio..." />
+                </div>
+
+                <div class="flex-input">
+                  <span>CNPJ:</span>
+                  <input class="input-cnpj-estadio" id="input_cnpj_estadio" placeholder="Digite o CNPJ do estádio..." />
+                </div>
+
+                <div class="flex-input">
+                  <span>Fornecedor:</span>
+                  <input type="text" class="input-fornecedor" placeholder="Digite seu fornecedor de gramado..."
+                    id="input_fornecedor" />
+                </div>
+
+                <div class="flex-input">
+                  <span>Modelo:</span>
+                  <input class="input-modelo" id="input_modelo" placeholder="Digite seu modelo de gramado..." />
+                </div>
+
+                <div class="form-acao">
+                  <button class="btn-form" onclick="cadastrar()">
+                    <a> CADASTRAR </a>
+                  </button>
+
+                  <a onclick="alternarSecao('cad_estadio', 'cad_endereco', 'voltar')" class="form-a">VOLTAR</a>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 
 <script>
@@ -361,24 +288,37 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          // cardErro.style.display = "block";
+          Swal.fire({
+            icon: 'success',
+            title: 'Cadastrado com sucesso!',
+            text: 'Redirecionando ao login...',
+            confirmButtonText: 'Ok',
+          }).then((result) => {
+            setTimeout(() => {
+              window.location = "./login.html";
+            }, "2000");
+          });
 
-          // mensagem_erro.innerHTML =
-          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          setTimeout(() => {
-            window.location = "./login.html";
-          }, "2000");
-
-          // limparFormulario();
-          // finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro ao cadastrar!',
+            text: 'Verifique os campos e tente novamente...',
+            confirmButtonText: 'Ok',
+          })
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        // finalizarAguardar();
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro ao cadastrar!',
+            text: 'Verifique os campos e tente novamente...',
+            confirmButtonText: 'Ok',
+          })
       });
 
     return false;
@@ -403,8 +343,8 @@
         senhaVar == "" ||
         confirmacaoSenhaVar == "" ||
         emailVar == "",
-      cnpjVar == "",
-      telefoneVar == "")
+        cnpjVar == "",
+        telefoneVar == "")
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
